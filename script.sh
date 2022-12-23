@@ -22,7 +22,7 @@ echo '------ run dev ----------'
 
 echo '------ run npm i ----------'
 
-npm run install ;
+npm install ;
 
 echo '------ run prod ----------'
 
