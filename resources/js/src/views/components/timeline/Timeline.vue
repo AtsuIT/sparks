@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col
+    <!-- <b-col
       cols="12"
       md="6"
     >
@@ -17,10 +17,10 @@
       md="6"
     >
       <timeline-custom-content />
-    </b-col>
+    </b-col> -->
     <b-col
       cols="12"
-      md="6"
+      md="12"
     >
       <timeline-custom-content-with-icon />
     </b-col>

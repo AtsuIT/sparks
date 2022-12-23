@@ -28,7 +28,7 @@
             variant="primary"
             :to="{ name: 'apps-invoice-add'}"
           >
-            Add Record
+            Add Order
           </b-button>
         </b-col>
 
