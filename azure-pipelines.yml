@@ -12,19 +12,20 @@ stages:
   - stage: php_setup
     jobs:
       - job: InstallationJob
+        pool: Default
         steps:
-        - task: SonarQubePrepare@5
-          inputs:
-            SonarQube: 'SonarQube'
-            scannerMode: 'CLI'
-            configMode: 'manual'
-            cliProjectKey: 'sparks'
-            cliProjectName: 'sparks'
-            cliSources: 'app'
-        - task: SonarQubeAnalyze@5
-        - task: SonarQubePublish@5
-          inputs:
-            pollingTimeoutSec: '300'
+        # - task: SonarQubePrepare@5
+        #   inputs:
+        #     SonarQube: 'SonarQube'
+        #     scannerMode: 'CLI'
+        #     configMode: 'manual'
+        #     cliProjectKey: 'sparks'
+        #     cliProjectName: 'sparks'
+        #     cliSources: 'app'
+        # - task: SonarQubeAnalyze@5
+        # - task: SonarQubePublish@5
+        #   inputs:
+        #     pollingTimeoutSec: '300'
         - task: CopyFilesOverSSH@0
           inputs:
             sshEndpoint: 'sparks-vps'
