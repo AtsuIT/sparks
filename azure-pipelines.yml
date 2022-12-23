@@ -1,0 +1,41 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  phpVersion: 7.4
+
+
+stages:
+  - stage: php_setup
+    jobs:
+      - job: InstallationJob
+        steps:
+        - task: SonarQubePrepare@5
+          inputs:
+            SonarQube: 'SonarQube'
+            scannerMode: 'CLI'
+            configMode: 'manual'
+            cliProjectKey: 'sparks'
+            cliProjectName: 'sparks'
+            cliSources: 'app'
+        - task: SonarQubeAnalyze@5
+        - task: SonarQubePublish@5
+          inputs:
+            pollingTimeoutSec: '300'
+        - task: CopyFilesOverSSH@0
+          inputs:
+            sshEndpoint: 'sparks-vps'
+            contents: '**'
+            targetFolder: '/home/sparks/public_html'
+            readyTimeout: '20000'
+        - task: SSH@0
+          inputs:
+            sshEndpoint: 'sparks-vps'
+            runOptions: 'commands'
+            commands: |
+              sh /home/sparks/public_html/script.sh 2> ouput.log
+            readyTimeout: '20000'
+        

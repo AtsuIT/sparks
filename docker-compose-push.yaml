@@ -1,0 +1,4 @@
+version: '3'
+services:
+  sparks.prod:
+        image: ${DOCKER_REGISTRY}/sparks
