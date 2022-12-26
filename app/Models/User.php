@@ -11,6 +11,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use \App\Traits\Sluggable;
+
+    private static $sluggableConfig=["slug_column"=>"slug"];
 
     /**
      * The attributes that are mass assignable.
