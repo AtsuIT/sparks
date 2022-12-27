@@ -11,11 +11,7 @@ class VuesyController extends Controller
         if(view()->exists($request->path())){
             return view($request->path());
         }
-        // return view('pages-404');
-    }
-
-    public function home(){
-        return view('auth.login');
+        return view('error-404-basic');
     }
     
     public function login(){

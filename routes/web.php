@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/', [App\Http\Controllers\VuesyController::class, 'login'])->name('home');
 Route::get('/login', [App\Http\Controllers\VuesyController::class, 'login'])->name('login');
 Route::get('/register', [App\Http\Controllers\VuesyController::class, 'register'])->name('register');
 // Route::resource('users', [UserController::class]);
@@ -27,8 +26,7 @@ Route::get('/register', [App\Http\Controllers\VuesyController::class, 'register'
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('{any}', [App\Http\Controllers\VuesyController::class, 'index'])->name('index');
-    // Route::resource('users',UserController::class);
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('users', [UserController::class, 'index'])->name('users-index');   
     Route::get('delete-users/{id}', [UserController::class, 'destroy'])->name('delete-user');   

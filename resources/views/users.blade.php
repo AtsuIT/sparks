@@ -44,7 +44,7 @@
             <td>
                 
                 {{-- @foreach($role as $v) --}}
-                <label class="label label-success">{{$role->name}},</label>
+                    <label class="label label-success">{{$data->roles->pluck('name')}}</label>
                 {{-- @endforeach --}}
         
             </td>

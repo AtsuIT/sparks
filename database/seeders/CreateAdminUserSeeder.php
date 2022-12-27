@@ -4,8 +4,8 @@ namespace Database\Seeders;
   
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Role;
-use App\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
   
 class CreateAdminUserSeeder extends Seeder
 {
@@ -18,7 +18,7 @@ class CreateAdminUserSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'Morpich Design', 
-            'email' => 'admin@themesbrand.com',
+            'email' => 'admin@admin.com',
             'guard_name'=>'web',
             'password' => bcrypt('123456')
         ]);
@@ -29,7 +29,7 @@ class CreateAdminUserSeeder extends Seeder
    
         $role->syncPermissions($permissions);
 
-        $user->assignRole([$role->id]);
+        $user->assignRole($role);
         
     }
 }
