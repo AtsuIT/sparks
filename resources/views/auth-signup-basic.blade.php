@@ -12,7 +12,7 @@
                         <div class="pb-3">
                             <a href="index">
                                 <span class="logo-lg">
-                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Sparks</span>
                                 </span>
                             </a>
                             <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience &amp; Interface Design Strategy Saas Solution</p>
@@ -29,7 +29,7 @@
                             <div class="py-3">
                                 <div class="text-center">
                                     <h5 class="mb-0">Register Account</h5>
-                                    <p class="text-muted mt-2">Get your free Vuesy account now.</p>
+                                    <p class="text-muted mt-2">Get your free Sparks account now.</p>
                                 </div>
                                 <form class="mt-4 pt-2">
                                     <div class="form-floating form-floating-custom mb-3">
@@ -58,7 +58,7 @@
                                     </div>
 
                                     <div class="py-1">
-                                        <p class="mb-0">By registering you agree to the Vuesy <a href="#" class="text-primary">Terms of Use</a></p>
+                                        <p class="mb-0">By registering you agree to the Sparks <a href="#" class="text-primary">Terms of Use</a></p>
                                     </div>
 
                                     <div class="mt-3">
@@ -101,7 +101,7 @@
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                            </script> Sparks. Crafted with <i class="mdi mdi-heart text-danger"></i> by Atsu IT</p>
                     </div>
                 </div>
             </div> <!-- end row -->

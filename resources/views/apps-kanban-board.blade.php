@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <h5 class="font-size-16 mb-1">Vuesy Admin Dashboard</h5>
+                                <h5 class="font-size-16 mb-1">Sparks Admin Dashboard</h5>
                                 <p class="text-muted mb-0">Lorem ipsum dolor sit amet adipiscing elit</p>
                             </div>
                         </div>

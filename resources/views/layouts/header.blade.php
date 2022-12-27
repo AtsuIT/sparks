@@ -8,7 +8,7 @@
                         <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
                     </span>
                 </a>
 
@@ -17,7 +17,7 @@
                         <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
                     </span>
                 </a>
             </div>
@@ -553,9 +553,9 @@
                     <a class="dropdown-item d-flex align-items-center" href="contacts-settings"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
                     <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                                        @csrf
-                    <button type="submit" class="dropdown-item" href="auth-signout-cover"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></button>
-                                    </form>
+                        @csrf
+                        <button type="submit" class="dropdown-item" href="auth-signout-cover"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></button>
+                    </form>
                     
                 </div>
             </div>

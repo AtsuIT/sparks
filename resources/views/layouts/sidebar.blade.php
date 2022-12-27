@@ -9,7 +9,7 @@
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
             </span>
         </a>
 
@@ -18,7 +18,7 @@
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
             </span>
         </a>
     </div>

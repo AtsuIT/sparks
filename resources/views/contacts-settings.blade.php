@@ -91,7 +91,7 @@
 
                     <div class="mt-4">
                         <p class="text-muted mb-1">E-mail :</p>
-                        <h5 class="font-size-14 text-truncate">marie@vuesy.com</h5>
+                        <h5 class="font-size-14 text-truncate">marie@Sparks.com</h5>
                     </div>
 
                     <div class="mt-4">

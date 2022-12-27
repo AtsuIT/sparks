@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title> @yield('title')| Vuesy - Admin & Dashboard Template</title>
+    <title> @yield('title')| Sparks - Admin & Dashboard Template</title>
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+    <meta content="Sparks" name="author" />
         
     <!-- Favicons -->
     <link href="{{ URL::asset('assets/images/favicon.ico')}}" rel="icon">

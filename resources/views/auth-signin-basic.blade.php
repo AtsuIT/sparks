@@ -12,7 +12,7 @@
                         <div class="pb-3">
                             <a href="index">
                                 <span class="logo-lg">
-                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Sparks</span>
                                 </span>
                             </a>
                             <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience &amp; Interface Design Strategy Saas Solution</p>
@@ -28,7 +28,7 @@
                             <div class="py-3">
                                 <div class="text-center">
                                     <h5 class="mb-0">Welcome Back !</h5>
-                                    <p class="text-muted mt-2">Sign in to continue to Vuesy.</p>
+                                    <p class="text-muted mt-2">Sign in to continue to Sparks.</p>
                                 </div>
                                 <form class="mt-4 pt-2">
                                     <div class="form-floating form-floating-custom mb-3">
@@ -99,7 +99,7 @@
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                            </script> Sparks. Crafted with <i class="mdi mdi-heart text-danger"></i> by Atsu IT</p>
                     </div>
                 </div>
             </div> <!-- end row -->
