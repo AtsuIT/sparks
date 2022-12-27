@@ -22,9 +22,9 @@ php artisan optimize:clear
 echo '------ artisan optimize succeded ----------'
 
 echo '------ run dev ----------'
-npm run dev
+npm run dev --no-interaction
 echo '------ run prod ----------'
-npm run production
+npm run production --no-interaction
 
 
 
