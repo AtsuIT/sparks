@@ -21,8 +21,10 @@ echo '------ artisan optimize ----------'
 php artisan optimize:clear
 echo '------ artisan optimize succeded ----------'
 
+echo '------ run dev ----------'
+npm run dev
 echo '------ run prod ----------'
-npm run prod ;
+npm run production
 
 
 
