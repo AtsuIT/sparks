@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.vertical-master-layout')
 @section('title')Left Timeline @endsection
 @section('content')
 {{-- breadcrumbs  --}}
