@@ -7,8 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use App\Models\Role;
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -20,10 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-        
-        $role = Role::pluck('name','name')->all();
-
-        return view('users',compact('user','role'));
+        return view('users',compact('user'));
     }
 
     /**
