@@ -92,7 +92,7 @@
                                     <i class="mdi mdi-github font-size-16 text-dark me-1"></i> Github
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div>vuesy</div>
+                                    <div>Sparks</div>
                                 </div>
                             </div>
                         </li>
@@ -102,7 +102,7 @@
                                     <i class="mdi mdi-twitter font-size-16 text-info me-1"></i> Twitter
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div>@vuesy</div>
+                                    <div>@Sparks</div>
                                 </div>
                             </div>
                         </li>
@@ -112,7 +112,7 @@
                                     <i class="mdi mdi-linkedin font-size-16 text-primary me-1"></i> Linkedin
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div>vuesy</div>
+                                    <div>Sparks</div>
                                 </div>
                             </div>
                         </li>
@@ -122,7 +122,7 @@
                                     <i class="mdi mdi-pinterest font-size-16 text-danger me-1"></i> Pinterest
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div>vuesy</div>
+                                    <div>Sparks</div>
                                 </div>
                             </div>
                         </li>

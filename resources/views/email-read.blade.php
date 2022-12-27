@@ -140,7 +140,7 @@
                     <p class="text-muted">Once your files are in Storage, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.</p>
                     <p class="text-muted">An unrecognized device or browser recently signed into your Storage account. Help us keep your account secure by letting us know if this was you:</p>
                     <p class="text-muted mb-0">Sincerly,</p>
-                    <p class="text-muted">Themesdesign</p>
+                    <p class="text-muted">Sparks</p>
                     <hr />
 
                     <div class="row">

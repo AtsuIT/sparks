@@ -17,7 +17,7 @@
                     <div class="text-center">
                         <a href="index">
                             <span class="logo-lg">
-                                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Sparks</span>
                             </span>
                         </a>
 
@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <h3 class="mt-5">Let's get started with Vuesy</h3>
+                        <h3 class="mt-5">Let's get started with Sparks</h3>
                         <p class="text-muted pb-4">Please check back in sometime.</p>
 
                         <div id="countdown" class="countdownlist"></div>

@@ -9,7 +9,7 @@
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
             </span>
         </a>
 
@@ -18,7 +18,7 @@
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Sparks</span>
             </span>
         </a>
     </div>
@@ -50,8 +50,17 @@
                         <span class="menu-item" data-key="t-calendar">Calendar</span>
                     </a>
                 </li>
-
                 <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-award nav-icon"></i>
+                        <span class="menu-item" data-key="t-timeline">Timeline</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        {{-- <li><a href="timeline-center" data-key="t-center-view">Center View</a></li> --}}
+                        <li><a href="timeline-left" data-key="t-left-view">Left View</a></li>
+                    </ul>
+                </li>
+                {{-- <li>
                     <a href="apps-chat">
                         <i class="bx bx-chat nav-icon"></i>
                         <span class="menu-item" data-key="t-chat">Chat</span>
@@ -140,9 +149,9 @@
                         <i class="bx bx-layout nav-icon"></i>
                         <span class="menu-item" data-key="t-verfical">Vertical</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="menu-title" data-key="t-pages">Pages</li>
+               {{-- <li class="menu-title" data-key="t-pages">Pages</li>
 
                 <li>
                     <a href="javascript: void(0);">
@@ -274,18 +283,9 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-award nav-icon"></i>
-                        <span class="menu-item" data-key="t-timeline">Timeline</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="timeline-center" data-key="t-center-view">Center View</a></li>
-                        <li><a href="timeline-left" data-key="t-left-view">Left View</a></li>
-                    </ul>
-                </li>
+                
 
-                <li class="menu-title" data-key="t-components">Components</li>
+                 <li class="menu-title" data-key="t-components">Components</li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
@@ -420,7 +420,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

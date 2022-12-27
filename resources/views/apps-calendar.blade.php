@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.vertical-master-layout')
 @section('title')Calendar @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">

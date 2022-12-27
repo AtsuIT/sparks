@@ -11,7 +11,7 @@
                         <div class="pb-3">
                             <a href="index">
                                 <span class="logo-lg">
-                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Sparks</span>
                                 </span>
                             </a>
                             <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience & Interface Design Strategy Saas Solution</p>
@@ -28,7 +28,7 @@
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                            </script> Sparks. Crafted with <i class="mdi mdi-heart text-danger"></i> by Atsu IT</p>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
 
                                         <div class="text-center mt-4 py-2">
                                             <h4>You are Logged Out</h4>
-                                            <p>Thank you for using <span class="fw-semibold">Vuesy</span></p>
+                                            <p>Thank you for using <span class="fw-semibold">Sparks</span></p>
                                             <div class="mt-4">
                                                 <a href="auth-signin-cover" class="btn btn-primary w-100">Sign In</a>
                                             </div>

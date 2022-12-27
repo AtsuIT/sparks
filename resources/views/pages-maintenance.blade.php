@@ -17,7 +17,7 @@
                     <div class="text-center">
                         <a href="index.html">
                             <span class="logo-lg">
-                                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Sparks</span>
                             </span>
                         </a>
 

@@ -121,7 +121,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Donald Risher</a>
                                 </td>
                                 <td><span class="badge badge-soft-warning mb-0">UI/UX Designer</span></td>
-                                <td>DonaldRisher@Vuesy.com</td>
+                                <td>DonaldRisher@Sparks.com</td>
                                 <td>235</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -154,7 +154,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Helen Barron</a>
                                 </td>
                                 <td><span class="badge badge-soft-info mb-0">Frontend Developer</span></td>
-                                <td>HelenBarron@Vuesy.com</td>
+                                <td>HelenBarron@Sparks.com</td>
                                 <td>125</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -188,7 +188,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Philip Theroux</a>
                                 </td>
                                 <td><span class="badge badge-soft-primary mb-0">Backend Developer</span></td>
-                                <td>PhilipTheroux@Vuesy.com</td>
+                                <td>PhilipTheroux@Sparks.com</td>
                                 <td>562</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -223,7 +223,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Justin McClain</a>
                                 </td>
                                 <td><span class="badge badge-soft-success mb-0">Full Stack Developer</span></td>
-                                <td>JustinMcClain@Vuesy.com</td>
+                                <td>JustinMcClain@Sparks.com</td>
                                 <td>325</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -257,7 +257,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Sharon Carver</a>
                                 </td>
                                 <td><span class="badge badge-soft-info mb-0">Frontend Developer</span></td>
-                                <td>SharonCarver@Vuesy.com</td>
+                                <td>SharonCarver@Sparks.com</td>
                                 <td>475</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -291,7 +291,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Jody Tondreau</a>
                                 </td>
                                 <td><span class="badge badge-soft-warning mb-0">UI/UX Designer</span></td>
-                                <td>JodyTondreau@Vuesy.com</td>
+                                <td>JodyTondreau@Sparks.com</td>
                                 <td>521</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -324,7 +324,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Dennis Goulet</a>
                                 </td>
                                 <td><span class="badge badge-soft-info mb-0">Graphic Designer</span></td>
-                                <td>DennisGoulet@Vuesy.com</td>
+                                <td>DennisGoulet@Sparks.com</td>
                                 <td>623</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -357,7 +357,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Cecelia Farrell</a>
                                 </td>
                                 <td><span class="badge badge-soft-danger mb-0">Angular Developer</span></td>
-                                <td>CeceliaFarrell@Vuesy.com</td>
+                                <td>CeceliaFarrell@Sparks.com</td>
                                 <td>325</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -390,7 +390,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Peter Dryer</a>
                                 </td>
                                 <td><span class="badge badge-soft-info mb-0">Web Designer</span></td>
-                                <td>PeterDryer@Vuesy.com</td>
+                                <td>PeterDryer@Sparks.com</td>
                                 <td>231</td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -424,7 +424,7 @@
                                     <a href="pages-profile" class="text-body fw-medium">Gerald Moyer</a>
                                 </td>
                                 <td><span class="badge badge-soft-warning mb-0">Backend Developer</span></td>
-                                <td>GeraldMoyer@Vuesy.com</td>
+                                <td>GeraldMoyer@Sparks.com</td>
                                 <td>321</td>
                                 <td>
                                     <div class="d-flex gap-2">
