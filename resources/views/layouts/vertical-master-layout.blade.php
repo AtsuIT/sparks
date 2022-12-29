@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title> @yield('title')| Sparks - Admin & Dashboard Template</title>
+    <title data-key="t-@yield('title')">@yield('title')</title>
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Sparks" name="author" />
         

@@ -405,22 +405,22 @@
 
             <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                    <img id="header-lang-img" src="{{asset('assets/images/flags/us.jpg')}}" alt="Header Language" height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
-                        <img src="assets/images/flags/us.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
+                        <img src="{{asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
                     </a>
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
+                        <img src="{{asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
+                        <img src="{{asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
@@ -566,19 +566,6 @@
         <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
-                {{-- <div class="col-12">
-                            <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0">Welcome !</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Welcome !</li>
-                                    </ol>
-                                </div>
-
-                            </div>
-                        </div> --}}
                 @yield('breadcrumb')
             </div>
 

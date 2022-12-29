@@ -4,7 +4,7 @@
 
      <!-- LOGO -->
      <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="{{route('home')}}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
@@ -13,7 +13,7 @@
             </span>
         </a>
 
-        <a href="index" class="logo logo-light">
+        <a href="{{route('home')}}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
@@ -36,7 +36,7 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="index">
+                    <a href="{{route('home')}}">
                         <i class="bx bx-home-circle nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                     </a>
@@ -45,7 +45,7 @@
                 <li class="menu-title" data-key="t-applications">Applications</li>
 
                 <li>
-                    <a href="apps-calendar">
+                    <a href="{{route('calendar')}}">
                         <i class="bx bx-calendar-alt nav-icon"></i>
                         <span class="menu-item" data-key="t-calendar">Calendar</span>
                     </a>
@@ -57,7 +57,37 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         {{-- <li><a href="timeline-center" data-key="t-center-view">Center View</a></li> --}}
-                        <li><a href="timeline-left" data-key="t-left-view">Left View</a></li>
+                        <li><a href="{{route('timeline')}}" data-key="t-left-view">Left View</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user"></i>
+                        <span class="menu-item" data-key="t-users">Users</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('users')}}" data-key="t-users-view">List Users</a></li>
+                        <li><a href="{{route('users-create')}}" data-key="t-user-new">Create User</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user"></i>
+                        <span class="menu-item" data-key="t-roles">roles</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('roles')}}" data-key="t-roles-view">List Roles</a></li>
+                        <li><a href="{{route('create-roles')}}" data-key="t-role-new">Create Role</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user"></i>
+                        <span class="menu-item" data-key="t-permissions">permissions</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('permissions')}}" data-key="t-permissions-view">List Permissions</a></li>
+                        <li><a href="{{route('create-permissions')}}" data-key="t-permission-new">Create Permission</a></li>
                     </ul>
                 </li>
                 {{-- <li>

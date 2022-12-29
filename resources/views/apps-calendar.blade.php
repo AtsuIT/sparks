@@ -9,8 +9,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Apps @endslot
-            @slot('title') Calendar @endslot
+            @slot('li_1') applications @endslot
+            @slot('title') calendar @endslot
         @endcomponent
     @endsection
 
@@ -109,6 +109,7 @@
 </div>
 @endsection
 @section('script')
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 <!-- plugin js -->
 <script src="{{ URL::asset('assets/libs/fullcalendar/fullcalendar.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/calendar.init.js') }}"></script>

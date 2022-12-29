@@ -1,57 +1,42 @@
-@extends('layouts.master')
-@section('title')Create Role @endsection
+@extends('layouts.vertical-master-layout')
+@section('title')Roles @endsection
+@section('css')
+
+@endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
-@slot('li_1') Role @endslot
-@slot('title') Role Create @endslot
+@slot('li_1') dashboard @endslot
+@slot('title')roles @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
-    <p>{{ $message }}</p>
+    <span>{{ $message }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
-<div class="pull-right">
-    {{-- @can('role-create') --}}
-    <a class="btn btn-success" href="{{ route('create-roles') }}"> Create New Role</a>
-    {{-- @endcan --}}
+<div class="pull-right mb-2">
+    <a class="btn btn-success" href="{{ route('create-roles') }}" data-key="t-role-new"> Create New Role</a>
 </div>
-<table class="table table-bordered">
-    <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th width="280px">Action</th>
-    </tr>
-    @foreach ($roles as $key => $role)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $role->name }}</td>
-        <td>
-            <a class="btn btn-info" href="">Show</a>
-            @can('role-edit')
-            <a class="btn btn-primary" href="">Edit</a>
-            @endcan
-            @can('role-delete')
-            {{-- {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!} --}}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
-            @endcan
-        </td>
-    </tr>
-    @endforeach
+<table class="table table-bordered table-roles">
+    <thead>
+        <tr>
+            <th data-key="t-no">No</th>
+            <th data-key="t-name">Name</th>
+            <th width="280px" data-key="t-action">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
 </table>
-
-
-{!! $roles->render() !!}
-
 
 @endsection
 @section('script')
-
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
-
+<script src="{{ URL::asset('assets/libs/scripts/roles.js') }}"></script>
 @endsection
