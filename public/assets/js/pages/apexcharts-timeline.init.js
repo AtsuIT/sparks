@@ -1,1 +1,299 @@
-(()=>{function e(e){if(console.log(e),null!==document.getElementById(e)){var t=document.getElementById(e).getAttribute("data-colors");return(t=JSON.parse(t)).map((function(e){var t=e.replace(" ","");if(-1===t.indexOf(",")){var a=getComputedStyle(document.documentElement).getPropertyValue(t);return a||t}var i=e.split(",");if(2==i.length){var n=getComputedStyle(document.documentElement).getPropertyValue(i[0]);return n="rgba("+n+","+i[1]+")"}return t}))}}var t=e("basic_timeline"),a={series:[{data:[{x:"Code",y:[new Date("2019-03-02").getTime(),new Date("2019-03-04").getTime()]},{x:"Test",y:[new Date("2019-03-04").getTime(),new Date("2019-03-08").getTime()]},{x:"Validation",y:[new Date("2019-03-08").getTime(),new Date("2019-03-12").getTime()]},{x:"Deployment",y:[new Date("2019-03-12").getTime(),new Date("2019-03-18").getTime()]}]}],chart:{height:350,type:"rangeBar",toolbar:{show:!1}},plotOptions:{bar:{horizontal:!0}},xaxis:{type:"datetime"},colors:t};new ApexCharts(document.querySelector("#basic_timeline"),a).render();t=e("color_timeline"),a={series:[{data:[{x:"Analysis",y:[new Date("2019-02-27").getTime(),new Date("2019-03-04").getTime()],fillColor:t[0]},{x:"Design",y:[new Date("2019-03-04").getTime(),new Date("2019-03-08").getTime()],fillColor:t[1]},{x:"Coding",y:[new Date("2019-03-07").getTime(),new Date("2019-03-10").getTime()],fillColor:t[3]},{x:"Testing",y:[new Date("2019-03-08").getTime(),new Date("2019-03-12").getTime()],fillColor:t[4]},{x:"Deployment",y:[new Date("2019-03-12").getTime(),new Date("2019-03-17").getTime()],fillColor:t[5]}]}],chart:{height:330,type:"rangeBar",toolbar:{show:!1}},plotOptions:{bar:{horizontal:!0,distributed:!0,dataLabels:{hideOverflowingLabels:!1}}},dataLabels:{enabled:!0,formatter:function(e,t){var a=t.w.globals.labels[t.dataPointIndex],i=moment(e[0]),n=moment(e[1]).diff(i,"days");return a+": "+n+(n>1?" days":" day")}},xaxis:{type:"datetime"},yaxis:{show:!0}};new ApexCharts(document.querySelector("#color_timeline"),a).render();t=e("multi_series"),a={series:[{name:"Bob",data:[{x:"Design",y:[new Date("2019-03-05").getTime(),new Date("2019-03-08").getTime()]},{x:"Code",y:[new Date("2019-03-08").getTime(),new Date("2019-03-11").getTime()]},{x:"Test",y:[new Date("2019-03-11").getTime(),new Date("2019-03-16").getTime()]}]},{name:"Joe",data:[{x:"Design",y:[new Date("2019-03-02").getTime(),new Date("2019-03-05").getTime()]},{x:"Code",y:[new Date("2019-03-06").getTime(),new Date("2019-03-09").getTime()]},{x:"Test",y:[new Date("2019-03-10").getTime(),new Date("2019-03-19").getTime()]}]}],chart:{height:335,type:"rangeBar",toolbar:{show:!1}},plotOptions:{bar:{horizontal:!0}},dataLabels:{enabled:!0,formatter:function(e){var t=moment(e[0]),a=moment(e[1]).diff(t,"days");return a+(a>1?" days":" day")}},fill:{type:"gradient",gradient:{shade:"light",type:"vertical",shadeIntensity:.25,gradientToColors:void 0,inverseColors:!0,opacityFrom:1,opacityTo:1,stops:[50,0,100,100]}},xaxis:{type:"datetime"},legend:{position:"top"},colors:t};new ApexCharts(document.querySelector("#multi_series"),a).render();t=e("advanced_timeline"),a={series:[{name:"Bob",data:[{x:"Design",y:[new Date("2019-03-05").getTime(),new Date("2019-03-08").getTime()]},{x:"Code",y:[new Date("2019-03-02").getTime(),new Date("2019-03-05").getTime()]},{x:"Code",y:[new Date("2019-03-05").getTime(),new Date("2019-03-07").getTime()]},{x:"Test",y:[new Date("2019-03-03").getTime(),new Date("2019-03-09").getTime()]},{x:"Test",y:[new Date("2019-03-08").getTime(),new Date("2019-03-11").getTime()]},{x:"Validation",y:[new Date("2019-03-11").getTime(),new Date("2019-03-16").getTime()]},{x:"Design",y:[new Date("2019-03-01").getTime(),new Date("2019-03-03").getTime()]}]},{name:"Joe",data:[{x:"Design",y:[new Date("2019-03-02").getTime(),new Date("2019-03-05").getTime()]},{x:"Test",y:[new Date("2019-03-06").getTime(),new Date("2019-03-16").getTime()]},{x:"Code",y:[new Date("2019-03-03").getTime(),new Date("2019-03-07").getTime()]},{x:"Deployment",y:[new Date("2019-03-20").getTime(),new Date("2019-03-22").getTime()]},{x:"Design",y:[new Date("2019-03-10").getTime(),new Date("2019-03-16").getTime()]}]},{name:"Dan",data:[{x:"Code",y:[new Date("2019-03-10").getTime(),new Date("2019-03-17").getTime()]},{x:"Validation",y:[new Date("2019-03-05").getTime(),new Date("2019-03-09").getTime()]}]}],chart:{height:350,type:"rangeBar",toolbar:{show:!1}},plotOptions:{bar:{horizontal:!0,barHeight:"80%"}},xaxis:{type:"datetime"},stroke:{width:1},fill:{type:"solid",opacity:.6},legend:{position:"top",horizontalAlign:"left"},colors:t};new ApexCharts(document.querySelector("#advanced_timeline"),a).render()})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!********************************************************!*\
+  !*** ./resources/js/pages/apexcharts-timeline.init.js ***!
+  \********************************************************/
+/*
+Template Name: Vuesy - Admin & Dashboard Template
+Author: Themesdesign
+Website: https://Themesdesign.in/
+Contact: themesdesign.in@gmail.com
+File: Timeline Chart init js
+*/
+// get colors array from the string
+function getChartColorsArray(chartId) {
+  console.log(chartId);
+
+  if (document.getElementById(chartId) !== null) {
+    var colors = document.getElementById(chartId).getAttribute("data-colors");
+    colors = JSON.parse(colors);
+    return colors.map(function (value) {
+      var newValue = value.replace(" ", "");
+
+      if (newValue.indexOf(",") === -1) {
+        var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
+        if (color) return color;else return newValue;
+        ;
+      } else {
+        var val = value.split(',');
+
+        if (val.length == 2) {
+          var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
+          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+          return rgbaColor;
+        } else {
+          return newValue;
+        }
+      }
+    });
+  }
+} // Basic Timeline Charts
+
+
+var chartBarColors = getChartColorsArray("basic_timeline");
+var options = {
+  series: [{
+    data: [{
+      x: 'Code',
+      y: [new Date('2019-03-02').getTime(), new Date('2019-03-04').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-04').getTime(), new Date('2019-03-08').getTime()]
+    }, {
+      x: 'Validation',
+      y: [new Date('2019-03-08').getTime(), new Date('2019-03-12').getTime()]
+    }, {
+      x: 'Deployment',
+      y: [new Date('2019-03-12').getTime(), new Date('2019-03-18').getTime()]
+    }]
+  }],
+  chart: {
+    height: 350,
+    type: 'rangeBar',
+    toolbar: {
+      show: false
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true
+    }
+  },
+  xaxis: {
+    type: 'datetime'
+  },
+  colors: chartBarColors
+};
+var chart = new ApexCharts(document.querySelector("#basic_timeline"), options);
+chart.render(); // Different Color For Each Bar
+
+var chartBarColors = getChartColorsArray("color_timeline");
+var options = {
+  series: [{
+    data: [{
+      x: 'Analysis',
+      y: [new Date('2019-02-27').getTime(), new Date('2019-03-04').getTime()],
+      fillColor: chartBarColors[0]
+    }, {
+      x: 'Design',
+      y: [new Date('2019-03-04').getTime(), new Date('2019-03-08').getTime()],
+      fillColor: chartBarColors[1]
+    }, {
+      x: 'Coding',
+      y: [new Date('2019-03-07').getTime(), new Date('2019-03-10').getTime()],
+      fillColor: chartBarColors[3]
+    }, {
+      x: 'Testing',
+      y: [new Date('2019-03-08').getTime(), new Date('2019-03-12').getTime()],
+      fillColor: chartBarColors[4]
+    }, {
+      x: 'Deployment',
+      y: [new Date('2019-03-12').getTime(), new Date('2019-03-17').getTime()],
+      fillColor: chartBarColors[5]
+    }]
+  }],
+  chart: {
+    height: 330,
+    type: 'rangeBar',
+    toolbar: {
+      show: false
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+      distributed: true,
+      dataLabels: {
+        hideOverflowingLabels: false
+      }
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    formatter: function formatter(val, opts) {
+      var label = opts.w.globals.labels[opts.dataPointIndex];
+      var a = moment(val[0]);
+      var b = moment(val[1]);
+      var diff = b.diff(a, 'days');
+      return label + ': ' + diff + (diff > 1 ? ' days' : ' day');
+    }
+  },
+  xaxis: {
+    type: 'datetime'
+  },
+  yaxis: {
+    show: true
+  }
+};
+var chart = new ApexCharts(document.querySelector("#color_timeline"), options);
+chart.render(); // Multi Series Timeline
+
+var chartBarColors = getChartColorsArray("multi_series");
+var options = {
+  series: [{
+    name: 'Bob',
+    data: [{
+      x: 'Design',
+      y: [new Date('2019-03-05').getTime(), new Date('2019-03-08').getTime()]
+    }, {
+      x: 'Code',
+      y: [new Date('2019-03-08').getTime(), new Date('2019-03-11').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-11').getTime(), new Date('2019-03-16').getTime()]
+    }]
+  }, {
+    name: 'Joe',
+    data: [{
+      x: 'Design',
+      y: [new Date('2019-03-02').getTime(), new Date('2019-03-05').getTime()]
+    }, {
+      x: 'Code',
+      y: [new Date('2019-03-06').getTime(), new Date('2019-03-09').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-10').getTime(), new Date('2019-03-19').getTime()]
+    }]
+  }],
+  chart: {
+    height: 335,
+    type: 'rangeBar',
+    toolbar: {
+      show: false
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    formatter: function formatter(val) {
+      var a = moment(val[0]);
+      var b = moment(val[1]);
+      var diff = b.diff(a, 'days');
+      return diff + (diff > 1 ? ' days' : ' day');
+    }
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shade: 'light',
+      type: 'vertical',
+      shadeIntensity: 0.25,
+      gradientToColors: undefined,
+      inverseColors: true,
+      opacityFrom: 1,
+      opacityTo: 1,
+      stops: [50, 0, 100, 100]
+    }
+  },
+  xaxis: {
+    type: 'datetime'
+  },
+  legend: {
+    position: 'top'
+  },
+  colors: chartBarColors
+};
+var chart = new ApexCharts(document.querySelector("#multi_series"), options);
+chart.render(); // Advanced Timeline (Multiple Range)
+
+var chartBarColors = getChartColorsArray("advanced_timeline");
+var options = {
+  series: [{
+    name: 'Bob',
+    data: [{
+      x: 'Design',
+      y: [new Date('2019-03-05').getTime(), new Date('2019-03-08').getTime()]
+    }, {
+      x: 'Code',
+      y: [new Date('2019-03-02').getTime(), new Date('2019-03-05').getTime()]
+    }, {
+      x: 'Code',
+      y: [new Date('2019-03-05').getTime(), new Date('2019-03-07').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-03').getTime(), new Date('2019-03-09').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-08').getTime(), new Date('2019-03-11').getTime()]
+    }, {
+      x: 'Validation',
+      y: [new Date('2019-03-11').getTime(), new Date('2019-03-16').getTime()]
+    }, {
+      x: 'Design',
+      y: [new Date('2019-03-01').getTime(), new Date('2019-03-03').getTime()]
+    }]
+  }, {
+    name: 'Joe',
+    data: [{
+      x: 'Design',
+      y: [new Date('2019-03-02').getTime(), new Date('2019-03-05').getTime()]
+    }, {
+      x: 'Test',
+      y: [new Date('2019-03-06').getTime(), new Date('2019-03-16').getTime()]
+    }, {
+      x: 'Code',
+      y: [new Date('2019-03-03').getTime(), new Date('2019-03-07').getTime()]
+    }, {
+      x: 'Deployment',
+      y: [new Date('2019-03-20').getTime(), new Date('2019-03-22').getTime()]
+    }, {
+      x: 'Design',
+      y: [new Date('2019-03-10').getTime(), new Date('2019-03-16').getTime()]
+    }]
+  }, {
+    name: 'Dan',
+    data: [{
+      x: 'Code',
+      y: [new Date('2019-03-10').getTime(), new Date('2019-03-17').getTime()]
+    }, {
+      x: 'Validation',
+      y: [new Date('2019-03-05').getTime(), new Date('2019-03-09').getTime()]
+    }]
+  }],
+  chart: {
+    height: 350,
+    type: 'rangeBar',
+    toolbar: {
+      show: false
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+      barHeight: '80%'
+    }
+  },
+  xaxis: {
+    type: 'datetime'
+  },
+  stroke: {
+    width: 1
+  },
+  fill: {
+    type: 'solid',
+    opacity: 0.6
+  },
+  legend: {
+    position: 'top',
+    horizontalAlign: 'left'
+  },
+  colors: chartBarColors
+};
+var chart = new ApexCharts(document.querySelector("#advanced_timeline"), options);
+chart.render();
+/******/ })()
+;

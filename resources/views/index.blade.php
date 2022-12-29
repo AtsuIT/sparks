@@ -5,8 +5,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Dashboard @endslot
-            @slot('title') Welcome ! @endslot
+            @slot('li_1') dashboard @endslot
+            @slot('title') welcome @endslot
         @endcomponent
     @endsection
 <div class="row">

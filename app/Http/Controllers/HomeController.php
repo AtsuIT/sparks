@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function calendar()
+    {
+        return view('apps-calendar');
+    }
+
+    public function timeline()
+    {
+        return view('timeline-left');
+    }
 }

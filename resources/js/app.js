@@ -31,15 +31,18 @@ File: Main Js File
     function setLanguage(lang) {
         if (document.getElementById("header-lang-img")) {
             if (lang == 'en') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/us.jpg";
+                document.getElementById("header-lang-img").src = "/assets/images/flags/us.jpg";
             } else if (lang == 'sp') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/spain.jpg";
+                document.getElementById("header-lang-img").src = "/assets/images/flags/spain.jpg";
             } else if (lang == 'gr') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/germany.jpg";
+                document.getElementById("header-lang-img").src = "/assets/images/flags/germany.jpg";
             } else if (lang == 'it') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/italy.jpg";
+                document.getElementById("header-lang-img").src = "/assets/images/flags/italy.jpg";
             } else if (lang == 'ru') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/russia.jpg";
+                document.getElementById("header-lang-img").src = "/assets/images/flags/russia.jpg";
+            }
+            else if (lang == 'ar') {
+                document.getElementById("header-lang-img").src = "/assets/images/flags/ar.png";
             }
             localStorage.setItem('language', lang);
             language = localStorage.getItem('language');
@@ -52,7 +55,6 @@ File: Main Js File
         (language == null) ? setLanguage(default_lang): false;
 
         var request = new XMLHttpRequest();
-
         // Instantiating the request object
         request.open("GET", '/assets/lang/' + language + '.json');
 
@@ -357,13 +359,26 @@ File: Main Js File
         if (document.getElementById("layout-direction-ltr").checked == true && id === "layout-direction-ltr") {
             document.getElementsByTagName("html")[0].removeAttribute("dir");
             document.getElementById("layout-direction-rtl").checked = false;
-            document.getElementById('bootstrap-style').setAttribute('href', 'assets/css/bootstrap.min.css');
-            document.getElementById('app-style').setAttribute('href', 'assets/css/app.min.css');
+            document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap.min.css');
+            document.getElementById('app-style').setAttribute('href', '/assets/css/app.min.css');
             sessionStorage.setItem("is_visited", "layout-direction-ltr");
         } else if (document.getElementById("layout-direction-rtl").checked == true && id === "layout-direction-rtl") {
             document.getElementById("layout-direction-ltr").checked = false;
-            document.getElementById('bootstrap-style').setAttribute('href', 'assets/css/bootstrap-rtl.min.css');
-            document.getElementById('app-style').setAttribute('href', 'assets/css/app-rtl.min.css');
+            document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap-rtl.min.css');
+            document.getElementById('app-style').setAttribute('href', '/assets/css/app-rtl.min.css');
+            document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+            sessionStorage.setItem("is_visited", "layout-direction-rtl");
+        }
+        if (id == "layout-direction-ltr") {
+            document.getElementsByTagName("html")[0].removeAttribute("dir");
+            document.getElementById("layout-direction-rtl").checked = false;
+            document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap.min.css');
+            document.getElementById('app-style').setAttribute('href', '/assets/css/app.min.css');
+            sessionStorage.setItem("is_visited", "layout-direction-ltr");
+        } else if (id == "layout-direction-rtl") {
+            document.getElementById("layout-direction-ltr").checked = false;
+            document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap-rtl.min.css');
+            document.getElementById('app-style').setAttribute('href', '/assets/css/app-rtl.min.css');
             document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
             sessionStorage.setItem("is_visited", "layout-direction-rtl");
         }
@@ -443,15 +458,31 @@ File: Main Js File
                 if (e && e.target && e.target.value) {
                     if (e.target.value == "ltr") {
                         document.getElementsByTagName("html")[0].removeAttribute("dir");
-                        document.getElementById('bootstrap-style').setAttribute('href', 'assets/css/bootstrap.min.css');
-                        document.getElementById('app-style').setAttribute('href', 'assets/css/app.min.css');
+                        document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap.min.css');
+                        document.getElementById('app-style').setAttribute('href', '/assets/css/app.min.css');
                         sessionStorage.setItem("is_visited", "layout-direction-ltr");
                     } else {
-                        document.getElementById('bootstrap-style').setAttribute('href', 'assets/css/bootstrap-rtl.min.css');
-                        document.getElementById('app-style').setAttribute('href', 'assets/css/app-rtl.min.css');
+                        document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap-rtl.min.css');
+                        document.getElementById('app-style').setAttribute('href', '/assets/css/app-rtl.min.css');
                         document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
                         sessionStorage.setItem("is_visited", "layout-direction-rtl");
                     }
+                }
+            });
+        });
+        document.querySelectorAll(".language").forEach(function (input) {
+            input.addEventListener('click', function (e) {
+                console.log(input.getAttribute('data-lang'))
+                if (input.getAttribute('data-lang') == "en") {
+                    document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
+                    document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap.min.css');
+                    document.getElementById('app-style').setAttribute('href', '/assets/css/app.min.css');
+                    sessionStorage.setItem("is_visited", "layout-direction-ltr");
+                } else if(input.getAttribute('data-lang') == "ar") {
+                    document.getElementById('bootstrap-style').setAttribute('href', '/assets/css/bootstrap-rtl.min.css');
+                    document.getElementById('app-style').setAttribute('href', '/assets/css/app-rtl.min.css');
+                    document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+                    sessionStorage.setItem("is_visited", "layout-direction-rtl");
                 }
             });
         });

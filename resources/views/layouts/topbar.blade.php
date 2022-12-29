@@ -58,33 +58,36 @@
            <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                    @if (App::getLocale() == "en")
+                        <img id="header-lang-img" src="{{asset('assets/images/flags/us.jpg')}}" alt="Header Language" height="16">
+                    @else
+                        <img id="header-lang-img" src="{{asset('assets/images/flags/ar.png')}}" alt="Header Language" height="16">
+                    @endif
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
-                        <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                        <img src="{{URL::asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                        <img src="{{URL::asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                        <img src="{{URL::asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                        <img src="{{URL::asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
-                    </a>
+                    @if (App::getLocale() == "en")
+                        <!-- item-->
+                        <a href="{{route('setlang','ar')}}" class="dropdown-item notify-item language" data-lang="ar">
+                            <img src="{{URL::asset('assets/images/flags/ar.png')}}" alt="user-image" class="me-2" height="12"> 
+                            <span class="align-middle">Arabic</span>
+                        </a>
+                        <!-- item-->
+                        <a href="{{route('setlang','en')}}" class="dropdown-item notify-item language" data-lang="en">
+                            <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> 
+                            <span class="align-middle">English</span>
+                        </a>
+                    @else
+                        <!-- item-->
+                        <a href="{{route('setlang','ar')}}" class="dropdown-item notify-item language" data-lang="ar">
+                            <img src="{{URL::asset('assets/images/flags/ar.png')}}" alt="user-image" class="me-2" height="12"> 
+                            <span class="align-middle">العربية</span>
+                        </a>
+                        <!-- item-->
+                        <a href="{{route('setlang','en')}}" class="dropdown-item notify-item language" data-lang="en">
+                            <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> 
+                            <span class="align-middle">الإنجليزية</span>
+                        </a>
+                    @endif
                 </div>
             </div>
 
@@ -197,19 +200,22 @@
                     <img class="rounded-circle header-profile-user" src="{{URL::asset('assets/images/users/avatar-3.jpg')}}"
                     alt="Header Avatar">
                     <span class="ms-2 d-none d-xl-inline-block user-item-desc">
-                        <span class="user-name">Marie N. <i class="mdi mdi-chevron-down"></i></span>
+                        <span class="user-name">{{Auth::user()->name}} <i class="mdi mdi-chevron-down"></i></span>
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
-                    <h6 class="dropdown-header">Welcome Marie N!</h6>
-                    <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+                    <h6 class="dropdown-header">Welcome {{Auth::user()->name}}!</h6>
+                    {{-- <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                     <a class="dropdown-item" href="users"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Users</span></a>
                     <a class="dropdown-item" href="apps-chat"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
                     <a class="dropdown-item" href="apps-kanban-board"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
                     <a class="dropdown-item" href="pages-faqs"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a> --}}
+                    <a class="dropdown-item d-flex align-items-center" href="{{route('users-edit-profile',Auth::user()->id)}}">
+                        <i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> 
+                        <span class="align-middle">Settings</span>
+                    </a>
                     <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                         @csrf
@@ -223,77 +229,64 @@
     <div class="collapse show verti-dash-content" id="dashtoggle">
         <div class="container-fluid">
             <!-- start page title -->
-            {{-- <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">@@title</h4>
-
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">@@pagetitle</a></li>
-                                <li class="breadcrumb-item active">@@title</li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
-            </div> --}}
             @yield('breadcrumb')
             <!-- end page title -->
 
             <!-- start dash info -->
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card dash-header-box shadow-none border-0">
-                        <div class="card-body p-0">
-                            <div class="row row-cols-xxl-6 row-cols-md-3 row-cols-1 g-0">
-                                <div class="col">
-                                    <div class="mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Campaign Sent </p>
-                                        <h3 class="text-white mb-0">197</h3>
-                                    </div>
-                                </div><!-- end col -->
+            @if (Route::currentRouteName() == "home")
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card dash-header-box shadow-none border-0">
+                            <div class="card-body p-0">
+                                <div class="row row-cols-xxl-6 row-cols-md-3 row-cols-1 g-0">
+                                    <div class="col">
+                                        <div class="mt-md-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Campaign Sent </p>
+                                            <h3 class="text-white mb-0">197</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Annual Profit</p>
-                                        <h3 class="text-white mb-0">$489.4k</h3>
-                                    </div>
-                                </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Annual Profit</p>
+                                            <h3 class="text-white mb-0">$489.4k</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
-                                        <h3 class="text-white mb-0">32.89%</h3>
-                                    </div>
-                                </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
+                                            <h3 class="text-white mb-0">32.89%</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
-                                        <h3 class="text-white mb-0">75.35%</h3>
-                                    </div>
-                                </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
+                                            <h3 class="text-white mb-0">75.35%</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Daily Average Income</p>
-                                        <h3 class="text-white mb-0">$1,596.5</h3>
-                                    </div>
-                                </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Daily Average Income</p>
+                                            <h3 class="text-white mb-0">$1,596.5</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Annual Deals</p>
-                                        <h3 class="text-white mb-0">2,659</h3>
-                                    </div>
-                                </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
+                                            <p class="text-white-50 mb-2 text-truncate">Annual Deals</p>
+                                            <h3 class="text-white mb-0">2,659</h3>
+                                        </div>
+                                    </div><!-- end col -->
 
-                            </div><!-- end row -->
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-            </div>
+                                </div><!-- end row -->
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                </div>
+            @endif
             <!-- end dash info -->
         </div>
     </div>

@@ -1,12 +1,12 @@
-@extends('layouts.master')
+@extends('layouts.vertical-master-layout')
 @section('title')Create Role @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
-@slot('li_1') Role @endslot
-@slot('title') Role Create @endslot
+@slot('li_1') dashboard @endslot
+@slot('title') role-new @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -15,31 +15,43 @@
 </div>
 @endif
 
-{!! Form::open(array('route' => 'store-roles','method'=>'POST')) !!}
-@csrf
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+<form method="POST" action="{{route('store-roles')}}" class="mt-4 pt-2">
+    @csrf
+    <div class="form-floating form-floating-custom mb-3">
+        <input type="text" id="input-username" placeholder="Enter User Name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus>
+        <label for="input-username">{{ __('Name') }}</label>
+        @error('name')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        <div class="form-floating-icon">
+            <i class="uil uil-users-alt"></i>
         </div>
     </div>
+
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Permission:</strong>
+            <strong>Permissions:</strong>
+            @error('permission')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             <br />
             @foreach($permission as $value)
-            <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+            <label>
+                <input type="checkbox" class="form-check-input @error('permission') is-invalid @enderror" name="permission[]" value="{{$value->id}}">
                 {{ $value->name }}</label>
             <br />
             @endforeach
         </div>
     </div>
+
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" data-key="t-submit">Submit</button>
     </div>
-</div>
-{!! Form::close() !!}
+</form><!-- end form -->
 
 
 @endsection
