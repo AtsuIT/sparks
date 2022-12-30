@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backOffice;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PermissionRequest;
+use App\Services\backOffice\PermissionService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +12,11 @@ use DataTables;
 
 class PermissionController extends Controller
 {
+    function __construct(PermissionService $permissionService)
+    {
+        $this->permissionService = $permissionService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,9 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        if ($request->ajax()) 
+        {
+            // $this->permissionService->allPermissions();
             $permissions = Permission::select('*');
             return Datatables::of($permissions)
             ->addColumn('action', function ($row) {
@@ -56,14 +66,9 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:permissions,name',
-        ]);
-    
-        Permission::create(['name' => $request->input('name')]);
-    
+        $this->permissionService->storePermission($request);
         return redirect()->route('permissions')->with('success','Permission created successfully');
     }
 
@@ -75,7 +80,7 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        $permission = Permission::findOrFail($id);
+        $permission = $this->permissionService->findPermission($id);
         return view('permissions.show',compact('permission'));
     }
 
@@ -87,7 +92,7 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $permission = Permission::findOrFail($id);
+        $permission = $this->permissionService->findPermission($id);
         return view('permissions.edit',compact('permission'));
     }
 
@@ -100,13 +105,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:permissions,name',
-        ]);
-        $permission = Permission::findOrFail($id);
-        $permission->name = $request->input('name');
-        $permission->save();
-        
+        $this->permissionService->updatePermission($request, $id);
         return redirect()->route('permissions')->with('success','Permission updated successfully');
     }
 
@@ -118,8 +117,7 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        $permission = Permission::findOrFail($id);
-        $permission->delete();
+        $this->permissionService->destroyPermission($id);
         return redirect()->route('permissions')->with('success','Permission deleted successfully');
 
     }

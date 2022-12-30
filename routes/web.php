@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LocalizationController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\backOffice\HomeController;
+use App\Http\Controllers\backOffice\PermissionController;
+use App\Http\Controllers\backOffice\RoleController;
+use App\Http\Controllers\backOffice\UserController;
+use App\Http\Controllers\frontOffice\LocalizationController;
+use App\Http\Controllers\backOffice\OrderController;
+use App\Http\Controllers\frontOffice\VuesyController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VuesyController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,8 +23,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/login', [App\Http\Controllers\VuesyController::class, 'login'])->name('login');
-Route::get('/register', [App\Http\Controllers\VuesyController::class, 'register'])->name('register');
+Route::get('/login', [VuesyController::class, 'login'])->name('login');
+Route::get('/register', [VuesyController::class, 'register'])->name('register');
 // Route::resource('users', [UserController::class]);
 // Route qui permet de connaître la langue active
 Route::get('locale', [LocalizationController::class, 'getLang'])->name('getlang');
@@ -69,6 +70,16 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::post('update-permissions/{id}', [PermissionController::class, 'update'])->name('update-permissions');   
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions'); 
     Route::delete('/permissions-destroy/{id}', [PermissionController::class, 'destroy'])->name('permissions-destroy');
+
+    //orders
+    Route::get('orders', [OrderController::class, 'index'])->name('orders');   
+    Route::get('orders-create', [OrderController::class, 'create'])->name('create-orders'); 
+    Route::get('orders-edit/{id}', [OrderController::class, 'edit'])->name('edit-orders'); 
+    Route::get('orders-show/{id}', [OrderController::class, 'show'])->name('show-orders');   
+    Route::post('store-orders', [OrderController::class, 'store'])->name('store-orders'); 
+    Route::post('update-orders/{id}', [OrderController::class, 'update'])->name('update-orders');   
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders'); 
+    Route::delete('/orders-destroy/{id}', [OrderController::class, 'destroy'])->name('orders-destroy');
 });
 
 
