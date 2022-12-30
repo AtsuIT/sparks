@@ -38,6 +38,6 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/scripts/permissions.js') }}"></script>
+<script src="{{ URL::asset('js/scripts/permissions.js') }}"></script>
 
 @endsection

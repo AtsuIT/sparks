@@ -79,6 +79,11 @@ class UserRepository extends BaseRepository implements UserServiceInterface
         return User::findOrFail(Auth::user()->id);
     }
 
+    public function userRole($user)
+    {
+        return $user->roles->all();
+    }
+
     public function updateUser($data, $id)
     {
         $user = $this->findUser($id);

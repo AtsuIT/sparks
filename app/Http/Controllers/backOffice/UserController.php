@@ -9,12 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\backOffice\RoleService;
 use App\Services\backOffice\UserService;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use DataTables;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -88,7 +83,7 @@ class UserController extends Controller
     {
         $user = $this->userService->findUser($id);
         $roles = $this->roleService->getRoles();
-        $userRole = $user->roles->all();
+        $userRole = $this->userService->userRole($user);
         return view('users.show',compact('user','roles','userRole'));
     }
 
@@ -102,7 +97,7 @@ class UserController extends Controller
     {
         $user = $this->userService->findUser($id);
         $roles = $this->roleService->getRoles();
-        $userRole = $user->roles->all();
+        $userRole = $this->userService->userRole($user);
         return view('users.edit',compact('user','roles','userRole'));
     }
 

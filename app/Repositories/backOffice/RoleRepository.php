@@ -3,6 +3,7 @@
 namespace App\Repositories\backOffice;
 
 use App\Repositories\Interfaces\backOffice\RoleRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
@@ -67,6 +68,13 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
     public function findRole($id)
     {
         return Role::findOrFail($id);
+    }
+
+    public function rolePermissions($id)
+    {
+        return DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+        ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        ->all();
     }
 
     public function updateRole($data, $id)
