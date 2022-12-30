@@ -52,6 +52,16 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-shopping-bag"></i>
+                        <span class="menu-item" data-key="t-orders">Orders</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('orders')}}" data-key="t-orders-view">List Orders</a></li>
+                        <li><a href="{{route('create-orders')}}" data-key="t-user-new">Create Order</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-award nav-icon"></i>
                         <span class="menu-item" data-key="t-timeline">Timeline</span>
                     </a>

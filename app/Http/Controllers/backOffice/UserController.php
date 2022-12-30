@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backOffice;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Services\backOffice\RoleService;
+use App\Services\backOffice\UserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +18,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    function __construct(RoleService $roleService, UserService $userService)
+    {
+        $this->roleService = $roleService;
+        $this->userService = $userService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +62,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $roles = $this->roleService->getRoles();
         return view('users.create',compact('roles'));
     }
 
@@ -61,24 +72,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm_password',
-            'roles' => 'required'
-        ]);
-    
-        $input = $request->except('_token');
-        $input['password'] = Hash::make($input['password']);
-        $user = User::create([
-            'name'=>$input['name'],
-            'email'=>$input['email'],
-            'password'=>$input['password'],
-        ]);
-        $user->assignRole($request->input('roles'));
-    
+    public function store(StoreUserRequest $request)
+    {    
+        $this->userService->storeUser($request);    
         return redirect()->route('users')->with('success','User created successfully');
     }
 
@@ -90,8 +86,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $roles = Role::all();
+        $user = $this->userService->findUser($id);
+        $roles = $this->roleService->getRoles();
         $userRole = $user->roles->all();
         return view('users.show',compact('user','roles','userRole'));
     }
@@ -104,10 +100,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        $roles = Role::all();
+        $user = $this->userService->findUser($id);
+        $roles = $this->roleService->getRoles();
         $userRole = $user->roles->all();
-        // dd($roles);
         return view('users.edit',compact('user','roles','userRole'));
     }
 
@@ -118,28 +113,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm_password',
-            'roles' => 'required'
-        ]);
-    
-        $input = $request->except('_token');
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
-        }
-    
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        $user->assignRole($request->input('roles'));
-    
+        $this->userService->updateUser($request, $id);
         return redirect()->route('users')->with('success','User updated successfully');
     }
 
@@ -151,37 +127,19 @@ class UserController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        User::find($id)->delete();
+        $this->userService->destroyUser($id);
         return redirect()->route('users')->with('success','User deleted successfully');
     }
 
     public function editProfile($id)
     {
-        $user = User::findOrfail(Auth::user()->id);
+        $user = $this->userService->findProfile($id);
         return view('users.edit-profile',compact('user'));
     }
 
-    public function updateProfile(Request $request, $id)
+    public function updateProfile(UpdateUserRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm_password',
-        ]);
-    
-        $input = $request->except('_token');
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
-        }
-        $user = User::findOrFail($id);
-        $user->update([
-            'name'=>$input['name'],
-            'email'=>$input['email'],
-            'password'=>($request->password ? $input['password'] : $user->password),
-        ]);
-    
+        $this->userService->updateUser($request, $id);
         return redirect()->back()->with('success','User updated successfully');
     }
 }

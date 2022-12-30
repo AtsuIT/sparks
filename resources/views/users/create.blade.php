@@ -25,7 +25,6 @@
         </div>
     </div>
 
-
     <div class="form-floating form-floating-custom mb-3">
         <input type="email" id="input-email" placeholder="Enter Email" value="{{old('email')}}" required class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email">
         <div class="invalid-feedback">
@@ -57,6 +56,7 @@
             <i class="uil-key-skeleton-alt"></i>
         </div>
     </div>
+
     <div class="form-floating form-floating-custom mb-3">
         <input type="password" id="input-confirm-password" placeholder="Enter confirm password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required autocomplete="confirm_password">
         <div class="invalid-feedback">
