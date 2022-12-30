@@ -39,6 +39,6 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/scripts/orders.js') }}"></script>
+<script src="{{ URL::asset('js/scripts/orders.js') }}"></script>
 
 @endsection

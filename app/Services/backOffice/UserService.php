@@ -34,6 +34,11 @@ class UserService implements UserServiceInterface
         return $this->userRepository->findUser($id);
     }
 
+    public function userRole($user)
+    {
+        return $this->userRepository->userRole($user);
+    }
+
     public function findProfile($id)
     {
         return $this->userRepository->findProfile($id);

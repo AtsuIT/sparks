@@ -39,6 +39,11 @@ class RoleService implements RoleServiceInterface
         return $this->roleRepository->findRole($id);
     }
 
+    public function rolePermissions($id)
+    {
+        return $this->roleRepository->rolePermissions($id);
+    }
+
     public function updateRole($data, $id)
     {
         return $this->roleRepository->updateRole($data, $id);

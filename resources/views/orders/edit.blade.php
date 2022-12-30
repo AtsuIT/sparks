@@ -37,7 +37,7 @@
     </div>
     
     <div class="form-floating form-floating-custom mb-3">
-        <textarea id="ckeditor-classic" placeholder="Enter Description" class="form-control" name="description" autocomplete="description" autofocus>{{$order->description}}</textarea>
+        <textarea id="ckeditor-classic" placeholder="Enter Description" class="form-control" name="description" autocomplete="description" autofocus>{!!$order->description!!}</textarea>
     </div>
 
     <div class="mb-3">

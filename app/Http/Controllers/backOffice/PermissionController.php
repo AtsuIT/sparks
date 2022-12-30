@@ -7,7 +7,6 @@ use App\Http\Requests\PermissionRequest;
 use App\Services\backOffice\PermissionService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\DB;
 use DataTables;
 
 class PermissionController extends Controller

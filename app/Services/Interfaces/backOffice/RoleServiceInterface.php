@@ -10,6 +10,7 @@ interface RoleServiceInterface
 {
     public function allRoles();
     public function getRoles();
+    public function rolePermissions($id);
     public function storeRole($data);
     public function findRole($id);
     public function updateRole($data, $id);
