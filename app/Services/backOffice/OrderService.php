@@ -24,6 +24,11 @@ class OrderService implements OrderServiceInterface
         return $this->orderRepository->allOrders();
     }
 
+    public function getOrders()
+    {
+        return $this->orderRepository->getOrders();
+    }
+
     public function storeOrder($data)
     {
         return $this->orderRepository->storeOrder($data);

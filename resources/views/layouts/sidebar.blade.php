@@ -45,7 +45,7 @@
                 <li class="menu-title" data-key="t-applications">Applications</li>
 
                 <li>
-                    <a href="{{route('calendar')}}">
+                    <a href="{{route('events')}}">
                         <i class="bx bx-calendar-alt nav-icon"></i>
                         <span class="menu-item" data-key="t-calendar">Calendar</span>
                     </a>

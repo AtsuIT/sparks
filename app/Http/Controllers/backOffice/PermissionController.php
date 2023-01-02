@@ -11,6 +11,8 @@ use DataTables;
 
 class PermissionController extends Controller
 {
+    protected $permissionService;
+
     function __construct(PermissionService $permissionService)
     {
         $this->permissionService = $permissionService;

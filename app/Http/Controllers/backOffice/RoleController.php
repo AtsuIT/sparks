@@ -13,6 +13,9 @@ use DataTables;
 
 class RoleController extends Controller
 {
+    protected $permissionService;
+    protected $roleService;
+    
     /**
      * Display a listing of the resource.
      *

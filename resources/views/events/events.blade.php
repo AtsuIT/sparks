@@ -65,19 +65,20 @@
 
                     </div>
                     <div class="modal-body p-4">
-                        <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                        <form class="needs-validation" method="POST" name="event-form" id="form-event" novalidate>
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label">Event Name</label>
-                                        <input class="form-control" placeholder="Insert Event Name" type="text" name="title" id="event-title" required value="" />
+                                        <input class="form-control" placeholder="Insert Event Name" type="text" name="name" id="event-title" required value="" />
                                         <div class="invalid-feedback">Please provide a valid event name</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Category</label>
-                                        <select class="form-select shadow-none" name="category" id="event-category" required>
+                                        <label class="form-label">Color</label>
+                                        <select class="form-select shadow-none" name="color" id="event-category" required>
                                             <option value="" selected> --Select-- </option>
                                             <option value="bg-danger">Danger</option>
                                             <option value="bg-success">Success</option>
@@ -86,7 +87,19 @@
                                             <option value="bg-dark">Dark</option>
                                             <option value="bg-warning">Warning</option>
                                         </select>
-                                        <div class="invalid-feedback">Please select a valid event category</div>
+                                        <div class="invalid-feedback">Please select a valid event color</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Orders</label>
+                                        <select class="form-select shadow-none" name="order_id" id="order_id" required>
+                                            <option value="" selected> --Select-- </option>
+                                            @foreach ($orders as $order)
+                                                <option value="{{$order->id}}">{{$order->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">Please select a valid order</div>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +123,11 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>            
+    var events = {!! json_encode($events) !!};
+</script> 
 <!-- plugin js -->
 <script src="{{ URL::asset('assets/libs/fullcalendar/fullcalendar.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/pages/calendar.init.js') }}"></script>
+<script src="{{ URL::asset('js/pages/calendar-event.init.js') }}"></script>
+<script src='{{asset('@fullcalendar/locales-all.js')}}'></script>
 @endsection

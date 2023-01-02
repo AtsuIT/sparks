@@ -52,6 +52,11 @@ class OrderRepository extends BaseRepository
             ->make(true);
     }
 
+    public function getOrders()
+    {
+        return Order::all();
+    }
+
     public function storeOrder($data)
     {
         Order::create([

@@ -9,6 +9,7 @@ namespace App\Repositories\Interfaces\backOffice;
 interface OrderRepositoryInterface
 {
     public function allOrders();
+    public function getOrders();
     public function storeOrder($data);
     public function findOrder($id);
     public function updateOrder($data, $id);
