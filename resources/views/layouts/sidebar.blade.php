@@ -57,7 +57,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('orders')}}" data-key="t-orders-view">List Orders</a></li>
-                        <li><a href="{{route('create-orders')}}" data-key="t-user-new">Create Order</a></li>
+                        <li><a href="{{route('create-orders')}}" data-key="t-order-new">Create Order</a></li>
                     </ul>
                 </li>
                 <li>
@@ -72,32 +72,40 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-user"></i>
-                        <span class="menu-item" data-key="t-users">Users</span>
+                        <i class="bx bx-cog"></i>
+                        <span class="menu-item" data-key="t-multi-level">Administration</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('users')}}" data-key="t-users-view">List Users</a></li>
-                        <li><a href="{{route('users-create')}}" data-key="t-user-new">Create User</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-user"></i>
-                        <span class="menu-item" data-key="t-roles">roles</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('roles')}}" data-key="t-roles-view">List Roles</a></li>
-                        <li><a href="{{route('create-roles')}}" data-key="t-role-new">Create Role</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-user"></i>
-                        <span class="menu-item" data-key="t-permissions">permissions</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('permissions')}}" data-key="t-permissions-view">List Permissions</a></li>
-                        <li><a href="{{route('create-permissions')}}" data-key="t-permission-new">Create Permission</a></li>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-user"></i>
+                                <span class="menu-item" data-key="t-users">Users</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('users')}}" data-key="t-users-view">List Users</a></li>
+                                <li><a href="{{route('users-create')}}" data-key="t-user-new">Create User</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-shield-quarter"></i>
+                                <span class="menu-item" data-key="t-roles">roles</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('roles')}}" data-key="t-roles-view">List Roles</a></li>
+                                <li><a href="{{route('create-roles')}}" data-key="t-role-new">Create Role</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-no-entry"></i>
+                                <span class="menu-item" data-key="t-permissions">permissions</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('permissions')}}" data-key="t-permissions-view">List Permissions</a></li>
+                                <li><a href="{{route('create-permissions')}}" data-key="t-permission-new">Create Permission</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 {{-- <li>

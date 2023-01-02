@@ -1,18 +1,12 @@
 @extends('layouts.vertical-master-layout')
 @section('title')Edit Order @endsection
-@section('css')
-
-<!-- quill css -->
-<link href="{{ URL::asset('assets/libs/quill/quill.min.css') }}" rel="stylesheet">
-
-@endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title') order-edit @endslot
+@slot('title') {{__('t-order-edit')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -42,7 +36,7 @@
 
     <div class="mb-3">
         <select class="form-select @error('status') is-invalid @enderror" required name="status">
-            <option value="">Choose a status</option>
+            <option value="" data-key="choose-status">Choose a status</option>
             <option value="pending"@if($order->status == "pending") selected @endif>pending</option>
             <option value="done"@if($order->status == "done") selected @endif>done</option>
             <option value="failed"@if($order->status == "failed") selected @endif>failed</option>
@@ -63,8 +57,6 @@
 @section('script')
 <!-- ckeditor -->
 <script src="{{ URL::asset('assets/libs/@ckeditor/@ckeditor.min.js') }}"></script>
-<!-- quill js -->
-<script src="{{ URL::asset('assets/libs/quill/quill.min.js') }}"></script>
 <!-- init js -->
 <script src="{{ URL::asset('assets/js/pages/form-editor.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>

@@ -163,6 +163,12 @@
     "t-done": "Deleted!",
     "t-dismiss": "Cancelled!",
     "t-welcome": "Welcome !",
-    "t-back-home": "Back"
-
+    "t-back-home": "Back",
+    "t-orders": "Orders",
+    "t-orders-view": "List Orders",
+    "t-order-new": "Create New Order",
+    "t-order-edit": "Edit Order",
+    "t-order-show": "Show New Order",
+    "t-choose-status": "Choose a status",
+    "t-status": "Status"
 }

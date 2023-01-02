@@ -1,18 +1,12 @@
 @extends('layouts.vertical-master-layout')
 @section('title')Create Order @endsection
-@section('css')
-
-<!-- quill css -->
-<link href="{{ URL::asset('assets/libs/quill/quill.min.css') }}" rel="stylesheet">
-
-@endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title') order-new @endslot
+@slot('title') {{__('t-order-new')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -42,7 +36,7 @@
 
     <div class="mb-3">
         <select class="form-select @error('status') is-invalid @enderror" required name="status">
-            <option value="">Choose a status</option>
+            <option value="">{{__('t-choose-status')}}</option>
             <option value="pending">pending</option>
             <option value="done">done</option>
             <option value="failed">failed</option>
@@ -64,8 +58,6 @@
 @section('script')
 <!-- ckeditor -->
 <script src="{{ URL::asset('assets/libs/@ckeditor/@ckeditor.min.js') }}"></script>
-<!-- quill js -->
-<script src="{{ URL::asset('assets/libs/quill/quill.min.js') }}"></script>
 <!-- init js -->
 <script src="{{ URL::asset('assets/js/pages/form-editor.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>

@@ -20,6 +20,6 @@
 <!-- Sweet Alert-->
 <link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 <!-- DATATABLES-->
-<link href="{{ URL::asset('assets/libs/dataTables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/libs/dataTables/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('dataTables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('dataTables/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
 {{-- @yield('css') --}}

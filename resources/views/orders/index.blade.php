@@ -9,7 +9,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title')orders @endslot
+@slot('title'){{__('t-orders')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -25,10 +25,10 @@
 <table class="table table-bordered table-orders">
     <thead>
         <tr>
-            <th data-key="t-no">No</th>
-            <th data-key="t-name">Name</th>
-            <th data-key="t-staus">Status</th>
-            <th width="280px" data-key="t-action">Action</th>
+            <th>{{__('t-no')}}</th>
+            <th>{{__('t-name')}}</th>
+            <th>{{__('t-status')}}</th>
+            <th width="280px">{{__('t-action')}}</th>
         </tr>
     </thead>
     <tbody>
