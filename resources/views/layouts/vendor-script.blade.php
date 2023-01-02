@@ -7,9 +7,9 @@
     var lang = "<?= App::getLocale() ?>";
 </script> 
 <!-- DATATABLES -->
-<script src="{{ URL::asset('assets/libs/jquery/jquery.min.js') }}" ></script>
-<script src="{{ URL::asset('assets/libs/dataTables/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/dataTables/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ URL::asset(js/jquery/jquery.min.js') }}" ></script>
+<script src="{{ URL::asset('dataTables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('dataTables/js/dataTables.bootstrap5.min.js') }}"></script>
 <!-- Sweet Alerts js -->
 <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 @yield('script')

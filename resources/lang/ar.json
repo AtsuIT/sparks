@@ -168,5 +168,6 @@
     "t-order-new": "إنشاء طلب جديد",
     "t-order-edit": "تحرير الطلب",
     "t-order-show": "عرض الطلب",
-    "t-choose-status": "اختر حالة"
+    "t-choose-status": "اختر حالة",
+    "t-status": "الحالة"
 }

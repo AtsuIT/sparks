@@ -169,5 +169,6 @@
     "t-order-new": "Create New Order",
     "t-order-edit": "Edit Order",
     "t-order-show": "Show New Order",
-    "t-choose-status": "Choose a status"
+    "t-choose-status": "Choose a status",
+    "t-status": "Status"
 }
