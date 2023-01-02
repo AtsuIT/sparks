@@ -9,7 +9,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title') users @endslot
+@slot('title') {{__('t-users')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -19,7 +19,7 @@
 </div>
 @endif
 <div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('users-create') }}" data-key="t-user-new"> Create New User</a>
+    <a class="btn btn-success" href="{{ route('users-create') }}" data-key="t-user-new">Create New User</a>
 </div>
 <table class="table table-users">
     <thead>

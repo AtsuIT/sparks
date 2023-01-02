@@ -6,7 +6,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title') role-show @endslot
+@slot('title'){{__('t-role-show')}}@endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))

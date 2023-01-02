@@ -9,7 +9,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title')orders @endslot
+@slot('title'){{__('t-orders')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))

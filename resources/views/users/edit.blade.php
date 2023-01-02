@@ -6,7 +6,7 @@
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') dashboard @endslot
-            @slot('title') user-edit @endslot
+            @slot('title') {{__('t-user-edit')}} @endslot
         @endcomponent
     @endsection
 

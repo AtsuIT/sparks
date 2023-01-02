@@ -9,7 +9,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') dashboard @endslot
-@slot('title')permissions @endslot
+@slot('title'){{__('t-permissions')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
