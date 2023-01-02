@@ -11,6 +11,8 @@ use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
+    protected $orderService;
+    
     function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
@@ -25,7 +27,7 @@ class OrderController extends Controller
     {
         if ($request->ajax()) 
         {
-            // $this->orderService->allOrders();
+            // $this->orderService->getOrders();
             $orders = Order::get();
             return DataTables::of($orders)
             ->addColumn('action', function ($row) {

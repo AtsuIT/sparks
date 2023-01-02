@@ -95,7 +95,7 @@ class UserRepository extends BaseRepository implements UserServiceInterface
         $user->update([
             'name'=>$data['name'],
             'email'=>$data['email'],
-            'password'=>($data['password']? $data['password'] : $user->password),
+            'password'=>($data['password'] ? $data['password'] : $user->password),
         ]);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($data['roles']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backOffice;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -13,6 +14,9 @@ use DataTables;
 
 class UserController extends Controller
 {
+    protected $userService;
+    protected $roleService;
+    
     function __construct(RoleService $roleService, UserService $userService)
     {
         $this->roleService = $roleService;
@@ -120,7 +124,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy($id)
     {
         $this->userService->destroyUser($id);
         return redirect()->route('users')->with('success','User deleted successfully');
@@ -132,7 +136,7 @@ class UserController extends Controller
         return view('users.edit-profile',compact('user'));
     }
 
-    public function updateProfile(UpdateUserRequest $request, $id)
+    public function updateProfile(UpdateProfileRequest $request, $id)
     {
         $this->userService->updateUser($request, $id);
         return redirect()->back()->with('success','User updated successfully');

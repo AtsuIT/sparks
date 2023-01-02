@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backOffice\EventController;
 use App\Http\Controllers\backOffice\HomeController;
 use App\Http\Controllers\backOffice\PermissionController;
 use App\Http\Controllers\backOffice\RoleController;
@@ -80,6 +81,16 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::post('update-orders/{id}', [OrderController::class, 'update'])->name('update-orders');   
     Route::get('/orders', [OrderController::class, 'index'])->name('orders'); 
     Route::delete('/orders-destroy/{id}', [OrderController::class, 'destroy'])->name('orders-destroy');
+
+    //events
+    Route::get('events', [EventController::class, 'index'])->name('events');   
+    Route::get('events-create', [EventController::class, 'create'])->name('create-events'); 
+    Route::get('events-edit/{id}', [EventController::class, 'edit'])->name('edit-events'); 
+    Route::get('events-show/{id}', [EventController::class, 'show'])->name('show-events');   
+    Route::post('store-events', [EventController::class, 'store'])->name('store-events'); 
+    Route::post('update-events/{id}', [EventController::class, 'update'])->name('update-events');   
+    Route::get('/events', [EventController::class, 'index'])->name('events'); 
+    Route::delete('/events-destroy/{id}', [EventController::class, 'destroy'])->name('events-destroy');
 });
 
 
