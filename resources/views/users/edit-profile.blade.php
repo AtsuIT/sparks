@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')User Settings @endsection
+@section('title'){{__('t-update-profile')}} @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">

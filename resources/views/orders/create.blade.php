@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Create Order @endsection
+@section('title'){{__('t-order-new')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}

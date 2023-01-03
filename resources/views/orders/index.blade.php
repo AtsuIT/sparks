@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Orders @endsection
+@section('title'){{__('t-orders')}} @endsection
 @section('css')
 
 @endsection

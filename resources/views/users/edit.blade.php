@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Users @endsection
+@section('title'){{__('t-user-edit')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}

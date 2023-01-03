@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Calendar @endsection
+@section('title'){{__('t-calendar')}} @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
 @endsection
@@ -20,7 +20,7 @@
             <div class="col-xl-3">
                 <div class="card card-h-100">
                     <div class="card-body">
-                        <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Create New Event</button>
+                        <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> {{__('t-create-new-event')}}</button>
 
                         <div id="external-events">
                             <br>

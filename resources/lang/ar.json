@@ -169,5 +169,7 @@
     "t-order-edit": "تحرير الطلب",
     "t-order-show": "عرض الطلب",
     "t-choose-status": "اختر حالة",
-    "t-status": "الحالة"
+    "t-status": "الحالة",
+    "t-administration": "الادارة",
+    "t-create-new-event": "إنشاء حدث جديد"
 }

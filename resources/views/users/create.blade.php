@@ -1,12 +1,12 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Users @endsection
+@section('title'){{__('t-user-new')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') dashboard @endslot
-            @slot('title') user-new @endslot
+            @slot('title') {{__('t-user-new')}} @endslot
         @endcomponent
     @endsection
 

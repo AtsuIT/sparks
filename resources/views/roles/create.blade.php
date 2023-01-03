@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Create Role @endsection
+@section('title'){{__('t-role-new')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}

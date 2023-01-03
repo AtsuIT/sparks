@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title data-key="t-@yield('title')">@yield('title')</title>
+    <title>@yield('title')</title>
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Sparks" name="author" />
         

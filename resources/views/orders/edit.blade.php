@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Edit Order @endsection
+@section('title'){{__('t-order-edit')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}
