@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Edit Permission @endsection
+@section('title'){{__('t-permission-edit')}} @endsection
 @section('content')
 
 {{-- breadcrumbs  --}}

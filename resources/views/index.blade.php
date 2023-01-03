@@ -1,12 +1,12 @@
 @extends('layouts.vertical-master-layout')
-@section('title')
+@section('title') {{__('t-dashboard')}}
 @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') dashboard @endslot
-            @slot('title') welcome @endslot
+            @slot('title') {{__('t-welcome')}} @endslot
         @endcomponent
     @endsection
 <div class="row">

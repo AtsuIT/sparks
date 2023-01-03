@@ -37,6 +37,7 @@ class OrderController extends Controller
                                     <input name="_method" type="hidden" value="DELETE">
                             <a class="btn btn-info" href="/orders-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-primary" href="/orders-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-secondary" href="/orders-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>
                             <button type="submit" class="sa-warning btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -121,5 +122,10 @@ class OrderController extends Controller
         $this->orderService->destroyOrder($id);
         return redirect()->route('orders')->with('success','Order deleted successfully');
 
+    }
+    public function timeline($id)
+    {
+        $order = $this->orderService->findOrder($id);
+        return view('orders.timeline',compact('order'));
     }
 }

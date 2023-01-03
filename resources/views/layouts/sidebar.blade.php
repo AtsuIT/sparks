@@ -60,20 +60,20 @@
                         <li><a href="{{route('create-orders')}}" data-key="t-order-new">Create Order</a></li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-award nav-icon"></i>
                         <span class="menu-item" data-key="t-timeline">Timeline</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        {{-- <li><a href="timeline-center" data-key="t-center-view">Center View</a></li> --}}
+                        <li><a href="timeline-center" data-key="t-center-view">Center View</a></li>
                         <li><a href="{{route('timeline')}}" data-key="t-left-view">Left View</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-cog"></i>
-                        <span class="menu-item" data-key="t-multi-level">Administration</span>
+                        <span class="menu-item" data-key="t-administration">Administration</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>

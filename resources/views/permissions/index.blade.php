@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Permissions @endsection
+@section('title'){{__('t-permissions')}} @endsection
 @section('css')
 
 @endsection

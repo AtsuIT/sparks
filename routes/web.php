@@ -76,7 +76,8 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::get('orders', [OrderController::class, 'index'])->name('orders');   
     Route::get('orders-create', [OrderController::class, 'create'])->name('create-orders'); 
     Route::get('orders-edit/{id}', [OrderController::class, 'edit'])->name('edit-orders'); 
-    Route::get('orders-show/{id}', [OrderController::class, 'show'])->name('show-orders');   
+    Route::get('orders-show/{id}', [OrderController::class, 'show'])->name('show-orders');
+    Route::get('orders-timeline/{id}', [OrderController::class, 'timeline'])->name('timeline-orders');   
     Route::post('store-orders', [OrderController::class, 'store'])->name('store-orders'); 
     Route::post('update-orders/{id}', [OrderController::class, 'update'])->name('update-orders');   
     Route::get('/orders', [OrderController::class, 'index'])->name('orders'); 

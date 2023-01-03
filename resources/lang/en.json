@@ -170,5 +170,7 @@
     "t-order-edit": "Edit Order",
     "t-order-show": "Show New Order",
     "t-choose-status": "Choose a status",
-    "t-status": "Status"
+    "t-status": "Status",
+    "t-administration": "Administration",
+    "t-create-new-event": "Create New Event"
 }
