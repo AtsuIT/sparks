@@ -171,5 +171,6 @@
     "t-choose-status": "اختر حالة",
     "t-status": "الحالة",
     "t-administration": "الادارة",
-    "t-create-new-event": "إنشاء حدث جديد"
+    "t-create-new-event": "إنشاء حدث جديد",
+    "t-uuid": "معرف فريد"
 }
