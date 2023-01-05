@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\backOffice;
 
+use App\Helpers\GuzzleHttpHelper;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Services\backOffice\OrderService;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -28,23 +30,23 @@ class OrderController extends Controller
         if ($request->ajax()) 
         {
             // $this->orderService->getOrders();
-            $orders = Order::get();
+            $orders = GuzzleHttpHelper::shipmentByReference();
             return DataTables::of($orders)
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
-                return '<form method="POST" action="/orders-destroy/'.$row->id.'">
+                return '<form method="POST" action="/orders-destroy/'.$row['tracking_number'].'">
                                     <input name="_token" type="hidden" value='.$csrf.'>
                                     <input name="_method" type="hidden" value="DELETE">
-                            <a class="btn btn-info" href="/orders-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-primary" href="/orders-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-secondary" href="/orders-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>
+                            <a class="btn btn-info" href="/orders-show/'.$row['tracking_number'].'"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-primary" href="/orders-edit/'.$row['tracking_number'].'"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-secondary" href="/orders-timeline/'.$row['tracking_number'].'"><i class="fas fa-business-time"></i></a>
                             <button type="submit" class="sa-warning btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>';
                 })
-                ->editColumn('info', function ($row) {
-                    return substr($row->info,0,15);
+                ->editColumn('reference', function ($row) {
+                    return 'SPA-'. Str::uuid()->toString();
                })
                ->escapeColumns([])
             ->make(true);

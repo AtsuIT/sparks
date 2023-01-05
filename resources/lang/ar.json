@@ -172,5 +172,6 @@
     "t-status": "الحالة",
     "t-administration": "الادارة",
     "t-create-new-event": "إنشاء حدث جديد",
-    "t-uuid": "معرف فريد"
+    "t-reference": "المرجع",
+    "t-tracking_number": "رقم التتبع"
 }
