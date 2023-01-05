@@ -37,9 +37,9 @@
     <div class="mb-3">
         <select class="form-select @error('status') is-invalid @enderror" required name="status">
             <option value="">{{__('t-choose-status')}}</option>
-            <option value="pending">pending</option>
-            <option value="done">done</option>
-            <option value="failed">failed</option>
+            <option value="Processing">Processing</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancel">Cancel</option>
         </select>
         @error('status')
             <span class="invalid-feedback" role="alert">
