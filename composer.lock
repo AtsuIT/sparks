@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "933fa8368a06619928d770662593c143",
+    "content-hash": "de1fbd7eee8bfa14d3874252cb2b22ff",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,56 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
             },
             "time": "2022-01-18T09:12:03+00:00"
+        },
+        {
+            "name": "aymakan/php-sdk",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aymakan/php-sdk.git",
+                "reference": "519d414a5a7a35261ec88a8760b46160c55d5a6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aymakan/php-sdk/zipball/519d414a5a7a35261ec88a8760b46160c55d5a6d",
+                "reference": "519d414a5a7a35261ec88a8760b46160c55d5a6d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aymakan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Aymakan",
+                    "email": "it@aymakan.com.sa"
+                }
+            ],
+            "description": "Aymakan PHP SDK",
+            "homepage": "https://github.com/aymakan/php-sdk",
+            "keywords": [
+                "aymakan"
+            ],
+            "support": {
+                "issues": "https://github.com/aymakan/php-sdk/issues",
+                "source": "https://github.com/aymakan/php-sdk/tree/main"
+            },
+            "time": "2022-03-13T08:02:18+00:00"
         },
         {
             "name": "brick/math",
@@ -8117,7 +8167,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "aymakan/php-sdk": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
