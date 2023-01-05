@@ -5,7 +5,7 @@
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
-@slot('li_1') dashboard @endslot
+@slot('li_1') {{__('t-dashboard')}} @endslot
 @slot('title') {{__('t-order-new')}} @endslot
 @endcomponent
 @endsection

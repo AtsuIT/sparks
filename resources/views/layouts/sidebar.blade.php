@@ -89,7 +89,7 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">
                                 <i class="bx bx-shield-quarter"></i>
-                                <span class="menu-item" data-key="t-roles">roles</span>
+                                <span class="menu-item" data-key="t-roles">Roles</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('roles')}}" data-key="t-roles-view">List Roles</a></li>
@@ -99,7 +99,7 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">
                                 <i class="bx bx-no-entry"></i>
-                                <span class="menu-item" data-key="t-permissions">permissions</span>
+                                <span class="menu-item" data-key="t-permissions">Permissions</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('permissions')}}" data-key="t-permissions-view">List Permissions</a></li>

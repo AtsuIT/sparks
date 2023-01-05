@@ -9,7 +9,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') applications @endslot
+            @slot('li_1') {{__('t-applications')}} @endslot
             @slot('title') {{__('t-calendar')}} @endslot
         @endcomponent
     @endsection

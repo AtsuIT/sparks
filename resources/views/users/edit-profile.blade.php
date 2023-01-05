@@ -8,7 +8,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') user-settings @endslot
+            @slot('li_1') {{__('t-user-settings')}} @endslot
             @slot('title') {{__('t-update-profile')}} @endslot
         @endcomponent
     @endsection
