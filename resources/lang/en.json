@@ -172,5 +172,7 @@
     "t-choose-status": "Choose a status",
     "t-status": "Status",
     "t-administration": "Administration",
-    "t-create-new-event": "Create New Event"
+    "t-create-new-event": "Create New Event",
+    "t-uuid": "Unique Id"
+
 }

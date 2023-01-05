@@ -8,7 +8,7 @@
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
-@slot('li_1') dashboard @endslot
+@slot('li_1') {{__('t-dashboard')}} @endslot
 @slot('title'){{__('t-orders')}} @endslot
 @endcomponent
 @endsection
@@ -26,6 +26,7 @@
     <thead>
         <tr>
             <th>{{__('t-no')}}</th>
+            <th>{{__('t-uuid')}}</th>
             <th>{{__('t-name')}}</th>
             <th>{{__('t-status')}}</th>
             <th width="280px">{{__('t-action')}}</th>

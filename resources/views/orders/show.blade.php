@@ -5,7 +5,7 @@
 {{-- breadcrumbs  --}}
 @section('breadcrumb')
 @component('components.breadcrumb')
-@slot('li_1') dashboard @endslot
+@slot('li_1') {{__('t-dashboard')}} @endslot
 @slot('title') {{__('t-order-show')}} @endslot
 @endcomponent
 @endsection
@@ -31,9 +31,9 @@
     <div class="mb-3">
         <select class="form-select @error('status') is-invalid @enderror" disabled name="status">
             <option value="" data-key="choose-status">Choose a status</option>
-            <option value="pending"@if($order->status == "pending") selected @endif>pending</option>
-            <option value="done"@if($order->status == "done") selected @endif>done</option>
-            <option value="failed"@if($order->status == "failed") selected @endif>failed</option>
+            <option value="Processing"@if($order->status == "Processing") selected @endif>Processing</option>
+            <option value="Completed"@if($order->status == "Completed") selected @endif>Completed</option>
+            <option value="Cancel"@if($order->status == "Cancel") selected @endif>Cancel</option>
         </select>
         @error('status')
             <span class="invalid-feedback" role="alert">
