@@ -9,5 +9,5 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name","status","description"];
+    protected $fillable = ["name","status","description","uuid"];
 }

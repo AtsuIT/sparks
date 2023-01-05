@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> {{__('t-create-new-event')}}</button>
 
-                        <div id="external-events">
+                        <div id="external-events" class="d-none">
                             <br>
                             <p class="text-muted">Drag and drop your event or click in the calendar</p>
                             <div class="external-event fc-event bg-success" data-class="bg-success">
