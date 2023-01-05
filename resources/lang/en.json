@@ -173,6 +173,8 @@
     "t-status": "Status",
     "t-administration": "Administration",
     "t-create-new-event": "Create New Event",
-    "t-uuid": "Unique Id"
+    "t-reference": "Reference",
+    "t-tracking_number": "Tracking Number"
+
 
 }

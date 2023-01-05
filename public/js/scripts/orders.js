@@ -18,8 +18,9 @@ var orders = $('.table-orders').DataTable({
             "render": function (data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             }},
-        {data: 'uuid', name: 'uuid'},
-        {data: 'name', name: 'name'},
+        {data: 'tracking_number', name: 'tracking_number'},
+        {data: 'reference', name: 'reference'},
+        {data: 'customer_name', name: 'customer_name'},
         {data: 'status', name: 'status'},
         {data: 'action',
             name: 'action',
