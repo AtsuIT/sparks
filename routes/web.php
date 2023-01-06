@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backOffice\AddressController;
 use App\Http\Controllers\backOffice\EventController;
 use App\Http\Controllers\backOffice\HomeController;
 use App\Http\Controllers\backOffice\PermissionController;
@@ -92,6 +93,16 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::post('update-events/{id}', [EventController::class, 'update'])->name('update-events');   
     Route::get('/events', [EventController::class, 'index'])->name('events'); 
     Route::delete('/events-destroy/{id}', [EventController::class, 'destroy'])->name('events-destroy');
+
+    //address
+    Route::get('address', [AddressController::class, 'index'])->name('address');   
+    Route::get('address-create', [AddressController::class, 'create'])->name('create-address'); 
+    Route::get('address-edit/{id}', [AddressController::class, 'edit'])->name('edit-address'); 
+    Route::get('address-show/{id}', [AddressController::class, 'show'])->name('show-address');   
+    Route::post('store-address', [AddressController::class, 'store'])->name('store-address'); 
+    Route::post('update-address/{id}', [AddressController::class, 'update'])->name('update-address');   
+    Route::get('/address', [AddressController::class, 'index'])->name('address'); 
+    Route::delete('/address-destroy/{id}', [AddressController::class, 'destroy'])->name('address-destroy');
 });
 
 
