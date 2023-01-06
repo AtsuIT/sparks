@@ -2,9 +2,13 @@
 
 namespace App\Repositories\backOffice;
 
+use App\Helpers\GuzzleHttpHelper;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 //use Your Model
 
@@ -14,11 +18,12 @@ use Yajra\DataTables\DataTables;
 class OrderRepository extends BaseRepository
 {
     protected $order;
+    protected $guzzle;
 
-    function __construct(Order $order)
+    function __construct(Order $order, GuzzleHttpHelper $guzzle)
     {
         $this->order = $order;
-        
+        $this->guzzle = $guzzle;
     }
     /**
      * @return string
@@ -57,13 +62,145 @@ class OrderRepository extends BaseRepository
         return Order::all();
     }
 
+    public function storeOrderByApi()
+    {
+        $data = $this->guzzle::shipmentByReference();
+        Schema::disableForeignKeyConstraints();
+        DB::table('orders')->truncate();
+        Schema::enableForeignKeyConstraints();
+        foreach($data as $key=> $value)
+        {
+            Order::create([
+                'reference' => $value['reference'],
+                'tracking_number' => $value['tracking_number'],
+                'customer_name' => $value['customer_name'],
+                'requested_by' => $value['requested_by'],
+                'cod_amount' => $value['cod_amount'],
+                'declared_value' => $value['declared_value'],
+                'currency' => $value['currency'],
+                'delivery_name' => $value['delivery_name'],
+                'delivery_email' => $value['delivery_email'],
+                'delivery_city' => $value['delivery_city'],
+                'delivery_address' => $value['delivery_address'],
+                'delivery_neighbourhood' => $value['delivery_neighbourhood'],
+                'delivery_postcode' => $value['delivery_postcode'],
+                'delivery_country' => $value['delivery_country'],
+                'delivery_phone' => $value['delivery_phone'],
+                'delivery_description' => $value['delivery_description'],
+                'collection_name' => $value['collection_name'],
+                'collection_email' => $value['collection_email'],
+                'collection_city' => $value['collection_city'],
+                'collection_address' => $value['collection_address'],
+                'collection_postcode' => $value['collection_postcode'],
+                'collection_country' => $value['collection_country'],
+                'collection_phone' => $value['collection_phone'],
+                'collection_description' => $value['collection_description'],
+                'submission_date' => $value['submission_date'],
+                'pickup_date' => $value['pickup_date'],
+                'received_at' => $value['received_at'],
+                'delivery_date' => $value['delivery_date'],
+                'weight' => $value['weight'],
+                'pieces' => $value['pieces'],
+                'items_count' => $value['items_count'],
+                'status' => $value['status'],
+                'status_label' => $value['status_label'],
+                'reason_en' => $value['reason_en'],
+                'reason_ar' => $value['reason_ar'],
+                'is_reverse_pickup' => $value['is_reverse_pickup'],
+                'is_insured' => $value['is_insured'],
+                'is_prepaid' => $value['is_prepaid'],
+                'payment_method' => $value['payment_method'],
+            ]);
+        }
+        return response()->json(['success'=>true]);
+    }
+
     public function storeOrder($data)
     {
-        Order::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
+        $order = array(
+            'customer_name' => $data['customer_name'],
+            'requested_by' => $data['requested_by'],
+            'cod_amount' => $data['cod_amount'],
+            'declared_value' => $data['declared_value'],
+            'currency' => $data['currency'],
+            'delivery_name' => $data['delivery_name'],
+            'delivery_email' => $data['delivery_email'],
+            'delivery_city' => $data['delivery_city'],
+            'delivery_address' => $data['delivery_address'],
+            'delivery_neighbourhood' => $data['delivery_neighbourhood'],
+            'delivery_postcode' => $data['delivery_postcode'],
+            'delivery_country' => $data['delivery_country'],
+            'delivery_phone' => $data['delivery_phone'],
+            'delivery_description' => $data['delivery_description'],
+            'collection_name' => $data['collection_name'],
+            'collection_email' => $data['collection_email'],
+            'collection_city' => $data['collection_city'],
+            'collection_address' => $data['collection_address'],
+            'collection_postcode' => $data['collection_postcode'],
+            'collection_country' => $data['collection_country'],
+            'collection_phone' => $data['collection_phone'],
+            'collection_description' => $data['collection_description'],
+            'submission_date' => $data['submission_date'],
+            'pickup_date' => $data['pickup_date'],
+            'received_at' => $data['received_at'],
+            'delivery_date' => $data['delivery_date'],
+            'weight' => $data['weight'],
+            'pieces' => $data['pieces'],
+            'items_count' => $data['items_count'],
             'status' => $data['status'],
-        ]);
+            'status_label' => $data['status_label'],
+            'reason_en' => $data['reason_en'],
+            'reason_ar' => $data['reason_ar'],
+            'is_reverse_pickup' => $data['is_reverse_pickup'],
+            'is_insured' => $data['is_insured'],
+            'is_prepaid' => $data['is_prepaid'],
+            'payment_method' => $data['payment_method']
+        );
+        Order::create($order);
+        $client = $this->guzzle::setAuth();
+        $orderShipment = array(
+            "declared_value_currency"=> "SAR",
+            "reference"=> "",
+            "is_cod"=> 1,
+            'customer_name' => $data['customer_name'],
+            'requested_by' => $data['requested_by'],
+            'cod_amount' => $data['cod_amount'],
+            'declared_value' => $data['declared_value'],
+            'currency' => $data['currency'],
+            'delivery_name' => $data['delivery_name'],
+            'delivery_email' => $data['delivery_email'],
+            'delivery_city' => $data['delivery_city'],
+            'delivery_address' => $data['delivery_address'],
+            'delivery_neighbourhood' => $data['delivery_neighbourhood'],
+            'delivery_postcode' => $data['delivery_postcode'],
+            'delivery_country' => $data['delivery_country'],
+            'delivery_phone' => $data['delivery_phone'],
+            'delivery_description' => $data['delivery_description'],
+            'collection_name' => $data['collection_name'],
+            'collection_email' => $data['collection_email'],
+            'collection_city' => $data['collection_city'],
+            'collection_address' => $data['collection_address'],
+            'collection_postcode' => $data['collection_postcode'],
+            'collection_country' => $data['collection_country'],
+            'collection_phone' => $data['collection_phone'],
+            'collection_description' => $data['collection_description'],
+            'weight' => $data['weight'],
+            'pieces' => $data['pieces'],
+            'items_count' => $data['items_count'],
+            // 'submission_date' => $data['submission_date'],
+            // 'pickup_date' => $data['pickup_date'],
+            // 'received_at' => $data['received_at'],
+            // 'delivery_date' => $data['delivery_date'],
+            // 'status' => $data['status'],
+            // 'status_label' => $data['status_label'],
+            // 'reason_en' => $data['reason_en'],
+            // 'reason_ar' => $data['reason_ar'],
+            // 'is_reverse_pickup' => $data['is_reverse_pickup'],
+            // 'is_insured' => $data['is_insured'],
+            // 'is_prepaid' => $data['is_prepaid'],
+            // 'payment_method' => $data['payment_method']
+        );
+        $client->createShipment($orderShipment);
     }
 
     public function findOrder($id)
@@ -74,15 +211,53 @@ class OrderRepository extends BaseRepository
     public function updateOrder($data, $id)
     {
         $order = $this->findOrder($id);
-        $order->name = $data['name'];
-        $order->description = $data['description'];
-        $order->status = $data['status'];
-        $order->save();
+        $orderData = array(
+            'customer_name' => $data['customer_name'],
+            'requested_by' => $data['requested_by'],
+            'cod_amount' => $data['cod_amount'],
+            'declared_value' => $data['declared_value'],
+            'currency' => $data['currency'],
+            'delivery_name' => $data['delivery_name'],
+            'delivery_email' => $data['delivery_email'],
+            'delivery_city' => $data['delivery_city'],
+            'delivery_address' => $data['delivery_address'],
+            'delivery_neighbourhood' => $data['delivery_neighbourhood'],
+            'delivery_postcode' => $data['delivery_postcode'],
+            'delivery_country' => $data['delivery_country'],
+            'delivery_phone' => $data['delivery_phone'],
+            'delivery_description' => $data['delivery_description'],
+            'collection_name' => $data['collection_name'],
+            'collection_email' => $data['collection_email'],
+            'collection_city' => $data['collection_city'],
+            'collection_address' => $data['collection_address'],
+            'collection_postcode' => $data['collection_postcode'],
+            'collection_country' => $data['collection_country'],
+            'collection_phone' => $data['collection_phone'],
+            'collection_description' => $data['collection_description'],
+            'submission_date' => $data['submission_date'],
+            'pickup_date' => $data['pickup_date'],
+            'received_at' => $data['received_at'],
+            'delivery_date' => $data['delivery_date'],
+            'weight' => $data['weight'],
+            'pieces' => $data['pieces'],
+            'items_count' => $data['items_count'],
+            'status' => $data['status'],
+            'status_label' => $data['status_label'],
+            'reason_en' => $data['reason_en'],
+            'reason_ar' => $data['reason_ar'],
+            'is_reverse_pickup' => $data['is_reverse_pickup'],
+            'is_insured' => $data['is_insured'],
+            'is_prepaid' => $data['is_prepaid'],
+            'payment_method' => $data['payment_method']
+        );
+        $order->update($orderData);
     }
 
     public function destroyOrder($id)
     {
         $order = $this->findOrder($id);
+        $client = $this->guzzle::setAuth();
+        $client->cancelShipment(['tracking' => $order->tracking_number]);
         $order->delete();
     }
 }

@@ -87,7 +87,7 @@ class AddressRepository extends BaseRepository
 
     public function storeAddress($data)
     {
-        Address::create([
+        $data = array(
             'title' => $data['title'],
             'name' => $data['name'],
             'description' => $data['description'],
@@ -98,20 +98,10 @@ class AddressRepository extends BaseRepository
             'postcode' => $data['postcode'],
             'phone' => $data['phone'],
             'neighbourhood' => $data['neighbourhood'],
-        ]);
+        );
+        Address::create($data);
         $client = $this->guzzle::setAuth();
-        $client->createAddress([
-            'title' => $data['title'],
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'email' => $data['email'],
-            'city' => $data['city'],
-            'country' => $data['country'],
-            'address' => $data['address'],
-            'postcode' => $data['postcode'],
-            'phone' => $data['phone'],
-            'neighbourhood' => $data['neighbourhood'],
-        ]);
+        $client->createAddress($data);
     }
 
     public function findAddress($id)
@@ -122,20 +112,7 @@ class AddressRepository extends BaseRepository
     public function updateAddress($data, $id)
     {
         $address = $this->findAddress($id);
-        $address->name = $data['name'];
-        $address->description = $data['description'];
-        $address->title = $data['title'];
-        $address->email = $data['email'];
-        $address->city = $data['city'];
-        $address->country = $data['country'];
-        $address->phone = $data['phone'];
-        $address->postcode = $data['postcode'];
-        $address->neighbourhood = $data['neighbourhood'];
-        $address->address = $data['address'];
-        $address->save();
-        $client = $this->guzzle::setAuth();
-        $client->updateAddress([
-            'id' => $address->id,
+        $data = array(
             'title' => $data['title'],
             'name' => $data['name'],
             'description' => $data['description'],
@@ -146,7 +123,10 @@ class AddressRepository extends BaseRepository
             'postcode' => $data['postcode'],
             'phone' => $data['phone'],
             'neighbourhood' => $data['neighbourhood'],
-        ]);
+        );
+        $address->update($data);
+        $client = $this->guzzle::setAuth();
+        $client->updateAddress($data);
     }
 
     public function destroyAddress($id)

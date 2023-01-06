@@ -173,8 +173,21 @@
     "t-administration": "الادارة",
     "t-create-new-event": "إنشاء حدث جديد",
     "t-reference": "المرجع",
+    "t-uuid": "معرف فريد",
     "t-tracking_number": "رقم التتبع",
     "t-cities": "المدن",
+    "t-cities-view": "قائمة المدن",
+    "t-city": "المدينة",
+    "t-neighbourhood":"الحي",
+    "t-country":"البلد",
+    "t-postcode":"الرمز البريدي",
     "t-city_en": "المدينة باللغة الإنجليزية",
-    "t-city_ar": "المدينة باللغة العربية"
+    "t-city_ar": "المدينة باللغة العربية",
+    "t-address": "قائمة العناوين",
+    "t-address-view": " قائمة العناوين",
+    "t-address-new": "إنشاء عنوان جديد",
+    "t-address-edit": "تحرير العنوان",
+    "t-address-show": "عرض العنوان",
+    "t-title": "العنوان",
+    "t-phone": "الهاتف"
 }

@@ -39,14 +39,12 @@ class AddressController extends Controller
                                     <input name="_method" type="hidden" value="DELETE">
                             <a class="btn btn-info" href="/address-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-primary" href="/address-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-secondary" href="/address-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>
                             <button type="submit" class="sa-warning btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>';
                 })
                 ->editColumn('reference', function ($row) {
-                    // return 'SPA-'. Str::uuid()->toString();
                })
                ->escapeColumns([])
             ->make(true);

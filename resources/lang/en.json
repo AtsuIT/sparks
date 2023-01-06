@@ -174,11 +174,23 @@
     "t-administration": "Administration",
     "t-create-new-event": "Create New Event",
     "t-reference": "Reference",
+    "t-uuid": "Unique Id",
     "t-tracking_number": "Tracking Number",
     "t-cities": "Cities",
-    "t-city_en": "City EN",
-    "t-city_ar": "City AR"
-
+    "t-cities-view": "List Of Cities",
+    "t-city": "City",
+    "t-neighbourhood":"Neighbourhood",
+    "t-country":"Country",
+    "t-postcode":"Post Code",
+    "t-city_en": "City In English",
+    "t-city_ar": "City In Arabic",
+    "t-address": "Address",
+    "t-address-view": "List Of Address",
+    "t-address-new": "Create New Address",
+    "t-address-edit": "Edit Address",
+    "t-address-show": "Show Address",
+    "t-title": "Title",
+    "t-phone": "Phone"
 
 
 }

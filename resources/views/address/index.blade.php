@@ -20,7 +20,7 @@
 @endif
 
 <div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('create-address') }}" data-key="t-order-new"> Create New Address</a>
+    <a class="btn btn-success" href="{{ route('create-address') }}" data-key="t-address-new"> Create New Address</a>
 </div>
 <table class="table table-bordered table-address">
     <thead>

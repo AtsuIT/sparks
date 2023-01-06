@@ -28,6 +28,7 @@
             <th>{{__('t-no')}}</th>
             <th>{{__('t-tracking_number')}}</th>
             <th>{{__('t-reference')}}</th>
+            <th>{{__('t-uuid')}}</th>
             <th>{{__('t-name')}}</th>
             <th>{{__('t-status')}}</th>
             <th width="280px">{{__('t-action')}}</th>
