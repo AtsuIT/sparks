@@ -22,6 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login/ca', function(){
-    return  GuzzleHttpHelper::shipmentByReference();
+    return  GuzzleHttpHelper::cities();
 
 });

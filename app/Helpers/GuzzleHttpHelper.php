@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\Models\Address;
+
 class GuzzleHttpHelper
 {
     /**
@@ -33,6 +35,28 @@ class GuzzleHttpHelper
     static function address()
     {
         return response()->json(GuzzleHttpHelper::setAuth()->getAddress());
+    }
+
+    static function storeAddress()
+    {
+        $address = GuzzleHttpHelper::setAuth()->getAddress();
+        $data = $address['data']['address'];
+        foreach($data as $key=> $value)
+        {
+            Address::create([
+                'title' => $value['title'],
+                'name' => $value['name'],
+                'description' => $value['description'],
+                'email' => $value['email'],
+                'city' => $value['city'],
+                'country' => $value['country'],
+                'address' => $value['address'],
+                'postcode' => $value['postcode'],
+                'phone' => $value['phone'],
+                'neighbourhood' => $value['neighbourhood'],
+            ]);
+        }
+        return response()->json(['success'=>true]);
     }
 
     static function shipments()
