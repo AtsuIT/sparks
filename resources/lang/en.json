@@ -174,7 +174,11 @@
     "t-administration": "Administration",
     "t-create-new-event": "Create New Event",
     "t-reference": "Reference",
-    "t-tracking_number": "Tracking Number"
+    "t-tracking_number": "Tracking Number",
+    "t-cities": "Cities",
+    "t-city_en": "City EN",
+    "t-city_ar": "City AR"
+
 
 
 }

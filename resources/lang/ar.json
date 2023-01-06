@@ -173,5 +173,8 @@
     "t-administration": "الادارة",
     "t-create-new-event": "إنشاء حدث جديد",
     "t-reference": "المرجع",
-    "t-tracking_number": "رقم التتبع"
+    "t-tracking_number": "رقم التتبع",
+    "t-cities": "المدن",
+    "t-city_en": "المدينة باللغة الإنجليزية",
+    "t-city_ar": "المدينة باللغة العربية"
 }
