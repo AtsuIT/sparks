@@ -52,7 +52,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-shopping-bag"></i>
+                        <i class="bx bx-sitemap"></i>
                         <span class="menu-item" data-key="t-cities">City</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-shopping-bag"></i>
+                        <i class="bx bx-map"></i>
                         <span class="menu-item" data-key="t-address">Address</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
