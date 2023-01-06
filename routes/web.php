@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backOffice\AddressController;
+use App\Http\Controllers\backOffice\CityController;
 use App\Http\Controllers\backOffice\EventController;
 use App\Http\Controllers\backOffice\HomeController;
 use App\Http\Controllers\backOffice\PermissionController;
@@ -103,6 +104,9 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::post('update-address/{id}', [AddressController::class, 'update'])->name('update-address');   
     Route::get('/address', [AddressController::class, 'index'])->name('address'); 
     Route::delete('/address-destroy/{id}', [AddressController::class, 'destroy'])->name('address-destroy');
+
+    //cities
+    Route::get('cities', [CityController::class, 'index'])->name('cities');   
 });
 
 
