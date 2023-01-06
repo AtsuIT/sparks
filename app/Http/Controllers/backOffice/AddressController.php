@@ -29,7 +29,7 @@ class AddressController extends Controller
     {
         if ($request->ajax()) 
         {
-            // $this->addressService->storeAddressByApi();
+            $this->addressService->storeAddressByApi();
             $address = $this->addressService->getAddress();
             return DataTables::of($address)
             ->addColumn('action', function ($row) {

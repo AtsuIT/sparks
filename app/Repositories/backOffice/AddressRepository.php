@@ -4,6 +4,7 @@ namespace App\Repositories\backOffice;
 
 use App\Helpers\GuzzleHttpHelper;
 use App\Models\Address;
+use Illuminate\Support\Facades\DB;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Yajra\DataTables\DataTables;
 
@@ -65,6 +66,7 @@ class AddressRepository extends BaseRepository
         $client = $this->guzzle::setAuth();
         $address = $client->getAddress();
         $data = $address['data']['address'];
+        DB::table('addresses')->truncate();
         foreach($data as $key=> $value)
         {
             Address::create([

@@ -27,7 +27,7 @@ class CityController extends Controller
     {
         if ($request->ajax()) 
         {
-            // $this->cityService->storeCityByApi();
+            $this->cityService->storeCityByApi();
             $cities = $this->cityService->getCity();
             return DataTables::of($cities)
                ->escapeColumns([])

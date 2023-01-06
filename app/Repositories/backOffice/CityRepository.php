@@ -4,6 +4,7 @@ namespace App\Repositories\backOffice;
 
 use App\Helpers\GuzzleHttpHelper;
 use App\Models\City;
+use Illuminate\Support\Facades\DB;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Yajra\DataTables\DataTables;
 
@@ -65,6 +66,7 @@ class CityRepository extends BaseRepository
         $client = $this->guzzle::setAuth();
         $cities = $client->getCityList();
         $data = $cities['data']['cities'];
+        DB::table('cities')->truncate();
         foreach($data as $key=> $value)
         {
             City::create([
