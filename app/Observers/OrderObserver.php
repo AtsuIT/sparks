@@ -3,10 +3,33 @@
 namespace App\Observers;
 
 use App\Models\Order;
-use Illuminate\Support\Str;
 
 class OrderObserver
 {
+    
+    function generateUuid($longueur = 10)
+    {
+        $caracteres = '0123456789';
+        $longueurMax = strlen($caracteres);
+        $chaineAleatoire = 'SP-';
+        for ($i = 0; $i < $longueur; $i++)
+        {
+        $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+        }
+        return $chaineAleatoire;
+    }
+
+    function generateTrackingNumber($longueur = 10)
+    {
+        $caracteres = '0123456789';
+        $longueurMax = strlen($caracteres);
+        $chaineAleatoire = 'AY-';
+        for ($i = 0; $i < $longueur; $i++)
+        {
+        $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+        }
+        return $chaineAleatoire;
+    }
     /**
      * Handle the Order "created" event.
      *
@@ -15,7 +38,8 @@ class OrderObserver
      */
     public function created(Order $order)
     {
-        $order->uuid = 'SPA-'. Str::uuid()->toString();
+        $order->uuid = $this->generateUuid(10);
+        $order->tracking_number = $this->generateTrackingNumber(10);
         $order->save();
     }
 

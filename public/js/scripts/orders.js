@@ -20,6 +20,7 @@ var orders = $('.table-orders').DataTable({
             }},
         {data: 'tracking_number', name: 'tracking_number'},
         {data: 'reference', name: 'reference'},
+        {data: 'uuid', name: 'uuid'},
         {data: 'customer_name', name: 'customer_name'},
         {data: 'status', name: 'status'},
         {data: 'action',

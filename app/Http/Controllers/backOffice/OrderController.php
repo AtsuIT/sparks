@@ -29,24 +29,23 @@ class OrderController extends Controller
     {
         if ($request->ajax()) 
         {
-            // $this->orderService->getOrders();
-            $orders = GuzzleHttpHelper::shipmentByReference();
+            $this->orderService->storeOrderByApi();
+            $orders = $this->orderService->getOrders();
             return DataTables::of($orders)
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
-                return '<form method="POST" action="/orders-destroy/'.$row['tracking_number'].'">
+                return '<form method="POST" action="/orders-destroy/'.$row->id.'">
                                     <input name="_token" type="hidden" value='.$csrf.'>
                                     <input name="_method" type="hidden" value="DELETE">
-                            <a class="btn btn-info" href="/orders-show/'.$row['tracking_number'].'"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-primary" href="/orders-edit/'.$row['tracking_number'].'"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-secondary" href="/orders-timeline/'.$row['tracking_number'].'"><i class="fas fa-business-time"></i></a>
+                            <a class="btn btn-info" href="/orders-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-primary" href="/orders-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-secondary" href="/orders-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>
                             <button type="submit" class="sa-warning btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>';
                 })
-                ->editColumn('reference', function ($row) {
-                    return 'SPA-'. Str::uuid()->toString();
+                ->editColumn('info', function ($row) {
                })
                ->escapeColumns([])
             ->make(true);
