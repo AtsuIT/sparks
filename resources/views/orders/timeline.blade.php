@@ -14,62 +14,31 @@
             <div class="card-body">
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
-                        <div class="timeline-sec timeline-vertical">
+                        <div class="timeline-sec">
                             <div class="wrapper">
                                 <div class="timeline-main">
                                     <div class="timeline-row">
-
-                                        <div class="timeline-box">
-                                            <div class="timeline-date bg-primary border-primary">
-                                                <div class="date text-center">
-                                                    <h3 class="text-white mb-1 font-size-20">{{Carbon\Carbon::parse($order->submission_date)->format('d')}}</h3>
-                                                    <p class="mb-0 d-none d-md-block text-white-50">{{Carbon\Carbon::parse($order->submission_date)->format('M')}}</p>
+                                        @foreach ($order->trackings as $key=>$tracking)
+                                            <div class="timeline-box">
+                                                <div class="timeline-date @if($key==0) bg-primary border-primary @else border @endif">
+                                                    <div class="date text-center">
+                                                        <h3 class="@if($key==0) text-white @endif mb-1 font-size-20">{{Carbon\Carbon::parse($tracking->created_at)->format('d H:i')}}</h3>
+                                                        <p class="mb-0 d-none d-md-block @if($key==0) text-white-50 @else text-muted @endif">{{Carbon\Carbon::parse($tracking->created_at)->format('M')}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-content">
+                                                    <h3 class="font-size-18">{{$tracking->status_code}}</h3>
+                                                    @if (App::getLocale()=="en")
+                                                    <p class="text-muted mb-0 mt-2 pt-1">{{$tracking->description}}.
+                                                    </p>
+                                                    @else
+                                                    <p class="text-muted mb-0 mt-2 pt-1">{{$tracking->description_ar}}.
+                                                    </p>
+                                                    @endif
                                                 </div>
                                             </div>
-                                            <div class="timeline-content">
-                                                <h3 class="font-size-18">{{$order->status}}</h3>
-                                                <p class="text-muted mb-0 mt-2 pt-1">Perspitis unde omnis it voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                                    quae ab illo inventore veritatis et quasi architecto beatae explicabo.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-box">
-                                            <div class="timeline-date border">
-                                                <div class="date text-center">
-                                                    <h3 class="mb-1 font-size-20">{{Carbon\Carbon::parse($order->pickup_date)->format('d')}}</h3>
-                                                    <p class="mb-0 d-none d-md-block text-muted">{{Carbon\Carbon::parse($order->pickup_date)->format('M')}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-content">
-                                                <h3 class="font-size-18">{{$order->status}}</h3>
-                                                <p class="text-muted mb-0 mt-2 pt-1">At vero eos dignissimos ducimus quos dolores chooses to enjoy pleasure that has no annoying.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-box">
-                                            <div class="timeline-date border">
-                                                <div class="date text-center">
-                                                    <h3 class="mb-1 font-size-20">{{Carbon\Carbon::parse($order->received_at)->format('d')}}</h3>
-                                                    <p class="mb-0 d-none d-md-block text-muted">{{Carbon\Carbon::parse($order->received_at)->format('M')}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-content">
-                                                <h3 class="font-size-18">{{$order->status}}</h3>
-                                                <p class="text-muted mb-0 mt-2 pt-1">Vivamus ultrices massa turna interdum eu. Pellentesque habitant morbi tristique eget justo sit amet est varius mollis et quis nisi. Suspendisse potenti. senectus et netus et malesuada fames ac turpis egestas.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-box">
-                                            <div class="timeline-date border">
-                                                <div class="date text-center">
-                                                    <h3 class="mb-1 font-size-20">{{Carbon\Carbon::parse($order->delivery_date)->format('d')}}</h3>
-                                                    <p class="mb-0 d-none d-md-block text-muted">{{Carbon\Carbon::parse($order->delivery_date)->format('M')}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-content">
-                                                <h3 class="font-size-18">{{$order->status}}</h3>
-                                                <p class="text-muted mb-0 mt-2 pt-1">Printing and typesetting industry. been the industry'scrambled type specimen book.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                        
                                         <div class="horizontal-line"></div>
                                         <div class="verticle-line"></div>
                                         <div class="corner top"></div>

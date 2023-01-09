@@ -22,5 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login/ca', function(){
+    return  GuzzleHttpHelper::trackingByReference();
+});
+
+Route::get('/login/list', function(){
     return  GuzzleHttpHelper::shipmentByReference();
 });

@@ -17,4 +17,14 @@ class Order extends Model
         "collection_phone","collection_description","submission_date","pickup_date","received_at","delivery_date",
         "weight","pieces","items_count","status_label","reason_en","reason_ar",	"is_reverse_pickup","is_insured","is_prepaid",	
         "payment_method","order_type","is_cod","declared_value_currency","shipment_company"];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'order_id');
+    }
+
+    public function trackings()
+    {
+        return $this->hasMany(TrackingInfo::class, 'order_id');
+    }
 }

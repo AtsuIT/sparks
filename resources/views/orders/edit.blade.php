@@ -390,9 +390,9 @@
                     <option value="" data-key="choose-status">Choose a status</option>
                     <option value="Delivered"@if($order->status == "Delivered") selected @endif>Delivered</option>
                     <option value="Returned"@if($order->status == "Returned") selected @endif>Returned</option>
+                    <option value="Pickup Delivered"@if($order->status == "Pickup Delivered") selected @endif>Pickup Delivered</option>
                     <option value="Pickup Cancelled"@if($order->status == "Pickup Cancelled") selected @endif>Pickup Cancelled</option>
                     <option value="AWB created at origin"@if($order->status == "AWB created at origin") selected @endif>AWB created at origin</option>
-                    <option value="RP-Delivered"@if($order->status == "RP-Delivered") selected @endif>RP-Delivered</option>
                 </select>
                 @error('status')
                     <span class="invalid-feedback" role="alert">

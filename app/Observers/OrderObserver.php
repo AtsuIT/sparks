@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\TrackingInfo;
 use Carbon\Carbon;
 
 class OrderObserver
@@ -49,6 +50,12 @@ class OrderObserver
             'color' => 'bg-success',
             'order_id' => $order->id,
         ]);
+        TrackingInfo::create([
+            'status_code' => $order->status,
+            'description' => "Shipment is created at collection point",
+            'description_ar' => "تم إصدار بوليصة شحن لدى الشركة الشاحنة لكن لم تستلم من قبل \"أي مكان \"",
+            'order_id' => $order->id,
+        ]);
     }
 
     /**
@@ -59,7 +66,39 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
-        //
+        if ($order->status == "Returned") {
+            TrackingInfo::create([
+                'status_code' => $order->status,
+                'description' => "Shipment is returned to shipper",
+                'description_ar' => "تم إرجاع الشحنة للشاحن",
+                'order_id' => $order->id,
+            ]);
+        }
+        else if ($order->status == "Delivered") {
+            TrackingInfo::create([
+                'status_code' => $order->status,
+                'description' => "Shipment is Delivered to client",
+                'description_ar' => "تم تسليم الشحنة للعميل",
+                'order_id' => $order->id,
+            ]);
+        }
+        else if ($order->status == "Pickup Delivered") {
+            TrackingInfo::create([
+                'status_code' => $order->status,
+                'description' => "Shipment is out for its final destination.",
+                'description_ar' => "الشحنة خارجة للتوصيل للوجة النهائية",
+                'order_id' => $order->id,
+            ]);
+        }
+        else if ($order->status == "Pickup Cancelled") {
+            TrackingInfo::create([
+                'status_code' => $order->status,
+                'description' => "Shipment is pickup cancel by sparks",
+                'description_ar' => "الشركة تلغي الشحنة",
+                'order_id' => $order->id,
+            ]);
+        }
+        
     }
 
     /**

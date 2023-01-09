@@ -380,9 +380,9 @@
                     <option value="" data-key="choose-status">Choose a status</option>
                     <option value="Delivered">Delivered</option>
                     <option value="Returned">Returned</option>
+                    <option value="Pickup Delivered">Pickup Delivered</option>
                     <option value="Pickup Cancelled">Pickup Cancelled</option>
-                    <option value="AWB created at origin">AWB created at origin</option>
-                    <option value="RP-Delivered">RP-Delivered</option>
+                    <option value="AWB created at origin" selected>AWB created at origin</option>
                 </select>
                 @error('status')
                     <span class="invalid-feedback" role="alert">

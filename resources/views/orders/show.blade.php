@@ -271,7 +271,7 @@
                 <option value="Returned"@if($order->status == "Returned") selected @endif>Returned</option>
                 <option value="Pickup Cancelled"@if($order->status == "Pickup Cancelled") selected @endif>Pickup Cancelled</option>
                 <option value="AWB created at origin"@if($order->status == "AWB created at origin") selected @endif>AWB created at origin</option>
-                <option value="RP-Delivered"@if($order->status == "RP-Delivered") selected @endif>RP-Delivered</option>
+                <option value="Pickup Delivered"@if($order->status == "Pickup Delivered") selected @endif>Pickup Delivered</option>
             </select>
         </div>
     </div><!-- end col -->

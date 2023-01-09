@@ -212,7 +212,7 @@ class OrderRepository extends BaseRepository
 
     public function findOrder($id)
     {
-        return Order::findOrFail($id);
+        return Order::where('id',$id)->with('trackings','events')->first();
     }
 
     public function updateOrder($data, $id)
