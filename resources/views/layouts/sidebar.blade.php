@@ -33,14 +33,14 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu">Menu</li>
+                {{-- <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
                     <a href="{{route('home')}}">
                         <i class="bx bx-home-circle nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="menu-title" data-key="t-applications">Applications</li>
 
@@ -53,30 +53,64 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-sitemap"></i>
-                        <span class="menu-item" data-key="t-cities">City</span>
+                        <span class="menu-item" data-key="aymakan-section">Aymakan Section</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('cities')}}" data-key="t-cities-view">List City</a></li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-sitemap"></i>
+                                <span class="menu-item" data-key="t-cities">City</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('cities')}}" data-key="t-cities-view">List City</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-map"></i>
+                                <span class="menu-item" data-key="t-address">Address</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('address-aymakan')}}" data-key="t-address-view">List Address</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-shopping-bag"></i>
+                                <span class="menu-item" data-key="t-orders">Orders</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('orders-aymakan')}}" data-key="t-orders-view">List Orders</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-map"></i>
-                        <span class="menu-item" data-key="t-address">Address</span>
+                        <i class="bx bx-sitemap"></i>
+                        <span class="menu-item" data-key="sparks-section">Sparks Section</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('address')}}" data-key="t-address-view">List Address</a></li>
-                        <li><a href="{{route('create-address')}}" data-key="t-address-new">Create Address</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-shopping-bag"></i>
-                        <span class="menu-item" data-key="t-orders">Orders</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('orders')}}" data-key="t-orders-view">List Orders</a></li>
-                        <li><a href="{{route('create-orders')}}" data-key="t-order-new">Create Order</a></li>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-map"></i>
+                                <span class="menu-item" data-key="t-address">Address</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('address-sparks')}}" data-key="t-address-view">List Address</a></li>
+                                <li><a href="{{route('create-address')}}" data-key="t-address-new">Create Address</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-shopping-bag"></i>
+                                <span class="menu-item" data-key="t-orders">Orders</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('orders-sparks')}}" data-key="t-orders-view">List Orders</a></li>
+                                <li><a href="{{route('create-orders')}}" data-key="t-order-new">Create Order</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 {{-- <li>

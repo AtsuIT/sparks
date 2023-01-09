@@ -10,7 +10,7 @@
 var address = $('.table-address').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "/address",
+    ajax: "/address-sparks",
     columns: [
         {data: null,
             searchable: false,

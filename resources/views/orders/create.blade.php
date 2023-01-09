@@ -43,9 +43,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
-                <label class="form-label" for="formrow-cod_amount-input">Code Amount</label>
-                <input type="text" class="form-control @error('cod_amount') is-invalid @enderror" required name="cod_amount" id="formrow-cod_amount-input" placeholder="Enter Code Amount">
-                @error('cod_amount')
+                <label class="form-label" for="formrow-declared_value-input">Declared Value</label>
+                <input type="text" class="form-control @error('declared_value') is-invalid @enderror" required name="declared_value" id="formrow-declared_value-input" placeholder="Enter Declared Value">
+                @error('declared_value')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -54,9 +54,27 @@
         </div><!-- end col -->
         <div class="col-md-6">
             <div class="mb-3">
-                <label class="form-label" for="formrow-declared_value-input">Declared Value</label>
-                <input type="text" class="form-control @error('declared_value') is-invalid @enderror" required name="declared_value" id="formrow-declared_value-input" placeholder="Enter Declared Value">
-                @error('declared_value')
+                <label class="form-label" for="formrow-declared_value_currency-input">Declared Value Currency</label>
+                <input type="text" class="form-control" name="declared_value_currency" value="SAR" id="formrow-declared_value_currency-input" placeholder="Enter Declared Value Currency">
+            </div>
+        </div><!-- end col -->
+    </div><!-- end row -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label" for="formrow-is_cod-input">Is Cod</label>
+                <select id="formrow-is_cod-input" class="form-select" name="is_cod">
+                    <option value="" data-key="choose-is_cod">Choose is_cod</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
+        </div><!-- end col -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label" for="formrow-cod_amount-input">Code Amount</label>
+                <input type="text" class="form-control @error('cod_amount') is-invalid @enderror" name="cod_amount" id="formrow-cod_amount-input" placeholder="Enter Code Amount">
+                @error('cod_amount')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -68,12 +86,7 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-currency-input">Currency</label>
-                <input type="text" class="form-control @error('currency') is-invalid @enderror" required name="currency" id="formrow-currency-input" placeholder="Enter Currency">
-                @error('currency')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="text" class="form-control" value="SAR" name="currency" id="formrow-currency-input" placeholder="Enter Currency">
             </div>
         </div><!-- end col -->
         <div class="col-md-6">
@@ -103,7 +116,15 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-delivery_city-input">Delivery City</label>
-                <input type="text" class="form-control @error('delivery_city') is-invalid @enderror" required name="delivery_city" id="formrow-delivery_city-input" placeholder="Enter Delivery City">
+                <select id="formrow-delivery_city-input" class="form-select @error('delivery_city') is-invalid @enderror" required name="delivery_city">
+                    <option value="" data-key="choose-delivery_city">Choose Delivery City</option>
+                    @foreach ($cities as $city)
+                        @php
+                            $lang = 'city_'.App::getLocale();
+                        @endphp
+                            <option value="{{$city->city_en}}">{{$city->$lang}}</option>
+                    @endforeach
+                </select>
                 @error('delivery_city')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -146,7 +167,7 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-delivery_country-input">Delivery Country</label>
-                <input type="text" class="form-control @error('delivery_country') is-invalid @enderror" required name="delivery_country" id="formrow-delivery_country-input" placeholder="Enter Delivery Country">
+                <input type="text" class="form-control @error('delivery_country') is-invalid @enderror" required value="SA" name="delivery_country" id="formrow-delivery_country-input" placeholder="Enter Delivery Country">
                 @error('delivery_country')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -202,7 +223,15 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-collection_city-input">Collection City</label>
-                <input type="text" class="form-control @error('collection_city') is-invalid @enderror" required name="collection_city" id="formrow-collection_city-input" placeholder="Enter Collection City">
+                <select id="formrow-collection_city-input" class="form-select @error('collection_city') is-invalid @enderror" required name="collection_city">
+                    <option value="" data-key="choose-collection_city">Choose Collection City</option>
+                    @foreach ($cities as $city)
+                        @php
+                            $lang = 'city_'.App::getLocale();
+                        @endphp
+                            <option value="{{$city->city_en}}">{{$city->$lang}}</option>
+                    @endforeach
+                </select>
                 @error('collection_city')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -232,7 +261,7 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-collection_country-input">Collection Country</label>
-                <input type="text" class="form-control @error('collection_country') is-invalid @enderror" required name="collection_country" id="formrow-collection_country-input" placeholder="Enter Collection Country">
+                <input type="text" class="form-control @error('collection_country') is-invalid @enderror" required value="SA" name="collection_country" id="formrow-collection_country-input" placeholder="Enter Collection Country">
                 @error('collection_country')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -323,7 +352,7 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-pieces-input">Pieces</label>
-                <input type="text" class="form-control @error('pieces') is-invalid @enderror" required name="pieces" id="formrow-pieces-input" placeholder="Enter Pieces">
+                <input type="number" class="form-control @error('pieces') is-invalid @enderror" required name="pieces" id="formrow-pieces-input" placeholder="Enter Pieces">
                 @error('pieces')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -336,7 +365,7 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-items_count-input">Items Count</label>
-                <input type="text" class="form-control @error('items_count') is-invalid @enderror" required name="items_count" id="formrow-items_count-input" placeholder="Enter Items Count">
+                <input type="number" class="form-control @error('items_count') is-invalid @enderror" required name="items_count" id="formrow-items_count-input" placeholder="Enter Items Count">
                 @error('items_count')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -351,9 +380,9 @@
                     <option value="" data-key="choose-status">Choose a status</option>
                     <option value="Delivered">Delivered</option>
                     <option value="Returned">Returned</option>
+                    <option value="Pickup Delivered">Pickup Delivered</option>
                     <option value="Pickup Cancelled">Pickup Cancelled</option>
-                    <option value="AWB created at origin">AWB created at origin</option>
-                    <option value="RP-Delivered">RP-Delivered</option>
+                    <option value="AWB created at origin" selected>AWB created at origin</option>
                 </select>
                 @error('status')
                     <span class="invalid-feedback" role="alert">
@@ -363,81 +392,41 @@
             </div>
         </div><!-- end col -->
     </div><!-- end row -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label" for="formrow-status_label-input">Status Label</label>
-                <select id="formrow-status_label-input" class="form-select @error('status_label') is-invalid @enderror" required name="status_label">
-                    <option value="" data-key="choose-status_label">Choose a status_label</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Returned">Returned</option>
-                    <option value="Pickup Cancelled">Pickup Cancelled</option>
-                    <option value="AWB created at origin">AWB created at origin</option>
-                    <option value="RP-Delivered">RP-Delivered</option>
-                </select>
-                @error('status_label')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div><!-- end col -->
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label" for="formrow-reason_en-input">Reason En</label>
-                <input type="text" class="form-control" name="reason_en" id="formrow-reason_en-input" placeholder="Enter Reason En">
-            </div>
-        </div><!-- end col -->
-    </div><!-- end row -->
-    <div class="row">   
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label" for="formrow-reason_ar-input">Reason Ar</label>
-                <input type="text" class="form-control" name="reason_ar" id="formrow-reason_ar-input" placeholder="Enter Reason Ar">
-            </div>
-        </div><!-- end col -->
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label" for="formrow-is_reverse_pickup-input">is_reverse_pickup</label>
-                <input type="text" class="form-control @error('is_reverse_pickup') is-invalid @enderror" required name="is_reverse_pickup" id="formrow-is_reverse_pickup-input" placeholder="Enter is_reverse_pickup">
-                @error('is_reverse_pickup')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div><!-- end col -->
-    </div><!-- end row -->
+
     <div class="row"> 
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-is_insured-input">is_insured</label>
-                <input type="text" class="form-control @error('is_insured') is-invalid @enderror" required name="is_insured" id="formrow-is_insured-input" placeholder="Enter is_insured">
-                @error('is_insured')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <select id="formrow-is_insured-input" class="form-select" name="is_insured">
+                    <option value="" data-key="choose-is_insured">Choose is_insured</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
             </div>
         </div><!-- end col -->
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label" for="formrow-is_prepaid-input">is_prepaid</label>
-                <input type="text" class="form-control @error('is_prepaid') is-invalid @enderror" required name="is_prepaid" id="formrow-is_prepaid-input" placeholder="Enter is_prepaid">
-                @error('is_prepaid')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div><!-- end col -->
-    </div><!-- end row -->
-    <div class="row">   
+
         <div class="col-md-6">
             <div class="mb-3">
                 <label class="form-label" for="formrow-payment_method-input">Payment Method</label>
                 <input type="text" class="form-control @error('payment_method') is-invalid @enderror" required name="payment_method" id="formrow-payment_method-input" placeholder="Enter Payment Method">
                 @error('payment_method')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div><!-- end col -->
+    </div><!-- end row -->
+    <div class="row">   
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label" for="formrow-shipment_company-input">Shipment Company</label>
+                <select id="formrow-shipment_company-input" class="form-select @error('shipment_company') is-invalid @enderror" required name="shipment_company">
+                    <option value="" data-key="choose-shipment_company">Choose a Shipment Company</option>
+                    <option value="Ali Express">Ali Express</option>
+                    <option value="Aramex">Aramex</option>
+                </select>
+                @error('shipment_company')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

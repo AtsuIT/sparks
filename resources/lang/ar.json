@@ -173,7 +173,7 @@
     "t-administration": "الادارة",
     "t-create-new-event": "إنشاء حدث جديد",
     "t-reference": "المرجع",
-    "t-uuid": "معرف فريد",
+    "t-uuid": "معرف سباركس",
     "t-tracking_number": "رقم التتبع",
     "t-cities": "المدن",
     "t-cities-view": "قائمة المدن",
@@ -189,5 +189,7 @@
     "t-address-edit": "تحرير العنوان",
     "t-address-show": "عرض العنوان",
     "t-title": "العنوان",
-    "t-phone": "الهاتف"
+    "t-phone": "الهاتف",
+    "aymakan-section":"قسم أيماكان",
+    "sparks-section":"قسم سباركس"
 }

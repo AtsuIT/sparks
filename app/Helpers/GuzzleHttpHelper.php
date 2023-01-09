@@ -96,6 +96,13 @@ class GuzzleHttpHelper
         return response()->json($response);
     }
 
+    static function trackingByReference()
+    {
+        $client = GuzzleHttpHelper::setAuth();
+        $response = $client->shipmentByReference(['17744382']);
+        return response()->json($response);
+    }
+
     static function cancelShipment()
     {
         $client = GuzzleHttpHelper::setAuth();
@@ -107,13 +114,6 @@ class GuzzleHttpHelper
     {
         $client = GuzzleHttpHelper::setAuth();
         $response = $client->cancelShipmentByReference(["17744382"]);
-        return response()->json($response);
-    }
-
-    static function trackingByReference()
-    {
-        $client = GuzzleHttpHelper::setAuth();
-        $response = $client->shipmentByReference(['17744382']);
         return response()->json($response);
     }
 

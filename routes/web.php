@@ -61,7 +61,6 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::get('roles-show/{id}', [RoleController::class, 'show'])->name('show-roles');   
     Route::post('store-roles', [RoleController::class, 'store'])->name('store-roles'); 
     Route::post('update-roles/{id}', [RoleController::class, 'update'])->name('update-roles');   
-    Route::get('/roles', [RoleController::class, 'index'])->name('roles'); 
     Route::delete('/roles-destroy/{id}', [RoleController::class, 'destroy'])->name('roles-destroy');
     
     //permissions
@@ -71,18 +70,17 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::get('permissions-show/{id}', [PermissionController::class, 'show'])->name('show-permissions');   
     Route::post('store-permissions', [PermissionController::class, 'store'])->name('store-permissions'); 
     Route::post('update-permissions/{id}', [PermissionController::class, 'update'])->name('update-permissions');   
-    Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions'); 
     Route::delete('/permissions-destroy/{id}', [PermissionController::class, 'destroy'])->name('permissions-destroy');
 
     //orders
-    Route::get('orders', [OrderController::class, 'index'])->name('orders');   
+    Route::get('orders-aymakan', [OrderController::class, 'indexAymakan'])->name('orders-aymakan');
+    Route::get('orders-sparks', [OrderController::class, 'indexSparks'])->name('orders-sparks');   
     Route::get('orders-create', [OrderController::class, 'create'])->name('create-orders'); 
     Route::get('orders-edit/{id}', [OrderController::class, 'edit'])->name('edit-orders'); 
     Route::get('orders-show/{id}', [OrderController::class, 'show'])->name('show-orders');
     Route::get('orders-timeline/{id}', [OrderController::class, 'timeline'])->name('timeline-orders');   
     Route::post('store-orders', [OrderController::class, 'store'])->name('store-orders'); 
     Route::post('update-orders/{id}', [OrderController::class, 'update'])->name('update-orders');   
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders'); 
     Route::delete('/orders-destroy/{id}', [OrderController::class, 'destroy'])->name('orders-destroy');
 
     //events
@@ -92,17 +90,16 @@ Route::group(['middleware' => ['auth','language']], function () {
     Route::get('events-show/{id}', [EventController::class, 'show'])->name('show-events');   
     Route::post('store-events', [EventController::class, 'store'])->name('store-events'); 
     Route::post('update-events/{id}', [EventController::class, 'update'])->name('update-events');   
-    Route::get('/events', [EventController::class, 'index'])->name('events'); 
     Route::delete('/events-destroy/{id}', [EventController::class, 'destroy'])->name('events-destroy');
 
     //address
-    Route::get('address', [AddressController::class, 'index'])->name('address');   
+    Route::get('address-aymakan', [AddressController::class, 'indexAymakan'])->name('address-aymakan');
+    Route::get('address-sparks', [AddressController::class, 'indexSparks'])->name('address-sparks');   
     Route::get('address-create', [AddressController::class, 'create'])->name('create-address'); 
     Route::get('address-edit/{id}', [AddressController::class, 'edit'])->name('edit-address'); 
     Route::get('address-show/{id}', [AddressController::class, 'show'])->name('show-address');   
     Route::post('store-address', [AddressController::class, 'store'])->name('store-address'); 
     Route::post('update-address/{id}', [AddressController::class, 'update'])->name('update-address');   
-    Route::get('/address', [AddressController::class, 'index'])->name('address'); 
     Route::delete('/address-destroy/{id}', [AddressController::class, 'destroy'])->name('address-destroy');
 
     //cities

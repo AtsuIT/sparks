@@ -80,6 +80,7 @@ class AddressRepository extends BaseRepository
                 'postcode' => $value['postcode'],
                 'phone' => $value['phone'],
                 'neighbourhood' => $value['neighbourhood'],
+                'address_type' => 'aymakan',
             ]);
         }
         return response()->json(['success'=>true]);
@@ -98,10 +99,11 @@ class AddressRepository extends BaseRepository
             'postcode' => $data['postcode'],
             'phone' => $data['phone'],
             'neighbourhood' => $data['neighbourhood'],
+            'address_type' => 'sparks',
         );
         Address::create($data);
-        $client = $this->guzzle::setAuth();
-        $client->createAddress($data);
+        // $client = $this->guzzle::setAuth();
+        // $client->createAddress($data);
     }
 
     public function findAddress($id)
@@ -125,17 +127,17 @@ class AddressRepository extends BaseRepository
             'neighbourhood' => $data['neighbourhood'],
         );
         $address->update($data);
-        $client = $this->guzzle::setAuth();
-        $client->updateAddress($data);
+        // $client = $this->guzzle::setAuth();
+        // $client->updateAddress($data);
     }
 
     public function destroyAddress($id)
     {
         $address = $this->findAddress($id);
         $client = $this->guzzle::setAuth();
-        $client->deleteAddress([
-            'id' => $address->id
-        ]);
+        // $client->deleteAddress([
+        //     'id' => $address->id
+        // ]);
         $address->delete();
     }
 }
