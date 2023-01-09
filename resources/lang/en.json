@@ -174,7 +174,7 @@
     "t-administration": "Administration",
     "t-create-new-event": "Create New Event",
     "t-reference": "Reference",
-    "t-uuid": "Unique Id",
+    "t-uuid": "Sparks ID",
     "t-tracking_number": "Tracking Number",
     "t-cities": "Cities",
     "t-cities-view": "List Of Cities",
@@ -190,7 +190,8 @@
     "t-address-edit": "Edit Address",
     "t-address-show": "Show Address",
     "t-title": "Title",
-    "t-phone": "Phone"
-
+    "t-phone": "Phone",
+    "aymakan-section":"Aymakan Section",
+    "sparks-section":"Sparks Section"
 
 }

@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
+            <div class="dropdown d-inline-block d-none">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell icon-sm"></i>
@@ -188,7 +188,7 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
+            <div class="dropdown d-inline-block d-none">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
                     <i class="bx bx-cog icon-sm"></i>
                 </button>
@@ -216,7 +216,7 @@
                         <i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> 
                         <span class="align-middle">Settings</span>
                     </a>
-                    <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
+                    {{-- <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> --}}
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                         @csrf
                         <button type="submit" class="dropdown-item" href="auth-signout-cover"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></button>

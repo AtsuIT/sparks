@@ -1,6 +1,6 @@
 (function ($, DataTable) {
     $.extend(true, DataTable.defaults, {
-        pageLength : 5,
+        pageLength : 20,
         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']],
         language: {
             url : '/dataTables/lang/'+lang+'.json'
@@ -10,7 +10,7 @@
 var orders = $('.table-orders').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "/orders",
+    ajax: "/orders-sparks",
     columns: [
         {data: null,
             searchable: false,
@@ -18,7 +18,6 @@ var orders = $('.table-orders').DataTable({
             "render": function (data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             }},
-        {data: 'tracking_number', name: 'tracking_number'},
         {data: 'reference', name: 'reference'},
         {data: 'uuid', name: 'uuid'},
         {data: 'customer_name', name: 'customer_name'},

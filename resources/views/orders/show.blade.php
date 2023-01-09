@@ -33,14 +33,33 @@
 <div class="row">
     <div class="col-md-6">
         <div class="mb-3">
-            <label class="form-label" for="formrow-cod_amount-input">Code Amount</label>
-            <input type="text" class="form-control" value="{{$order->cod_amount}}" disabled name="cod_amount" id="formrow-cod_amount-input" placeholder="Enter Code Amount">
+            <label class="form-label" for="formrow-declared_value-input">Declared Value</label>
+            <input type="text" class="form-control" value="{{$order->declared_value}}" disabled name="declared_value" id="formrow-declared_value-input" placeholder="Enter Declared Value">
         </div>
     </div><!-- end col -->
     <div class="col-md-6">
         <div class="mb-3">
-            <label class="form-label" for="formrow-declared_value-input">Declared Value</label>
-            <input type="text" class="form-control" value="{{$order->declared_value}}" disabled name="declared_value" id="formrow-declared_value-input" placeholder="Enter Declared Value">
+            <label class="form-label" for="formrow-declared_value_currency-input">Declared Value Currency</label>
+            <input type="text" class="form-control" name="declared_value_currency" disabled value="{{$order->declared_value_currency}}" id="formrow-declared_value_currency-input" placeholder="Enter Declared Value Currency">
+        </div>
+    </div><!-- end col -->
+    
+</div><!-- end row -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label" for="formrow-is_cod-input">Is Cod</label>
+            <select id="formrow-is_cod-input" disabled class="form-select" name="is_cod">
+                <option value="" data-key="choose-is_cod">Choose is_cod</option>
+                <option value="0"@if($order->shipment_company == "0") selected @endif>0</option>
+                <option value="1"@if($order->shipment_company == "1") selected @endif>1</option>
+            </select>
+        </div>
+    </div><!-- end col -->
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label" for="formrow-cod_amount-input">Code Amount</label>
+            <input type="text" class="form-control" value="{{$order->cod_amount}}" disabled name="cod_amount" id="formrow-cod_amount-input" placeholder="Enter Code Amount">
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
@@ -68,7 +87,15 @@
     <div class="col-md-6">
         <div class="mb-3">
             <label class="form-label" for="formrow-delivery_city-input">Delivery City</label>
-            <input type="text" class="form-control" value="{{$order->delivery_city}}" disabled name="delivery_city" id="formrow-delivery_city-input" placeholder="Enter Delivery City">
+            <select id="formrow-delivery_city-input" class="form-select" disabled name="delivery_city">
+                <option value="" data-key="choose-delivery_city">Choose Delivery City</option>
+                @foreach ($cities as $city)
+                    @php
+                        $lang = 'city_'.App::getLocale();
+                    @endphp
+                        <option value="{{$city->city_en}}"@if($city->city_en == $order->delivery_city) selected @endif>{{$city->$lang}}</option>
+                @endforeach
+            </select>
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
@@ -132,7 +159,15 @@
     <div class="col-md-6">
         <div class="mb-3">
             <label class="form-label" for="formrow-collection_city-input">Collection City</label>
-            <input type="text" class="form-control" value="{{$order->collection_city}}" disabled name="collection_city" id="formrow-collection_city-input" placeholder="Enter Collection City">
+            <select id="formrow-collection_city-input" class="form-select" disabled name="collection_city">
+                <option value="" data-key="choose-collection_city">Choose Delivery City</option>
+                @foreach ($cities as $city)
+                    @php
+                        $lang = 'city_'.App::getLocale();
+                    @endphp
+                        <option value="{{$city->city_en}}"@if($city->city_en == $order->collection_city) selected @endif>{{$city->$lang}}</option>
+                @endforeach
+            </select>
         </div>
     </div><!-- end col -->
     <div class="col-md-6">
@@ -241,56 +276,17 @@
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
-<div class="row">
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label class="form-label" for="formrow-status_label-input">Status Label</label>
-            <select id="formrow-status_label-input" class="form-select" disabled name="status_label">
-                <option value="" data-key="choose-status_label">Choose a status_label</option>
-                <option value="Delivered"@if($order->status_label == "Delivered") selected @endif>Delivered</option>
-                <option value="Returned"@if($order->status_label == "Returned") selected @endif>Returned</option>
-                <option value="Pickup Cancelled"@if($order->status_label == "Pickup Cancelled") selected @endif>Pickup Cancelled</option>
-                <option value="AWB created at origin"@if($order->status_label == "AWB created at origin") selected @endif>AWB created at origin</option>
-                <option value="RP-Delivered"@if($order->status_label == "RP-Delivered") selected @endif>RP-Delivered</option>
-            </select>
-        </div>
-    </div><!-- end col -->
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label class="form-label" for="formrow-reason_en-input">Reason En</label>
-            <input type="text" class="form-control" value="{{$order->reason_en}}" disabled name="reason_en" id="formrow-reason_en-input" placeholder="Enter Reason En">
-        </div>
-    </div><!-- end col -->
-</div><!-- end row -->
-<div class="row">   
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label class="form-label" for="formrow-reason_ar-input">Reason Ar</label>
-            <input type="text" class="form-control" value="{{$order->reason_ar}}" disabled name="reason_ar" id="formrow-reason_ar-input" placeholder="Enter Reason Ar">
-        </div>
-    </div><!-- end col -->
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label class="form-label" for="formrow-is_reverse_pickup-input">is_reverse_pickup</label>
-            <input type="text" class="form-control" value="{{$order->is_reverse_pickup}}" disabled name="is_reverse_pickup" id="formrow-is_reverse_pickup-input" placeholder="Enter is_reverse_pickup">
-        </div>
-    </div><!-- end col -->
-</div><!-- end row -->
 <div class="row"> 
     <div class="col-md-6">
         <div class="mb-3">
             <label class="form-label" for="formrow-is_insured-input">is_insured</label>
-            <input type="text" class="form-control" value="{{$order->is_insured}}" disabled name="is_insured" id="formrow-is_insured-input" placeholder="Enter is_insured">
+            <select disabled id="formrow-is_insured-input" class="form-select" name="is_insured">
+                <option value="" data-key="choose-is_insured">Choose is_insured</option>
+                <option value="0"@if($order->is_insured == "0") selected @endif>0</option>
+                <option value="1"@if($order->is_insured == "1") selected @endif>1</option>
+            </select>
         </div>
     </div><!-- end col -->
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label class="form-label" for="formrow-is_prepaid-input">is_prepaid</label>
-            <input type="text" class="form-control" value="{{$order->is_prepaid}}" disabled name="is_prepaid" id="formrow-is_prepaid-input" placeholder="Enter is_prepaid">
-        </div>
-    </div><!-- end col -->
-</div><!-- end row -->
-<div class="row">   
     <div class="col-md-6">
         <div class="mb-3">
             <label class="form-label" for="formrow-payment_method-input">Payment Method</label>
@@ -298,9 +294,20 @@
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
-
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <a href="{{route('orders')}}" class="btn btn-primary" data-key="t-back-home">Back</a>
+<div class="row">   
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label" for="formrow-shipment_company-input">Shipment Company</label>
+            <select disabled id="formrow-shipment_company-input" class="form-select" name="shipment_company">
+                <option value="" data-key="choose-shipment_company">Choose a Shipment Company</option>
+                <option value="Ali Express"@if($order->shipment_company == "Ali Express") selected @endif>Ali Express</option>
+                <option value="Aramex"@if($order->shipment_company == "Aramex") selected @endif>Aramex</option>
+            </select>
+        </div>
+    </div><!-- end col -->
+</div><!-- end row -->
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <a href="{{route('orders-sparks')}}" class="btn btn-primary" data-key="t-back-home">Back</a>
     </div>
 
 @endsection

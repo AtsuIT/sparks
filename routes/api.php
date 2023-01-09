@@ -22,6 +22,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login/ca', function(){
-    return  GuzzleHttpHelper::cancelShipmentByReference();
-
+    return  GuzzleHttpHelper::shipmentByReference();
 });

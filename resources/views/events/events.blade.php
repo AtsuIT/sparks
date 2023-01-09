@@ -96,7 +96,7 @@
                                         <select class="form-select shadow-none" name="order_id" id="order_id" required>
                                             <option value="" selected> --Select-- </option>
                                             @foreach ($orders as $order)
-                                                <option value="{{$order->id}}">{{$order->name}}</option>
+                                                <option value="{{$order->id}}">{{$order->customer_name}}</option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">Please select a valid order</div>

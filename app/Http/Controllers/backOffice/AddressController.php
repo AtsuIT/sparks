@@ -25,13 +25,27 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function indexAymakan(Request $request)
     {
-        if ($request->ajax()) 
+        if ($request->ajax())
         {
-            $this->addressService->storeAddressByApi();
             $address = $this->addressService->getAddress();
-            return DataTables::of($address)
+            if(is_null($address))
+            {
+                $this->addressService->storeAddressByApi();
+            };
+            return DataTables::of($address->where('address_type','aymakan'))
+            ->make(true);
+        }
+        return view('address.index-aymakan');
+    }
+
+    public function indexSparks(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $address = $this->addressService->getAddress();
+            return DataTables::of($address->where('address_type','!=','aymakan'))
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
                 return '<form method="POST" action="/address-destroy/'.$row->id.'">
@@ -49,7 +63,7 @@ class AddressController extends Controller
                ->escapeColumns([])
             ->make(true);
         }
-        return view('address.index');
+        return view('address.index-sparks');
     }
 
     /**

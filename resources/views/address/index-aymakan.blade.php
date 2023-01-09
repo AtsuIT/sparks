@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title'){{__('t-orders')}} @endsection
+@section('title'){{__('t-address')}} @endsection
 @section('css')
 
 @endsection
@@ -9,7 +9,7 @@
 @section('breadcrumb')
 @component('components.breadcrumb')
 @slot('li_1') {{__('t-dashboard')}} @endslot
-@slot('title'){{__('t-orders')}} @endslot
+@slot('title'){{__('t-address')}} @endslot
 @endcomponent
 @endsection
 @if ($message = Session::get('success'))
@@ -19,19 +19,14 @@
 </div>
 @endif
 
-<div class="pull-right mb-2">
-    <a class="btn btn-success" href="{{ route('create-orders') }}" data-key="t-order-new"> Create New Order</a>
-</div>
-<table class="table table-bordered table-orders">
+<table class="table table-bordered table-address">
     <thead>
         <tr>
             <th>{{__('t-no')}}</th>
-            <th>{{__('t-tracking_number')}}</th>
-            <th>{{__('t-reference')}}</th>
-            <th>{{__('t-uuid')}}</th>
+            <th>{{__('t-title')}}</th>
             <th>{{__('t-name')}}</th>
-            <th>{{__('t-status')}}</th>
-            <th width="280px">{{__('t-action')}}</th>
+            <th>{{__('t-email')}}</th>
+            <th>{{__('t-phone')}}</th>
         </tr>
     </thead>
     <tbody>
@@ -42,6 +37,6 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
-<script src="{{ URL::asset('js/scripts/orders.js') }}"></script>
+<script src="{{ URL::asset('js/scripts/address-aymakan.js') }}"></script>
 
 @endsection

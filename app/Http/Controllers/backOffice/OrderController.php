@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Models\City;
 use App\Services\backOffice\OrderService;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
@@ -25,13 +26,28 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function indexAymakan(Request $request)
     {
         if ($request->ajax()) 
         {
-            $this->orderService->storeOrderByApi();
             $orders = $this->orderService->getOrders();
-            return DataTables::of($orders)
+            if(is_null($orders))
+            {
+                $this->orderService->storeOrderByApi();
+            };
+            return DataTables::of($orders->where('order_type','aymakan'))
+            ->escapeColumns([])
+            ->make(true);
+        }
+        return view('orders.index-aymakan');
+    }
+
+    public function indexSparks(Request $request)
+    {
+        if ($request->ajax()) 
+        {
+            $orders = $this->orderService->getOrders();
+            return DataTables::of($orders->where('order_type','!=','aymakan'))
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
                 return '<form method="POST" action="/orders-destroy/'.$row->id.'">
@@ -46,11 +62,11 @@ class OrderController extends Controller
                         </form>';
                 })
                 ->editColumn('info', function ($row) {
-               })
-               ->escapeColumns([])
+                })
+                ->escapeColumns([])
             ->make(true);
         }
-        return view('orders.index');
+        return view('orders.index-sparks');
     }
 
     /**
@@ -60,7 +76,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        $cities = City::all();
+        return view('orders.create',['cities'=>$cities]);
     }
 
     /**
@@ -72,7 +89,7 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
         $this->orderService->storeOrder($request);
-        return redirect()->route('orders')->with('success','Order created successfully');
+        return redirect()->route('orders-sparks')->with('success','Order created successfully');
     }
 
     /**
@@ -84,7 +101,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = $this->orderService->findOrder($id);
-        return view('orders.show',compact('order'));
+        $cities = City::all();
+        return view('orders.show',compact('order','cities'));
     }
 
     /**
@@ -96,7 +114,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = $this->orderService->findOrder($id);
-        return view('orders.edit',compact('order'));
+        $cities = City::all();
+        return view('orders.edit',compact('order','cities'));
     }
 
     /**
@@ -109,7 +128,7 @@ class OrderController extends Controller
     public function update(OrderRequest $request, $id)
     {
         $this->orderService->updateOrder($request, $id);
-        return redirect()->route('orders')->with('success','Order updated successfully');
+        return redirect()->route('orders-sparks')->with('success','Order updated successfully');
     }
 
     /**
@@ -121,7 +140,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->orderService->destroyOrder($id);
-        return redirect()->route('orders')->with('success','Order deleted successfully');
+        return redirect()->route('orders-sparks')->with('success','Order deleted successfully');
 
     }
     public function timeline($id)

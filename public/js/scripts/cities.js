@@ -1,6 +1,6 @@
 (function ($, DataTable) {
     $.extend(true, DataTable.defaults, {
-        pageLength : 5,
+        pageLength : 20,
         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']],
         language: {
             url : '/dataTables/lang/'+lang+'.json'
