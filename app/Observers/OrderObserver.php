@@ -2,10 +2,12 @@
 
 namespace App\Observers;
 
+use App\Mail\OrderMail;
 use App\Models\Event;
 use App\Models\Order;
 use App\Models\TrackingInfo;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class OrderObserver
 {
@@ -44,16 +46,11 @@ class OrderObserver
         $order->uuid = $this->generateUuid(10);
         // $order->tracking_number = $this->generateTrackingNumber(10);
         $order->save();
+        Mail::to($order->delivery_email)->send(new OrderMail($order));
         Event::create([
             'name' => $order->customer_name,
             'start_date' => Carbon::parse($order->submission_date)->format('Y-m-d'),
             'color' => 'bg-success',
-            'order_id' => $order->id,
-        ]);
-        TrackingInfo::create([
-            'status_code' => $order->status,
-            'description' => "Shipment is created at collection point",
-            'description_ar' => "تم إصدار بوليصة شحن لدى الشركة الشاحنة لكن لم تستلم من قبل \"أي مكان \"",
             'order_id' => $order->id,
         ]);
     }

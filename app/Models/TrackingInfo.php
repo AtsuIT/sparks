@@ -9,7 +9,7 @@ class TrackingInfo extends Model
 {
     use HasFactory;
 
-    protected $fillable=["status_code",	"description",	"description_ar", "order_id"];
+    protected $fillable=["status_code",	"description",	"description_ar", "order_id", "created_at"];
 
     public function order()
     {

@@ -3,10 +3,10 @@
 namespace App\Repositories\backOffice;
 
 use App\Helpers\GuzzleHttpHelper;
-use App\Mail\OrderMail;
 use App\Mail\OrderMailStatusUpdated;
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\TrackingInfo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
@@ -62,18 +62,20 @@ class OrderRepository extends BaseRepository
 
     public function getOrders()
     {
-        return Order::get();
+        return Order::with('trackings','events')->get();
     }
 
     public function storeOrderByApi()
     {
         $data = $this->guzzle::shipmentByReference();
         Schema::disableForeignKeyConstraints();
+        DB::table('events')->truncate();
+        DB::table('tracking_infos')->truncate();
         DB::table('orders')->truncate();
         Schema::enableForeignKeyConstraints();
         foreach($data as $key=> $value)
         {
-            Order::create([
+            $order = Order::create([
                 'reference' => $value['reference'],
                 'tracking_number' => $value['tracking_number'],
                 'customer_name' => $value['customer_name'],
@@ -115,6 +117,16 @@ class OrderRepository extends BaseRepository
                 'payment_method' => $value['payment_method'],
                 'order_type' => 'aymakan',
             ]);
+            foreach ($value['tracking_info'] as $k => $val) 
+            {
+                TrackingInfo::create([
+                    'status_code' => $val['status_code'],
+                    'description' => $val['description'],
+                    'description_ar' => $val['description_ar'],
+                    'order_id' => $order->id,
+                    'created_at' => $val['created_at'],
+                ]);
+            }
         }
         return response()->json(['success'=>true]);
     }
@@ -163,7 +175,12 @@ class OrderRepository extends BaseRepository
             'order_type' => 'sparks',
         );
         $order = Order::create($order);
-        Mail::to($order->delivery_email)->send(new OrderMail($order));
+        TrackingInfo::create([
+            'status_code' => $order->status,
+            'description' => "Shipment is created at collection point",
+            'description_ar' => "تم إصدار بوليصة شحن لدى الشركة الشاحنة لكن لم تستلم من قبل \"أي مكان \"",
+            'order_id' => $order->id,
+        ]);
         // $client = $this->guzzle::setAuth();
         // $orderShipment = array(
         //     "declared_value_currency"=> "SAR",

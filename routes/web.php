@@ -33,6 +33,9 @@ Route::get('/register', [VuesyController::class, 'register'])->name('register');
 Route::get('locale', [LocalizationController::class, 'getLang'])->name('getlang');
 // Route qui permet de modifier la langue
 Route::get('locale/{lang}', [LocalizationController::class, 'setLang'])->name('setlang');
+//tracking order customer
+Route::get('/tracking-order', [VuesyController::class, 'trackingOrder'])->name('tracking-order');
+Route::post('/tracking-order-result', [VuesyController::class, 'trackingOrderResult'])->name('tracking-order-result');
 
 Auth::routes();
 

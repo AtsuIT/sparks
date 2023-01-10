@@ -28,6 +28,7 @@
             <th>{{__('t-uuid')}}</th>
             <th>{{__('t-name')}}</th>
             <th>{{__('t-status')}}</th>
+            <th width="280px">{{__('t-action')}}</th>
         </tr>
     </thead>
     <tbody>
