@@ -26,7 +26,7 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
     <div class="form-floating form-floating-custom mb-3">
@@ -51,7 +51,7 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-fast-mail-alt"></i>
         </div>
     </div>
 
@@ -64,20 +64,20 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
 
     <div class="form-floating form-floating-custom mb-3">
         <input type="text" id="input-address" placeholder="Enter Address" value="{{old('address')}}" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="address" autofocus>
-        <label for="input-address" data-key="t-address">{{ __('Address') }}</label>
+        <label for="input-address" data-key="t-addres">{{ __('Address') }}</label>
         @error('address')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-map-marker-alt"></i>
         </div>
     </div>
 
@@ -90,7 +90,7 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-map-marker-alt"></i>
         </div>
     </div>
 
@@ -103,7 +103,7 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-phone-alt"></i>
         </div>
     </div>
 
@@ -116,14 +116,14 @@
         </span>
         @enderror
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
     <div class="form-floating form-floating-custom mb-3">
         <input type="text" id="input-postcode" placeholder="Enter Postcode" value="{{old('postcode')}}" class="form-control" name="postcode" autocomplete="postcode" autofocus>
         <label for="input-postcode" data-key="t-postcode">{{ __('Postcode') }}</label>
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-postcard"></i>
         </div>
     </div>
 

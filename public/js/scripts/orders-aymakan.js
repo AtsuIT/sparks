@@ -23,6 +23,11 @@ var orders = $('.table-orders').DataTable({
         {data: 'uuid', name: 'uuid'},
         {data: 'customer_name', name: 'customer_name'},
         {data: 'status', name: 'status'},
+        {data: 'action',
+            name: 'action',
+            orderable: false,
+            searchable: false
+        }
     ],
     'order': []
 });

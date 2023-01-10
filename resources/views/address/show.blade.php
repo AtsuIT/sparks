@@ -15,7 +15,7 @@
         <label for="input-title" data-key="t-title">{{ __('Title') }}</label>
 
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
     <div class="form-floating form-floating-custom mb-3">
@@ -32,7 +32,7 @@
         <label for="input-email" data-key="t-email">{{ __('Email') }}</label>
         
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-fast-mail-alt"></i>
         </div>
     </div>
 
@@ -41,16 +41,16 @@
         <label for="input-city" data-key="t-city">{{ __('City') }}</label>
         
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
 
     <div class="form-floating form-floating-custom mb-3">
         <input type="text" id="input-address" placeholder="Enter Address" value="{{$address->address}}" class="form-control" name="address" disabled autocomplete="address" autofocus>
-        <label for="input-address" data-key="t-address">{{ __('Address') }}</label>
+        <label for="input-address" data-key="t-addres">{{ __('Address') }}</label>
         
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-map-marker-alt"></i>
         </div>
     </div>
 
@@ -59,7 +59,7 @@
         <label for="input-neighbourhood" data-key="t-neighbourhood">{{ __('Neighbourhood') }}</label>
         
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-map-marker-alt"></i>
         </div>
     </div>
 
@@ -68,7 +68,7 @@
         <label for="input-phone" data-key="t-phone">{{ __('Phone') }}</label>
        
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-phone-alt"></i>
         </div>
     </div>
 
@@ -77,14 +77,14 @@
         <label for="input-country" data-key="t-country">{{ __('Country') }}</label>
        
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-location-point"></i>
         </div>
     </div>
     <div class="form-floating form-floating-custom mb-3">
         <input type="text" id="input-postcode" disabled placeholder="Enter Postcode" value="{{$address->postcode}}" class="form-control" name="postcode" autocomplete="postcode" autofocus>
         <label for="input-postcode" data-key="t-postcode">{{ __('Postcode') }}</label>
         <div class="form-floating-icon">
-            <i class="uil uil-users-alt"></i>
+            <i class="uil uil-postcard"></i>
         </div>
     </div>
     
