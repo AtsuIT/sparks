@@ -71,7 +71,7 @@ class OrderRepository extends BaseRepository
         Schema::disableForeignKeyConstraints();
         DB::table('events')->truncate();
         DB::table('tracking_infos')->truncate();
-        DB::table('orders')->truncate();
+        DB::table('orders')->where('order_type','aymakan')->delete();
         Schema::enableForeignKeyConstraints();
         foreach($data as $key=> $value)
         {
