@@ -38,6 +38,10 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>
+    var permissionDelete = "<?= Lang::get('t-permission-delete') ?>";
+    var permissionSafe = "<?= Lang::get('t-permission-safe') ?>";
+</script> 
 <script src="{{ URL::asset('js/scripts/permissions.js') }}"></script>
 
 @endsection

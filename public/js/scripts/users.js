@@ -47,7 +47,7 @@ $(document).on("click",".sa-warning" , function(e) {
         if (result.value) {
             Swal.fire({
             title: done,
-            text: 'Your user has been deleted.',
+            text: userDelete,
             icon: 'success',
             confirmButtonColor: '#776acf',
             })
@@ -58,7 +58,7 @@ $(document).on("click",".sa-warning" , function(e) {
         ) {
             Swal.fire({
             title: dismiss,
-            text: 'Your user is safe :)',
+            text: userSafe,
             icon: 'error',
             confirmButtonColor: '#776acf',
             })

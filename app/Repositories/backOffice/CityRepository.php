@@ -66,13 +66,17 @@ class CityRepository extends BaseRepository
         $client = $this->guzzle::setAuth();
         $cities = $client->getCityList();
         $data = $cities['data']['cities'];
-        DB::table('cities')->truncate();
-        foreach($data as $key=> $value)
+        $countCities = DB::table('cities')->count();
+        if (count($data)> $countCities) 
         {
-            City::create([
-                'city_en' => $value['city_en'],
-                'city_ar' => $value['city_ar'],
-            ]);
+            DB::table('cities')->truncate();
+            foreach($data as $key=> $value)
+            {
+                City::create([
+                    'city_en' => $value['city_en'],
+                    'city_ar' => $value['city_ar'],
+                ]);
+            }
         }
         return response()->json(['success'=>true]);
     }

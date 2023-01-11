@@ -44,7 +44,7 @@ $(document).on("click",".sa-warning" , function(e) {
         if (result.value) {
             Swal.fire({
             title: done,
-            text: 'Your permission has been deleted.',
+            text: permissionDelete,
             icon: 'success',
             confirmButtonColor: '#776acf',
             })
@@ -55,7 +55,7 @@ $(document).on("click",".sa-warning" , function(e) {
         ) {
             Swal.fire({
             title: dismiss,
-            text: 'Your permission is safe :)',
+            text: permissionSafe,
             icon: 'error',
             confirmButtonColor: '#776acf',
             })
