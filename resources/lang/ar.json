@@ -191,7 +191,7 @@
     "t-address-show": "عرض العنوان",
     "t-title": "العنوان",
     "t-phone": "الهاتف",
-    "aymakan-section": "قسم أيماكان",
+    "aymakan-section": "قسم أي مكان",
     "sparks-section": "قسم سباركس",
     "t-tracking-order": "تتبع الطلب",
     "t-customer-name": "اسم العميل",
@@ -248,5 +248,11 @@
     "t-address-deleted":"تم حذف العنوان بنجاح",
     "t-order-created":"تم إنشاء الطلب بنجاح",
     "t-order-updated":"تم تحديث الطلب بنجاح",
-    "t-order-deleted":"تم حذف الطلب بنجاح"
+    "t-order-deleted":"تم حذف الطلب بنجاح",
+    "t-event-name":"اسم الحدث",
+    "t-color":"اللون",
+    "t-select":"--اختار--",
+    "t-delete":"حذف",
+    "t-close":"إغلاق",
+    "t-save":"حفظ"
 }

@@ -248,6 +248,11 @@
     "t-address-deleted":"Address deleted successfully",
     "t-order-created":"Order created successfully",
     "t-order-updated":"Order updated successfully",
-    "t-order-deleted":"Order deleted successfully"
-
+    "t-order-deleted":"Order deleted successfully",
+    "t-event-name":"Event Name",
+    "t-color":"Color",
+    "t-select":"--Select--",
+    "t-delete":"Delete",
+    "t-close":"Close",
+    "t-save":"Save"
 }

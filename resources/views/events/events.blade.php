@@ -70,16 +70,16 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Event Name</label>
-                                        <input class="form-control" placeholder="Insert Event Name" type="text" name="name" id="event-title" required value="" />
+                                        <label class="form-label">{{__('t-event-name')}}</label>
+                                        <input class="form-control" placeholder="{{__('t-event-name')}}" type="text" name="name" id="event-title" required value="" />
                                         <div class="invalid-feedback">Please provide a valid event name</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Color</label>
+                                        <label class="form-label">{{__('t-color')}}</label>
                                         <select class="form-select shadow-none" name="color" id="event-category" required>
-                                            <option value="" selected> --Select-- </option>
+                                            <option value="" selected> {{__('t-select')}}</option>
                                             <option value="bg-danger">Danger</option>
                                             <option value="bg-success">Success</option>
                                             <option value="bg-primary">Primary</option>
@@ -92,9 +92,9 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Orders</label>
+                                        <label class="form-label">{{__('t-orders')}}</label>
                                         <select class="form-select shadow-none" name="order_id" id="order_id" required>
-                                            <option value="" selected> --Select-- </option>
+                                            <option value="" selected> {{__('t-select')}} </option>
                                             @foreach ($orders as $order)
                                                 <option value="{{$order->id}}">{{$order->customer_name}}</option>
                                             @endforeach
@@ -105,11 +105,11 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
+                                    <button type="button" class="btn btn-danger" id="btn-delete-event" data-key="t-delete">Delete</button>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-success" id="btn-save-event">Save</button>
+                                    <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" data-key="t-close">Close</button>
+                                    <button type="submit" class="btn btn-success" id="btn-save-event" data-key="t-save">Save</button>
                                 </div>
                             </div>
                         </form>
