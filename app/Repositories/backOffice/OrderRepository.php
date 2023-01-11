@@ -278,7 +278,7 @@ class OrderRepository extends BaseRepository
         );
         $order->update($orderData);
         if ($order->status != $status) {
-            Mail::to($order->delivery_email)->send(new OrderMailStatusUpdated($order));
+            Mail::to($order->collection_email)->send(new OrderMailStatusUpdated($order));
         }
     }
 

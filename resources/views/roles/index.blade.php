@@ -25,9 +25,9 @@
 <table class="table table-bordered table-roles">
     <thead>
         <tr>
-            <th data-key="t-no">No</th>
-            <th data-key="t-name">Name</th>
-            <th width="280px" data-key="t-action">Action</th>
+            <th>{{__('t-no')}}</th>
+            <th>{{__('t-name')}}</th>
+            <th width="280px">{{__('t-action')}}</th>
         </tr>
     </thead>
     <tbody>
