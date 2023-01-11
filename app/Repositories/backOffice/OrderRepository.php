@@ -7,7 +7,6 @@ use App\Mail\OrderMailStatusUpdated;
 use App\Models\Event;
 use App\Models\Order;
 use App\Models\TrackingInfo;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
@@ -68,64 +67,68 @@ class OrderRepository extends BaseRepository
     public function storeOrderByApi()
     {
         $data = $this->guzzle::shipmentByReference();
-        Schema::disableForeignKeyConstraints();
-        DB::table('events')->truncate();
-        DB::table('tracking_infos')->truncate();
-        DB::table('orders')->where('order_type','aymakan')->delete();
-        Schema::enableForeignKeyConstraints();
-        foreach($data as $key=> $value)
+        $orders = Order::where('order_type','aymakan')->with('events','trackings')->get()->pluck('id')->toArray();
+        if (count($data) > count($orders)) 
         {
-            $order = Order::create([
-                'reference' => $value['reference'],
-                'tracking_number' => $value['tracking_number'],
-                'customer_name' => $value['customer_name'],
-                'requested_by' => $value['requested_by'],
-                'cod_amount' => $value['cod_amount'],
-                'declared_value' => $value['declared_value'],
-                'currency' => $value['currency'],
-                'delivery_name' => $value['delivery_name'],
-                'delivery_email' => $value['delivery_email'],
-                'delivery_city' => $value['delivery_city'],
-                'delivery_address' => $value['delivery_address'],
-                'delivery_neighbourhood' => $value['delivery_neighbourhood'],
-                'delivery_postcode' => $value['delivery_postcode'],
-                'delivery_country' => $value['delivery_country'],
-                'delivery_phone' => $value['delivery_phone'],
-                'delivery_description' => $value['delivery_description'],
-                'collection_name' => $value['collection_name'],
-                'collection_email' => $value['collection_email'],
-                'collection_city' => $value['collection_city'],
-                'collection_address' => $value['collection_address'],
-                'collection_postcode' => $value['collection_postcode'],
-                'collection_country' => $value['collection_country'],
-                'collection_phone' => $value['collection_phone'],
-                'collection_description' => $value['collection_description'],
-                'submission_date' => $value['submission_date'],
-                'pickup_date' => $value['pickup_date'],
-                'received_at' => $value['received_at'],
-                'delivery_date' => $value['delivery_date'],
-                'weight' => $value['weight'],
-                'pieces' => $value['pieces'],
-                'items_count' => $value['items_count'],
-                'status' => $value['status'],
-                'status_label' => $value['status_label'],
-                'reason_en' => $value['reason_en'],
-                'reason_ar' => $value['reason_ar'],
-                'is_reverse_pickup' => $value['is_reverse_pickup'],
-                'is_insured' => $value['is_insured'],
-                'is_prepaid' => $value['is_prepaid'],
-                'payment_method' => $value['payment_method'],
-                'order_type' => 'aymakan',
-            ]);
-            foreach ($value['tracking_info'] as $k => $val) 
+            Schema::disableForeignKeyConstraints();
+            Event::whereIn('order_id',array_values($orders))->delete();
+            TrackingInfo::whereIn('order_id',array_values($orders))->delete();
+            Order::where('order_type','aymakan')->delete();
+            Schema::enableForeignKeyConstraints();
+            foreach($data as $key=> $value)
             {
-                TrackingInfo::create([
-                    'status_code' => $val['status_code'],
-                    'description' => $val['description'],
-                    'description_ar' => $val['description_ar'],
-                    'order_id' => $order->id,
-                    'created_at' => $val['created_at'],
+                $order = Order::create([
+                    'reference' => $value['reference'],
+                    'tracking_number' => $value['tracking_number'],
+                    'customer_name' => $value['customer_name'],
+                    'requested_by' => $value['requested_by'],
+                    'cod_amount' => $value['cod_amount'],
+                    'declared_value' => $value['declared_value'],
+                    'currency' => $value['currency'],
+                    'delivery_name' => $value['delivery_name'],
+                    'delivery_email' => $value['delivery_email'],
+                    'delivery_city' => $value['delivery_city'],
+                    'delivery_address' => $value['delivery_address'],
+                    'delivery_neighbourhood' => $value['delivery_neighbourhood'],
+                    'delivery_postcode' => $value['delivery_postcode'],
+                    'delivery_country' => $value['delivery_country'],
+                    'delivery_phone' => $value['delivery_phone'],
+                    'delivery_description' => $value['delivery_description'],
+                    'collection_name' => $value['collection_name'],
+                    'collection_email' => $value['collection_email'],
+                    'collection_city' => $value['collection_city'],
+                    'collection_address' => $value['collection_address'],
+                    'collection_postcode' => $value['collection_postcode'],
+                    'collection_country' => $value['collection_country'],
+                    'collection_phone' => $value['collection_phone'],
+                    'collection_description' => $value['collection_description'],
+                    'submission_date' => $value['submission_date'],
+                    'pickup_date' => $value['pickup_date'],
+                    'received_at' => $value['received_at'],
+                    'delivery_date' => $value['delivery_date'],
+                    'weight' => $value['weight'],
+                    'pieces' => $value['pieces'],
+                    'items_count' => $value['items_count'],
+                    'status' => $value['status'],
+                    'status_label' => $value['status_label'],
+                    'reason_en' => $value['reason_en'],
+                    'reason_ar' => $value['reason_ar'],
+                    'is_reverse_pickup' => $value['is_reverse_pickup'],
+                    'is_insured' => $value['is_insured'],
+                    'is_prepaid' => $value['is_prepaid'],
+                    'payment_method' => $value['payment_method'],
+                    'order_type' => 'aymakan',
                 ]);
+                foreach ($value['tracking_info'] as $k => $val) 
+                {
+                    TrackingInfo::create([
+                        'status_code' => $val['status_code'],
+                        'description' => $val['description'],
+                        'description_ar' => $val['description_ar'],
+                        'order_id' => $order->id,
+                        'created_at' => $val['created_at'],
+                    ]);
+                }
             }
         }
         return response()->json(['success'=>true]);

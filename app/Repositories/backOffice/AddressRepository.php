@@ -66,22 +66,26 @@ class AddressRepository extends BaseRepository
         $client = $this->guzzle::setAuth();
         $address = $client->getAddress();
         $data = $address['data']['address'];
-        DB::table('addresses')->truncate();
-        foreach($data as $key=> $value)
+        $countAddress = DB::table('addresses')->where('address_type','aymakan')->count();
+        if (count($data)>$countAddress) 
         {
-            Address::create([
-                'title' => $value['title'],
-                'name' => $value['name'],
-                'description' => $value['description'],
-                'email' => $value['email'],
-                'city' => $value['city'],
-                'country' => $value['country'],
-                'address' => $value['address'],
-                'postcode' => $value['postcode'],
-                'phone' => $value['phone'],
-                'neighbourhood' => $value['neighbourhood'],
-                'address_type' => 'aymakan',
-            ]);
+            DB::table('addresses')->where('address_type','aymakan')->delete();
+            foreach($data as $key=> $value)
+            {
+                Address::create([
+                    'title' => $value['title'],
+                    'name' => $value['name'],
+                    'description' => $value['description'],
+                    'email' => $value['email'],
+                    'city' => $value['city'],
+                    'country' => $value['country'],
+                    'address' => $value['address'],
+                    'postcode' => $value['postcode'],
+                    'phone' => $value['phone'],
+                    'neighbourhood' => $value['neighbourhood'],
+                    'address_type' => 'aymakan',
+                ]);
+            }
         }
         return response()->json(['success'=>true]);
     }
