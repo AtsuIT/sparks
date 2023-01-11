@@ -135,7 +135,7 @@ class AddressController extends Controller
     public function destroy($id)
     {
         $this->addressService->destroyAddress($id);
-        return redirect()->route('address')->with('success','Address deleted successfully');
+        return redirect()->route('address')->with('error','Address deleted successfully');
 
     }
 }

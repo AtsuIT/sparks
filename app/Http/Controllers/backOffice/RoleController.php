@@ -8,8 +8,7 @@ use App\Services\backOffice\PermissionService;
 use App\Services\backOffice\RoleService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {
@@ -41,7 +40,7 @@ class RoleController extends Controller
         if ($request->ajax()) {
             // $this->roleService->allPermissions();
             $roles = Role::select('*');
-            return Datatables::of($roles)
+            return DataTables::of($roles)
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
                 return '<form method="POST" action="/roles-destroy/'.$row->id.'">
@@ -134,6 +133,6 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $this->roleService->destroyRole($id);
-        return redirect()->route('roles')->with('success','Role deleted successfully');
+        return redirect()->route('roles')->with('error','Role deleted successfully');
     }
 }

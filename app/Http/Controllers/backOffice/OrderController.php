@@ -146,7 +146,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->orderService->destroyOrder($id);
-        return redirect()->route('orders-sparks')->with('success','Order deleted successfully');
+        return redirect()->route('orders-sparks')->with('error','Order deleted successfully');
 
     }
     public function timeline($id)

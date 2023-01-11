@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\backOffice\RoleService;
 use App\Services\backOffice\UserService;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         if ($request->ajax()) {
             $users = User::get();
-            return Datatables::of($users)
+            return DataTables::of($users)
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
                 return '<form method="POST" action="/users-destroy/'.$row->id.'">
@@ -127,7 +127,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->userService->destroyUser($id);
-        return redirect()->route('users')->with('success','User deleted successfully');
+        return redirect()->route('users')->with('error','User deleted successfully');
     }
 
     public function editProfile($id)
