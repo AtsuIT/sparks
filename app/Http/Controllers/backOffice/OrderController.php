@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\City;
 use App\Services\backOffice\OrderService;
+use Illuminate\Support\Facades\Lang;
 use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
@@ -93,7 +94,7 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
         $this->orderService->storeOrder($request);
-        return redirect()->route('orders-sparks')->with('success','Order created successfully');
+        return redirect()->route('orders-sparks')->with('success', Lang::get('t-order-created'));
     }
 
     /**
@@ -132,7 +133,7 @@ class OrderController extends Controller
     public function update(OrderRequest $request, $id)
     {
         $this->orderService->updateOrder($request, $id);
-        return redirect()->route('orders-sparks')->with('success','Order updated successfully');
+        return redirect()->route('orders-sparks')->with('success',Lang::get('t-order-updated'));
     }
 
     /**
@@ -144,7 +145,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->orderService->destroyOrder($id);
-        return redirect()->route('orders-sparks')->with('error','Order deleted successfully');
+        return redirect()->route('orders-sparks')->with('error', Lang::get('t-order-deleted'));
 
     }
     public function timeline($id)

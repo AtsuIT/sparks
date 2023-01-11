@@ -7,6 +7,7 @@ use App\Http\Requests\RoleRequest;
 use App\Services\backOffice\PermissionService;
 use App\Services\backOffice\RoleService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -82,7 +83,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $this->roleService->storeRole($request);
-        return redirect()->route('roles')->with('success','Role created successfully');
+        return redirect()->route('roles')->with('success', Lang::get('t-role-created'));
     }
     /**
      * Display the specified resource.
@@ -122,7 +123,7 @@ class RoleController extends Controller
     public function update(RoleRequest $request, $id)
     {
         $this->roleService->updateRole($request, $id);
-        return redirect()->route('roles')->with('success','Role updated successfully');
+        return redirect()->route('roles')->with('success', Lang::get('t-role-updated'));
     }
     /**
      * Remove the specified resource from storage.
@@ -133,6 +134,6 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $this->roleService->destroyRole($id);
-        return redirect()->route('roles')->with('error','Role deleted successfully');
+        return redirect()->route('roles')->with('error', Lang::get('t-role-deleted'));
     }
 }

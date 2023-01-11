@@ -232,5 +232,21 @@
     "t-choose-is-insured":"اختر مؤمن عليه",
     "t-payment-method":"طريقة الدفع",
     "t-shipment-company":"شركة الشحن",
-    "t-choose-shipment-company":"اختيار شركة الشحن"
+    "t-choose-shipment-company":"اختيار شركة الشحن",
+    "t-permission-created":"تم إنشاء الإذن بنجاح",
+    "t-permission-updated":"تم تحديث الإذن بنجاح",
+    "t-permission-deleted":"تم حذف الإذن بنجاح",
+    "t-role-created":"تم إنشاء الدور بنجاح",
+    "t-role-updated":"تم تحديث الدور بنجاح",
+    "t-role-deleted":"تم حذف الدور بنجاح",
+    "t-user-created":"تم إنشاء المستخدم بنجاح",
+    "t-user-updated":"تم تحديث المستخدم بنجاح",
+    "t-user-profile-updated":"تم تحديث ملف تعريف المستخدم بنجاح",
+    "t-user-deleted":"تم حذف المستخدم بنجاح",
+    "t-address-created":"تم إنشاء العنوان بنجاح",
+    "t-address-updated":"تم تحديث العنوان بنجاح",
+    "t-address-deleted":"تم حذف العنوان بنجاح",
+    "t-order-created":"تم إنشاء الطلب بنجاح",
+    "t-order-updated":"تم تحديث الطلب بنجاح",
+    "t-order-deleted":"تم حذف الطلب بنجاح"
 }

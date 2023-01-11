@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddressRequest;
 use App\Services\backOffice\AddressService;
+use Illuminate\Support\Facades\Lang;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
 
@@ -86,7 +87,7 @@ class AddressController extends Controller
     public function store(AddressRequest $request)
     {
         $this->addressService->storeAddress($request);
-        return redirect()->route('address')->with('success','Address created successfully');
+        return redirect()->route('address')->with('success', Lang::get('t-address-created'));
     }
 
     /**
@@ -123,7 +124,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, $id)
     {
         $this->addressService->updateAddress($request, $id);
-        return redirect()->route('address')->with('success','Address updated successfully');
+        return redirect()->route('address')->with('success', Lang::get('t-address-updated'));
     }
 
     /**
@@ -135,7 +136,7 @@ class AddressController extends Controller
     public function destroy($id)
     {
         $this->addressService->destroyAddress($id);
-        return redirect()->route('address')->with('error','Address deleted successfully');
+        return redirect()->route('address')->with('error', Lang::get('t-address-deleted'));
 
     }
 }

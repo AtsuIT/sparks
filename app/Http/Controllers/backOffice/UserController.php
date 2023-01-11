@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\backOffice\RoleService;
 use App\Services\backOffice\UserService;
+use Illuminate\Support\Facades\Lang;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
@@ -74,7 +75,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {    
         $this->userService->storeUser($request);    
-        return redirect()->route('users')->with('success','User created successfully');
+        return redirect()->route('users')->with('success', Lang::get('t-user-created'));
     }
 
     /**
@@ -115,7 +116,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $this->userService->updateUser($request, $id);
-        return redirect()->route('users')->with('success','User updated successfully');
+        return redirect()->route('users')->with('success', Lang::get('t-user-updated'));
     }
 
     /**
@@ -127,7 +128,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->userService->destroyUser($id);
-        return redirect()->route('users')->with('error','User deleted successfully');
+        return redirect()->route('users')->with('error', Lang::get('t-user-deleted'));
     }
 
     public function editProfile($id)
@@ -139,6 +140,6 @@ class UserController extends Controller
     public function updateProfile(UpdateProfileRequest $request, $id)
     {
         $this->userService->updateUser($request, $id);
-        return redirect()->back()->with('success','User updated successfully');
+        return redirect()->back()->with('success', Lang::get('t-user-profile-updated'));
     }
 }

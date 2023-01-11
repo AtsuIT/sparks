@@ -233,5 +233,21 @@
     "t-choose-is-insured":"Choose is_insured",
     "t-payment-method":"Payment Method",
     "t-shipment-company":"Shipment Company",
-    "t-choose-shipment-company":"Choose a Shipment Company"
+    "t-permission-created":"Permission created successfully",
+    "t-permission-updated":"Permission updated successfully",
+    "t-permission-deleted":"Permission deleted successfully",
+    "t-role-created":"Role created successfully",
+    "t-role-updated":"Role updated successfully",
+    "t-role-deleted":"Role deleted successfully",
+    "t-user-created":"User created successfully",
+    "t-user-updated":"User updated successfully",
+    "t-user-profile-updated":"User Profile updated successfully",
+    "t-user-deleted":"User deleted successfully",
+    "t-address-created":"Address created successfully",
+    "t-address-updated":"Address updated successfully",
+    "t-address-deleted":"Address deleted successfully",
+    "t-order-created":"Order created successfully",
+    "t-order-updated":"Order updated successfully",
+    "t-order-deleted":"Order deleted successfully"
+
 }
