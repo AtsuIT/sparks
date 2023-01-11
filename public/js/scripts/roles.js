@@ -1,6 +1,6 @@
 (function ($, DataTable) {
     $.extend(true, DataTable.defaults, {
-        pageLength : 5,
+        pageLength : 20,
         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']],
         language: {
             url : '/dataTables/lang/'+lang+'.json'
@@ -31,19 +31,19 @@ $(document).on("click",".sa-warning" , function(e) {
     var form =  $(this).closest("form");
     e.preventDefault();
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: title,
+        text: text,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
+        confirmButtonText: yes,
+        cancelButtonText: failed,
         confirmButtonClass: 'btn btn-success mt-2',
         cancelButtonClass: 'btn btn-danger ms-2 mt-2',
         buttonsStyling: false
     }).then(function (result) {
         if (result.value) {
             Swal.fire({
-            title: 'Deleted!',
+            title: done,
             text: 'Your role has been deleted.',
             icon: 'success',
             confirmButtonColor: '#776acf',
@@ -54,7 +54,7 @@ $(document).on("click",".sa-warning" , function(e) {
             result.dismiss === Swal.DismissReason.cancel
         ) {
             Swal.fire({
-            title: 'Cancelled',
+            title: dismiss,
             text: 'Your role is safe :)',
             icon: 'error',
             confirmButtonColor: '#776acf',

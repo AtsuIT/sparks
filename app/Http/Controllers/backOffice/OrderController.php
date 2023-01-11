@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\backOffice;
 
-use App\Helpers\GuzzleHttpHelper;
-use App\Models\Order;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\City;
 use App\Services\backOffice\OrderService;
+use Illuminate\Support\Facades\Lang;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -31,11 +30,11 @@ class OrderController extends Controller
         if ($request->ajax()) 
         {
             $orders = $this->orderService->getOrders();
-            if($orders->count() == 0)
-            {
+            // if($orders->count() == 0)
+            // {
                 $this->orderService->storeOrderByApi();
                 $orders = $this->orderService->getOrders();
-            }
+            // }
             return DataTables::of($orders->where('order_type','aymakan'))
                 ->addColumn('action', function ($row) {
                 return '<a class="btn btn-secondary" href="/orders-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>';
@@ -95,7 +94,7 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
         $this->orderService->storeOrder($request);
-        return redirect()->route('orders-sparks')->with('success','Order created successfully');
+        return redirect()->route('orders-sparks')->with('success', Lang::get('t-order-created'));
     }
 
     /**
@@ -134,7 +133,7 @@ class OrderController extends Controller
     public function update(OrderRequest $request, $id)
     {
         $this->orderService->updateOrder($request, $id);
-        return redirect()->route('orders-sparks')->with('success','Order updated successfully');
+        return redirect()->route('orders-sparks')->with('success',Lang::get('t-order-updated'));
     }
 
     /**
@@ -146,7 +145,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->orderService->destroyOrder($id);
-        return redirect()->route('orders-sparks')->with('success','Order deleted successfully');
+        return redirect()->route('orders-sparks')->with('error', Lang::get('t-order-deleted'));
 
     }
     public function timeline($id)

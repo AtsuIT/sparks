@@ -71,7 +71,7 @@ class OrderRepository extends BaseRepository
         Schema::disableForeignKeyConstraints();
         DB::table('events')->truncate();
         DB::table('tracking_infos')->truncate();
-        DB::table('orders')->truncate();
+        DB::table('orders')->where('order_type','aymakan')->delete();
         Schema::enableForeignKeyConstraints();
         foreach($data as $key=> $value)
         {
@@ -278,7 +278,7 @@ class OrderRepository extends BaseRepository
         );
         $order->update($orderData);
         if ($order->status != $status) {
-            Mail::to($order->delivery_email)->send(new OrderMailStatusUpdated($order));
+            Mail::to($order->collection_email)->send(new OrderMailStatusUpdated($order));
         }
     }
 

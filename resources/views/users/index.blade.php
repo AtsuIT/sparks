@@ -23,11 +23,10 @@
 </div>
 <table class="table table-users">
     <thead>
-        <tr>
-            <th scope="col" data-key="t-no">No</th>
-            <th scope="col" data-key="t-name">Name</th>
-            <th scope="col" data-key="t-email">Email</th>
-            <th scope="col" data-key="t-action">Action</th>
+        <th>{{__('t-no')}}</th>
+        <th>{{__('t-name')}}</th>
+        <th>{{__('t-email')}}</th>
+        <th width="280px">{{__('t-action')}}</th>
         </tr>
     </thead>
     <tbody>

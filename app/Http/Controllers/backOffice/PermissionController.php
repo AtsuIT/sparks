@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use App\Services\backOffice\PermissionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Spatie\Permission\Models\Permission;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class PermissionController extends Controller
 {
@@ -29,7 +30,7 @@ class PermissionController extends Controller
         {
             // $this->permissionService->allPermissions();
             $permissions = Permission::select('*');
-            return Datatables::of($permissions)
+            return DataTables::of($permissions)
             ->addColumn('action', function ($row) {
                 $csrf = csrf_token();
                 return '<form method="POST" action="/permissions-destroy/'.$row->id.'">
@@ -70,7 +71,7 @@ class PermissionController extends Controller
     public function store(PermissionRequest $request)
     {
         $this->permissionService->storePermission($request);
-        return redirect()->route('permissions')->with('success','Permission created successfully');
+        return redirect()->route('permissions')->with('success',Lang::get('t-permission-created'));
     }
 
     /**
@@ -107,7 +108,7 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         $this->permissionService->updatePermission($request, $id);
-        return redirect()->route('permissions')->with('success','Permission updated successfully');
+        return redirect()->route('permissions')->with('success', Lang::get('t-permission-updated'));
     }
 
     /**
@@ -119,7 +120,7 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         $this->permissionService->destroyPermission($id);
-        return redirect()->route('permissions')->with('success','Permission deleted successfully');
+        return redirect()->route('permissions')->with('error',Lang::get('t-permission-deleted'));
 
     }
 }

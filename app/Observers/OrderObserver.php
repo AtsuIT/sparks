@@ -46,7 +46,7 @@ class OrderObserver
         $order->uuid = $this->generateUuid(10);
         // $order->tracking_number = $this->generateTrackingNumber(10);
         $order->save();
-        Mail::to($order->delivery_email)->send(new OrderMail($order));
+        Mail::to($order->collection_email)->send(new OrderMail($order));
         Event::create([
             'name' => $order->customer_name,
             'start_date' => Carbon::parse($order->submission_date)->format('Y-m-d'),
