@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\backOffice;
 
-use App\Helpers\GuzzleHttpHelper;
-use App\Models\Order;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\City;
 use App\Services\backOffice\OrderService;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
