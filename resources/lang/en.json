@@ -254,5 +254,13 @@
     "t-select":"--Select--",
     "t-delete":"Delete",
     "t-close":"Close",
-    "t-save":"Save"
+    "t-save":"Save",
+    "t-permission-delete":"Your permission has been deleted.",
+    "t-permission-safe":"Your permission is safe :)",
+    "t-role-delete":"Your role has been deleted.",
+    "t-role-safe":"Your role is safe :)",
+    "t-user-delete":"Your user has been deleted.",
+    "t-user-safe":"Your user is safe :)",
+    "t-address-delete":"Your address has been deleted.",
+    "t-address-safe":"Your address is safe :)"
 }

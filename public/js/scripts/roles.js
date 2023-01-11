@@ -44,7 +44,7 @@ $(document).on("click",".sa-warning" , function(e) {
         if (result.value) {
             Swal.fire({
             title: done,
-            text: 'Your role has been deleted.',
+            text: roleDelete,
             icon: 'success',
             confirmButtonColor: '#776acf',
             })
@@ -55,7 +55,7 @@ $(document).on("click",".sa-warning" , function(e) {
         ) {
             Swal.fire({
             title: dismiss,
-            text: 'Your role is safe :)',
+            text: roleSafe,
             icon: 'error',
             confirmButtonColor: '#776acf',
             })

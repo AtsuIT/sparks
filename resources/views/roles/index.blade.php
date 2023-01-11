@@ -38,5 +38,9 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>
+    var roleDelete = "<?= Lang::get('t-role-delete') ?>";
+    var roleSafe = "<?= Lang::get('t-role-safe') ?>";
+</script> 
 <script src="{{ URL::asset('js/scripts/roles.js') }}"></script>
 @endsection

@@ -37,6 +37,10 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>
+    var userDelete = "<?= Lang::get('t-user-delete') ?>";
+    var userSafe = "<?= Lang::get('t-user-safe') ?>";
+</script> 
 <script src="{{ URL::asset('js/scripts/users.js') }}"></script>
 
 @endsection

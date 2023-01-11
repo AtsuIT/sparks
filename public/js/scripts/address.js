@@ -47,7 +47,7 @@ $(document).on("click",".sa-warning" , function(e) {
         if (result.value) {
             Swal.fire({
             title: done,
-            text: 'Your address has been deleted.',
+            text: addressDelete,
             icon: 'success',
             confirmButtonColor: '#776acf',
             })
@@ -58,7 +58,7 @@ $(document).on("click",".sa-warning" , function(e) {
         ) {
             Swal.fire({
             title: dismiss,
-            text: 'Your address is safe :)',
+            text: addressSafe,
             icon: 'error',
             confirmButtonColor: '#776acf',
             })

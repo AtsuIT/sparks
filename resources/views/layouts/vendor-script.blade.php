@@ -11,7 +11,6 @@
     var failed = "<?= Lang::get('t-failed') ?>";
     var done = "<?= Lang::get('t-done') ?>";
     var dismiss = "<?= Lang::get('t-dismiss') ?>";
-
 </script> 
 <!-- DATATABLES -->
 <script src="{{ URL::asset('js/jquery/jquery.min.js') }}" ></script>

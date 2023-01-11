@@ -41,6 +41,10 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>
+    var orderDelete = "<?= Lang::get('t-order-delete') ?>";
+    var orderSafe = "<?= Lang::get('t-order-safe') ?>";
+</script> 
 <script src="{{ URL::asset('js/scripts/orders.js') }}"></script>
 
 @endsection

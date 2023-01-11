@@ -41,6 +41,10 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script>
+    var addressDelete = "<?= Lang::get('t-address-delete') ?>";
+    var addressSafe = "<?= Lang::get('t-address-safe') ?>";
+</script> 
 <script src="{{ URL::asset('js/scripts/address.js') }}"></script>
 
 @endsection

@@ -254,5 +254,13 @@
     "t-select":"--اختار--",
     "t-delete":"حذف",
     "t-close":"إغلاق",
-    "t-save":"حفظ"
+    "t-save":"حفظ",
+    "t-permission-delete":"تم حذف إذنك.",
+    "t-permission-safe":"إذنك آمن :)",
+    "t-role-delete":"تم حذف دورك.",
+    "t-role-safe":"دورك آمن :)",
+    "t-user-delete":"تم حذف المستخدم الخاص بك.",
+    "t-user-safe":"المستخدم الخاص بك بأمان :)",
+    "t-address-delete":"تم حذف عنوانك.",
+    "t-address-safe":"عنوانك آمن :)"
 }
