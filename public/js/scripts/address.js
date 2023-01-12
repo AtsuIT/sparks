@@ -31,8 +31,9 @@ var address = $('.table-address').DataTable({
     'address': []
 });
 $(document).on("click",".sa-warning" , function(e) {
-    var form =  $(this).closest("form");
     e.preventDefault();
+    var id = $(this).attr('data-id');
+    var tr = $(this).parent().parent();
     Swal.fire({
         title: title,
         text: text,
@@ -51,7 +52,16 @@ $(document).on("click",".sa-warning" , function(e) {
             icon: 'success',
             confirmButtonColor: '#776acf',
             })
-            setTimeout(form.submit(), 10000);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "DELETE",
+                url: "/address-destroy/"+id,
+                success: function (response) {
+                    tr.remove();
+                }   
+            });
         } else if (
             // Read more about handling dismissals
             result.dismiss === Swal.DismissReason.cancel

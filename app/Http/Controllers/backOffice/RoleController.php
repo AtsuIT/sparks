@@ -43,16 +43,21 @@ class RoleController extends Controller
             $roles = Role::select('*');
             return DataTables::of($roles)
             ->addColumn('action', function ($row) {
-                $csrf = csrf_token();
-                return '<form method="POST" action="/roles-destroy/'.$row->id.'">
-                                    <input name="_token" type="hidden" value='.$csrf.'>
-                                    <input name="_method" type="hidden" value="DELETE">
-                            <a class="btn btn-info" href="/roles-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-primary" href="/roles-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
-                            <button type="submit" class="sa-warning btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>';
+                return '<a class="btn btn-info" href="/roles-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-primary" href="/roles-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                        <button type="button" class="sa-warning btn btn-danger" data-id="'.$row->id.'">
+                            <i class="fas fa-trash"></i>
+                        </button>';
+                // $csrf = csrf_token();
+                // return '<form method="POST" action="/roles-destroy/'.$row->id.'">
+                //                     <input name="_token" type="hidden" value='.$csrf.'>
+                //                     <input name="_method" type="hidden" value="DELETE">
+                //             <a class="btn btn-info" href="/roles-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                //             <a class="btn btn-primary" href="/roles-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                //             <button type="submit" class="sa-warning btn btn-danger">
+                //                 <i class="fas fa-trash"></i>
+                //             </button>
+                //         </form>';
                 })
                 ->editColumn('info', function ($row) {
                     return substr($row->info,0,15);
@@ -134,6 +139,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $this->roleService->destroyRole($id);
-        return redirect()->route('roles')->with('error', Lang::get('t-role-deleted'));
+        return response()->json(['error'=>Lang::get('t-role-deleted')]);
+        // return redirect()->route('roles')->with('error', Lang::get('t-role-deleted'));
     }
 }
