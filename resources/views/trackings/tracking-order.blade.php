@@ -15,8 +15,8 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-10">
                             <div id="tracking-order">
-                                <form method="POST">
-                                    @csrf
+                                {{-- <form method="POST">
+                                    @csrf --}}
                                     <div class="form-group">
                                         <label>Sparks ID</label>
                                         <input type="text" class="form-control uuid" name="uuid" placeholder="Enter Your Sparks ID">
@@ -24,7 +24,7 @@
                                     <div class="form-group mt-2">
                                         <button type="button" class="btn btn-primary track-result">Submit</button>
                                     </div>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>

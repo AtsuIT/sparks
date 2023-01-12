@@ -1,4 +1,3 @@
-
 $(document).on('click','.track-result',function(){
     $.ajax({
         headers: {
