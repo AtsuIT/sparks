@@ -49,16 +49,21 @@ class AddressController extends Controller
             $address = $this->addressService->getAddress();
             return DataTables::of($address->where('address_type','!=','aymakan'))
             ->addColumn('action', function ($row) {
-                $csrf = csrf_token();
-                return '<form method="POST" action="/address-destroy/'.$row->id.'">
-                                    <input name="_token" type="hidden" value='.$csrf.'>
-                                    <input name="_method" type="hidden" value="DELETE">
-                            <a class="btn btn-info" href="/address-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-primary" href="/address-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
-                            <button type="submit" class="sa-warning btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>';
+                return '<a class="btn btn-info" href="/users-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-primary" href="/users-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                        <button type="button" class="sa-warning btn btn-danger" data-id="'.$row->id.'">
+                            <i class="fas fa-trash"></i>
+                        </button>';
+                // $csrf = csrf_token();
+                // return '<form method="POST" action="/address-destroy/'.$row->id.'">
+                //                     <input name="_token" type="hidden" value='.$csrf.'>
+                //                     <input name="_method" type="hidden" value="DELETE">
+                //             <a class="btn btn-info" href="/address-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                //             <a class="btn btn-primary" href="/address-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                //             <button type="submit" class="sa-warning btn btn-danger">
+                //                 <i class="fas fa-trash"></i>
+                //             </button>
+                //         </form>';
                 })
                 ->editColumn('reference', function ($row) {
                })
@@ -136,7 +141,8 @@ class AddressController extends Controller
     public function destroy($id)
     {
         $this->addressService->destroyAddress($id);
-        return redirect()->route('address')->with('error', Lang::get('t-address-deleted'));
+        return response()->json(['error'=>Lang::get('t-address-deleted')]);
+        // return redirect()->route('address')->with('error', Lang::get('t-address-deleted'));
 
     }
 }

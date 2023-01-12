@@ -35,16 +35,21 @@ class UserController extends Controller
             $users = User::get();
             return DataTables::of($users)
             ->addColumn('action', function ($row) {
-                $csrf = csrf_token();
-                return '<form method="POST" action="/users-destroy/'.$row->id.'">
-                                    <input name="_token" type="hidden" value='.$csrf.'>
-                                    <input name="_method" type="hidden" value="DELETE">
-                            <a class="btn btn-info" href="/users-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-primary" href="/users-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
-                            <button type="submit" class="sa-warning btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>';
+                return '<a class="btn btn-info" href="/users-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-primary" href="/users-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                        <button type="button" class="sa-warning btn btn-danger" data-id="'.$row->id.'">
+                            <i class="fas fa-trash"></i>
+                        </button>';
+                // $csrf = csrf_token();
+                // return '<form method="POST" action="/users-destroy/'.$row->id.'">
+                //                     <input name="_token" type="hidden" value='.$csrf.'>
+                //                     <input name="_method" type="hidden" value="DELETE">
+                //             <a class="btn btn-info" href="/users-show/'.$row->id.'"><i class="fas fa-eye"></i></a>
+                //             <a class="btn btn-primary" href="/users-edit/'.$row->id.'"><i class="fas fa-pencil-alt"></i></a>
+                //             <button type="submit" class="sa-warning btn btn-danger">
+                //                 <i class="fas fa-trash"></i>
+                //             </button>
+                //         </form>';
                 })
                 ->editColumn('info', function ($row) {
                     return substr($row->info,0,15);
@@ -128,7 +133,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->userService->destroyUser($id);
-        return redirect()->route('users')->with('error', Lang::get('t-user-deleted'));
+        return response()->json(['error'=>Lang::get('t-user-deleted')]);
+        // return redirect()->route('users')->with('error', Lang::get('t-user-deleted'));
     }
 
     public function editProfile($id)
