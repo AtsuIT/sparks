@@ -92,10 +92,15 @@ class UserRepository extends BaseRepository implements UserServiceInterface
         }else{
             $data = Arr::except($data,array('password'));    
         }
+        if ($data['avatar'] != "") {
+            $avatar = time() . '.' . $data['avatar']->getClientoriginalExtension();
+            $data['avatar']->move(public_path('uploads/avatars'), $avatar);
+        }
         $user->update([
             'name'=>$data['name'],
             'email'=>$data['email'],
             'password'=>($data['password'] ? $data['password'] : $user->password),
+            'avatar' => isset($avatar) ? $avatar : null,
         ]);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($data['roles']);
