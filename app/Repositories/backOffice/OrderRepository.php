@@ -20,11 +20,13 @@ use Yajra\DataTables\DataTables;
 class OrderRepository extends BaseRepository
 {
     protected $order;
+    protected $trackingInfoRepository;
     protected $guzzle;
 
-    function __construct(Order $order, GuzzleHttpHelper $guzzle)
+    function __construct(Order $order, GuzzleHttpHelper $guzzle, TrackingInfoRepository $trackingInfoRepository)
     {
         $this->order = $order;
+        $this->trackingInfoRepository = $trackingInfoRepository;
         $this->guzzle = $guzzle;
     }
     /**
@@ -67,82 +69,48 @@ class OrderRepository extends BaseRepository
     public function storeOrderByApi()
     {
         $data = $this->guzzle::shipmentByReference();
-        $orders = Order::where('order_type','aymakan')->with('events','trackings')->get()->pluck('id')->toArray();
-        if (count($data) > count($orders)) 
+        foreach ($data as $key => $value) 
         {
-            Schema::disableForeignKeyConstraints();
-            Event::whereIn('order_id',array_values($orders))->delete();
-            TrackingInfo::whereIn('order_id',array_values($orders))->delete();
-            Order::where('order_type','aymakan')->delete();
-            Schema::enableForeignKeyConstraints();
-            foreach($data as $key=> $value)
+            $order = Order::where(['order_type'=>'aymakan','tracking_number'=>$value['tracking_number']])->first();
+            if ($order) 
             {
-                $order = Order::create([
-                    'reference' => $value['reference'],
-                    'tracking_number' => $value['tracking_number'],
-                    'customer_name' => $value['customer_name'],
-                    'requested_by' => $value['requested_by'],
-                    'cod_amount' => $value['cod_amount'],
-                    'declared_value' => $value['declared_value'],
-                    'currency' => $value['currency'],
-                    'delivery_name' => $value['delivery_name'],
-                    'delivery_email' => $value['delivery_email'],
-                    'delivery_city' => $value['delivery_city'],
-                    'delivery_address' => $value['delivery_address'],
-                    'delivery_neighbourhood' => $value['delivery_neighbourhood'],
-                    'delivery_postcode' => $value['delivery_postcode'],
-                    'delivery_country' => $value['delivery_country'],
-                    'delivery_phone' => $value['delivery_phone'],
-                    'delivery_description' => $value['delivery_description'],
-                    'collection_name' => $value['collection_name'],
-                    'collection_email' => $value['collection_email'],
-                    'collection_city' => $value['collection_city'],
-                    'collection_address' => $value['collection_address'],
-                    'collection_postcode' => $value['collection_postcode'],
-                    'collection_country' => $value['collection_country'],
-                    'collection_phone' => $value['collection_phone'],
-                    'collection_description' => $value['collection_description'],
-                    'submission_date' => $value['submission_date'],
-                    'pickup_date' => $value['pickup_date'],
-                    'received_at' => $value['received_at'],
-                    'delivery_date' => $value['delivery_date'],
-                    'weight' => $value['weight'],
-                    'pieces' => $value['pieces'],
-                    'items_count' => $value['items_count'],
-                    'status' => $value['status'],
-                    'status_label' => $value['status_label'],
-                    'reason_en' => $value['reason_en'],
-                    'reason_ar' => $value['reason_ar'],
-                    'is_reverse_pickup' => $value['is_reverse_pickup'],
-                    'is_insured' => $value['is_insured'],
-                    'is_prepaid' => $value['is_prepaid'],
-                    'payment_method' => $value['payment_method'],
-                    'order_type' => 'aymakan',
-                ]);
-                foreach ($value['tracking_info'] as $k => $val) 
+                if (count($order->trackings) < count($value['tracking_info'])) 
                 {
-                    TrackingInfo::create([
-                        'status_code' => $val['status_code'],
-                        'description' => $val['description'],
-                        'description_ar' => $val['description_ar'],
-                        'order_id' => $order->id,
-                        'created_at' => $val['created_at'],
-                    ]);
+                    foreach ($value['tracking_info'] as $k => $val) 
+                    {
+                        $tracking = TrackingInfo::where('status_code',$val['status_code'])->first();
+                        $desc = $val['description'];
+                        $descAr =  $val['description_ar'];
+                        if (!$tracking) 
+                        {
+                            $tracking = $this->trackingInfoRepository::storeTrackingsInfos($order,'aymakan',$val['status_code'],$desc,$descAr,$val['created_at']);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                $newOrder = $this->storeOrder($value,'aymakan');
+                foreach ($value['tracking_info'] as $k => $val) 
+                {             
+                    $desc = $val['description'];
+                    $descAr =  $val['description_ar'];
+                    $tracking = $this->trackingInfoRepository::storeTrackingsInfos($newOrder,'aymakan',$val['status_code'],$desc,$descAr,$val['created_at']);
                 }
             }
         }
         return response()->json(['success'=>true]);
     }
 
-    public function storeOrder($data)
+    public function storeOrder($data, $type=null)
     {
-        $order = array(
+        $order = Order::create([
+            'reference' => $data['reference'],
+            'tracking_number' => $data['tracking_number'],
             'customer_name' => $data['customer_name'],
             'requested_by' => $data['requested_by'],
-            'declared_value' => $data['declared_value'],
-            'declared_value_currency' => $data['declared_value_currency'],
-            'is_cod' => $data['is_cod'],
             'cod_amount' => $data['cod_amount'],
+            'declared_value' => $data['declared_value'],
             'currency' => $data['currency'],
             'delivery_name' => $data['delivery_name'],
             'delivery_email' => $data['delivery_email'],
@@ -169,21 +137,17 @@ class OrderRepository extends BaseRepository
             'pieces' => $data['pieces'],
             'items_count' => $data['items_count'],
             'status' => $data['status'],
-            'status_label' => $data['status'],
             'is_insured' => $data['is_insured'],
-            'is_reverse_pickup' => 0,
-            'is_prepaid' => 0,
+            'status_label' => ($data['status_label'] ? $data['status_label'] : $data['status']),
+            'reason_en' => ($data['reason_en'] ? $data['reason_en'] : NULL),
+            'reason_ar' => ($data['reason_ar'] ? $data['reason_ar'] : NULL),
+            'is_reverse_pickup' => ($data['is_reverse_pickup'] ? $data['is_reverse_pickup'] : 0 ),
+            'is_prepaid' => ($data['is_prepaid'] ? $data['is_prepaid'] : 0),
             'payment_method' => $data['payment_method'],
-            'shipment_company' => $data['shipment_company'],
-            'order_type' => 'sparks',
-        );
-        $order = Order::create($order);
-        TrackingInfo::create([
-            'status_code' => $order->status,
-            'description' => "Shipment is created at collection point",
-            'description_ar' => "تم إصدار بوليصة شحن لدى الشركة الشاحنة لكن لم تستلم من قبل \"أي مكان \"",
-            'order_id' => $order->id,
+            'order_type' =>($type ? $type : 'sparks'),
         ]);
+        $this->trackingInfoRepository::storeTrackingsInfos($order,'sparks',$order->status,'','','');
+        return $order;
         // $client = $this->guzzle::setAuth();
         // $orderShipment = array(
         //     "declared_value_currency"=> "SAR",

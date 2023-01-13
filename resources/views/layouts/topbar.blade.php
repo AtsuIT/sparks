@@ -114,7 +114,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="{{URL::asset('assets/images/users/avatar-3.jpg')}}"
+                                    <img src="{{URL::asset('assets/images/users/avatar.png')}}"
                                     class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
@@ -197,7 +197,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{URL::asset('assets/images/users/avatar-3.jpg')}}"
+                    <img class="rounded-circle header-profile-user" src="{{URL::asset('assets/images/users/avatar.png')}}"
                     alt="Header Avatar">
                     <span class="ms-2 d-none d-xl-inline-block user-item-desc">
                         <span class="user-name">{{Auth::user()->name}} <i class="mdi mdi-chevron-down"></i></span>
