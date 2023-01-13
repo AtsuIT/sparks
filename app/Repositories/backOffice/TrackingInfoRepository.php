@@ -50,7 +50,6 @@ class TrackingInfoRepository extends BaseRepository
                 'created_at' => $created_at,
             ]);
         }
-        
     }
 
 }

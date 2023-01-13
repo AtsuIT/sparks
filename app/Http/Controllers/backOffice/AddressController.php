@@ -31,11 +31,8 @@ class AddressController extends Controller
         if ($request->ajax())
         {
             $address = $this->addressService->getAddress();
-            // if($address->count() == 0)
-            // {
-                $this->addressService->storeAddressByApi();
-                $address = $this->addressService->getAddress();
-            // }
+            $this->addressService->storeAddressByApi();
+            $address = $this->addressService->getAddress();
             return DataTables::of($address->where('address_type','aymakan'))
             ->make(true);
         }
