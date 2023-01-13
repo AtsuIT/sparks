@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="timeline-main">
             @if ($order)
-                @foreach ($order->trackings as $key=>$tracking)
+                @foreach ($order->trackings->sortBy('created_at') as $key=>$tracking)
                     <div class="timeline-row">
                         <div class="timeline-box">
                             <div class="timeline-date @if($key==0) bg-primary border-primary @else border @endif">
