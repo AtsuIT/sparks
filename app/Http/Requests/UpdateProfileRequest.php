@@ -29,7 +29,6 @@ class UpdateProfileRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm_password',
-            'roles' => 'required'
         ];
     }
 }

@@ -44,7 +44,7 @@
 
                 <div class="mt-n5 position-relative">
                     <div class="text-center">
-                        <img src="{{URL::asset('assets/images/users/avatar.png')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                        <img src="{{URL::asset('uploads/avatars/'.$user->avatar)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
 
                         <div class="mt-3">
                             <h5 class="mb-1">{{$user->name}}</h5>
@@ -110,7 +110,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title mb-4" data-key="t-settings">Setting</h5>
-                <form method="POST" action="{{route('users-update-profile',$user->id)}}">
+                <form method="POST" action="{{route('users-update-profile',$user->id)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="card border shadow-none mb-5">
                         <div class="card-header d-flex align-items-center">
@@ -150,6 +150,15 @@
                                             </span>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="gen-info-avatar-input" data-key="t-avatar">Image</label>
+                                            <input type="file" name="avatar" class="form-control" id="gen-info-avatar-input" >
+                                        </div>
+                                    </div>
+                                    
                                 </div>
 
                                 {{-- <div class="mb-3">
