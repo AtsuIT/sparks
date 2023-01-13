@@ -31,11 +31,8 @@ class AddressController extends Controller
         if ($request->ajax())
         {
             $address = $this->addressService->getAddress();
-            // if($address->count() == 0)
-            // {
-                $this->addressService->storeAddressByApi();
-                $address = $this->addressService->getAddress();
-            // }
+            $this->addressService->storeAddressByApi();
+            $address = $this->addressService->getAddress();
             return DataTables::of($address->where('address_type','aymakan'))
             ->make(true);
         }
@@ -92,7 +89,7 @@ class AddressController extends Controller
     public function store(AddressRequest $request)
     {
         $this->addressService->storeAddress($request);
-        return redirect()->route('address')->with('success', Lang::get('t-address-created'));
+        return redirect()->route('address-sparks')->with('success', Lang::get('t-address-created'));
     }
 
     /**
@@ -129,7 +126,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, $id)
     {
         $this->addressService->updateAddress($request, $id);
-        return redirect()->route('address')->with('success', Lang::get('t-address-updated'));
+        return redirect()->route('address-sparks')->with('success', Lang::get('t-address-updated'));
     }
 
     /**

@@ -54,7 +54,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="{{URL::asset('assets/images/users/avatar-3.jpg')}}"
+                                    <img src="{{URL::asset('assets/images/users/avatar.png')}}"
                                     class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">

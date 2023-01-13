@@ -44,7 +44,7 @@
 
                 <div class="mt-n5 position-relative">
                     <div class="text-center">
-                        <img src="{{URL::asset('assets/images/users/avatar-3.jpg')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                        <img src="{{URL::asset('assets/images/users/avatar.png')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
 
                         <div class="mt-3">
                             <h5 class="mb-1">{{$user->name}}</h5>

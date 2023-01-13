@@ -30,11 +30,8 @@ class OrderController extends Controller
         if ($request->ajax()) 
         {
             $orders = $this->orderService->getOrders();
-            // if($orders->count() == 0)
-            // {
-                $this->orderService->storeOrderByApi();
-                $orders = $this->orderService->getOrders();
-            // }
+            $this->orderService->storeOrderByApi();
+            $orders = $this->orderService->getOrders();
             return DataTables::of($orders->where('order_type','aymakan'))
                 ->addColumn('action', function ($row) {
                 return '<a class="btn btn-secondary" href="/orders-timeline/'.$row->id.'"><i class="fas fa-business-time"></i></a>';
