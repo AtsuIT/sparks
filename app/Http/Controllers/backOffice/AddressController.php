@@ -89,7 +89,7 @@ class AddressController extends Controller
     public function store(AddressRequest $request)
     {
         $this->addressService->storeAddress($request);
-        return redirect()->route('address')->with('success', Lang::get('t-address-created'));
+        return redirect()->route('address-sparks')->with('success', Lang::get('t-address-created'));
     }
 
     /**
@@ -126,7 +126,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, $id)
     {
         $this->addressService->updateAddress($request, $id);
-        return redirect()->route('address')->with('success', Lang::get('t-address-updated'));
+        return redirect()->route('address-sparks')->with('success', Lang::get('t-address-updated'));
     }
 
     /**

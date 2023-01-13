@@ -4,7 +4,6 @@ namespace App\Repositories\backOffice;
 
 use App\Helpers\GuzzleHttpHelper;
 use App\Models\Address;
-use Illuminate\Support\Facades\DB;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Yajra\DataTables\DataTables;
 
@@ -66,31 +65,18 @@ class AddressRepository extends BaseRepository
         $client = $this->guzzle::setAuth();
         $address = $client->getAddress();
         $data = $address['data']['address'];
-        $countAddress = DB::table('addresses')->where('address_type','aymakan')->count();
-        if (count($data)>$countAddress) 
+        foreach ($data as $key => $value) 
         {
-            DB::table('addresses')->where('address_type','aymakan')->delete();
-            foreach($data as $key=> $value)
+            $findAddress = Address::where('address_type','aymakan')->first();
+            if (!$findAddress) 
             {
-                Address::create([
-                    'title' => $value['title'],
-                    'name' => $value['name'],
-                    'description' => $value['description'],
-                    'email' => $value['email'],
-                    'city' => $value['city'],
-                    'country' => $value['country'],
-                    'address' => $value['address'],
-                    'postcode' => $value['postcode'],
-                    'phone' => $value['phone'],
-                    'neighbourhood' => $value['neighbourhood'],
-                    'address_type' => 'aymakan',
-                ]);
+                $this->storeAddress($value,'aymakan');
             }
         }
         return response()->json(['success'=>true]);
     }
 
-    public function storeAddress($data)
+    public function storeAddress($data,$type=null)
     {
         $data = array(
             'title' => $data['title'],
@@ -103,7 +89,7 @@ class AddressRepository extends BaseRepository
             'postcode' => $data['postcode'],
             'phone' => $data['phone'],
             'neighbourhood' => $data['neighbourhood'],
-            'address_type' => 'sparks',
+            'address_type' => ($type ? $type : 'sparks'),
         );
         Address::create($data);
         // $client = $this->guzzle::setAuth();

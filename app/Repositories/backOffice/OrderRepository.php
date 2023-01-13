@@ -8,7 +8,6 @@ use App\Models\Event;
 use App\Models\Order;
 use App\Models\TrackingInfo;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Schema;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 use Yajra\DataTables\DataTables;
 
