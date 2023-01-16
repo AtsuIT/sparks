@@ -4,7 +4,7 @@
 
      <!-- LOGO -->
      <div class="navbar-brand-box">
-        <a href="{{route('home')}}" class="logo logo-dark">
+        <a href="" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
@@ -13,7 +13,7 @@
             </span>
         </a>
 
-        <a href="{{route('home')}}" class="logo logo-light">
+        <a href="" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
             </span>
