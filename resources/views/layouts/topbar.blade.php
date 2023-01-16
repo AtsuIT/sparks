@@ -233,7 +233,7 @@
             <!-- end page title -->
 
             <!-- start dash info -->
-            @if (Route::currentRouteName() == "home")
+            {{-- @if (Route::currentRouteName() == "home")
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card dash-header-box shadow-none border-0">
@@ -286,7 +286,7 @@
                         </div><!-- end card -->
                     </div><!-- end col -->
                 </div>
-            @endif
+            @endif --}}
             <!-- end dash info -->
         </div>
     </div>
